@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; chaRset=utf-8" />
+        <title>基于jQuery的拖动排序插件</title>
+        <meta name="keywords" content="基于jQuery的拖动排序插件" />
+        <meta name="description" content="jquery特效,js特效,flash特效,div+css教程,html5教程" />
+        <link href="css/style.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="js/jquery.1.4.2-min.js"></script>
+    </head>
+
+    <body>
+
+        <script type="text/javascript">
+            //屏蔽右键菜单
+            document.oncontextmenu = function(event) {
+                if (window.event) {
+                    event = window.event;
+                }
+                try {
+                    var the = event.srcElement;
+                    if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                        return false;
+                    }
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            }
+        </script>
+
+        <!--演示内容开始-->
+        <script type="text/javascript" src="js/jquery.dragsort-0.4.min.js"></script>
+        <style type="text/css">
+            *{margin:0;padding:0;list-style-type:none;}
+            body{font-family:Arial;font-size:12pt;color:#333;}
+            h1{font-size:16pt;}
+            h2{font-size:13pt;}
+            /* demo */
+            .demo{padding:20px;width:800px;margin:20px auto;border:solid 1px black;}
+            .demo h2{margin:30px 0 20px 0;color:#3366cc;}
+            /* dragfunction */
+            .dragfunction{margin:40px 0 0 0;}
+            .dragfunction dt{height:30px;font-weight:800;}
+            .dragfunction dd{line-height:22px;padding:0 0 20px 0;color:#5e5e5e;}
+            /* dragsort */
+            .dragsort-ver li{height:30px;line-height:30px;}
+            .dragsort{width:350px;list-style-type:none;margin:0px;}
+            .dragsort li{float:left;padding:5px;width:100px;height:100px;}
+            .dragsort div{width:90px;height:50px;border:solid 1px black;background-color:#E0E0E0;text-align:center;padding-top:40px;}
+            .placeHolder div{background-color:white!important;border:dashed 1px gray!important;}
+        </style>
+
+        <div class="demo">
+
+            <h1>jQuery列表拖动排列演示</h1>
+
+            <h2>简单的一组列表:</h2>
+
+            <ul class="dragsort-ver">
+                <li>面包</li>
+                <li>蔬菜</li>
+                <li>肉</li>
+                <li>牛奶</li>
+                <li>奶油</li>
+                <li>冰淇淋</li>
+            </ul>
+            <br/>
+
+            <script type="text/javascript">
+            $("ul:first").dragsort();
+            </script>
+
+            <h2>两组列表拖放:</h2>
+
+            <!--            <ul class="dragsort" id="list2" style="float:right;">
+                            <li><div>10</div></li>
+                            <li><div>11</div></li>
+                            <li><div>12</div></li>
+                            <li><div>13</div></li>
+                            <li><div>14</div></li>
+                            <li><div>15</div></li>
+                            <li><div>16</div></li>
+                            <li><div>17</div></li>
+                            <li><div>18</div></li>
+                        </ul>-->
+
+            <ul class="dragsort" id="list1">
+                <li><div>1</div></li>
+                <li><div>2</div></li>
+                <li><div>3</div></li>
+                <li><div>4</div></li>
+                <li><div>5</div></li>
+                <li><div>6</div></li>
+                <li><div>7</div></li>
+                <li><div>8</div></li>
+                <li><div>9</div></li>
+            </ul>
+
+            <!-- 排序保存在这里可以检索服务器上的回传 -->
+            <input name="list1SortOrder" type="hidden" />
+
+            <script type="text/javascript">
+                $("#list1, #list2").dragsort({
+                    dragSelector: "div",
+                    dragBetween: true,
+                    dragEnd: saveOrder,
+                    placeHolderTemplate: "<li class='placeHolder'><div></div></li>",
+                    scrollSpeed: 5
+                });
+
+                function saveOrder() {
+                    var data = $("#list1 li").map(function() {
+                        return
+                        $(this).children().html();
+                    }).get();
+                    $("input[name=list1SortOrder]").val(data.join("|"));
+                }
+                ;
+            </script>
+
+            <div style="clear:both;"></div>
+
+            <h2>Usage</h2>
+            $("ul").dragsort({ dragSelector: "li", dragEnd: function() { }, dragBetween: false, placeHolderTemplate: "&lt;li&gt;&lt;/li&gt;" });<br/>
+            <br/>
+            <dl class="dragfunction">
+                <dt>dragSelector</dt>
+                <dd>CSS选择器内的元素的列表项的拖动手柄。默认值是“li”。</dd>
+                <dt>dragSelectorExclude</dt>
+                <dd>CSS选择器的元素内的dragSelector不会触发dragsort的。默认值是"input, textarea, a[href]"。</dd>
+                <dt>dragEnd</dt>
+                <dd>拖动结束后将被调用的回调函数.</dd>
+                <dt>dragBetween</dt>
+                <dd>设置为“true”，如果你要启用多组列表之间拖动选定的列表。 默认值是false。</dd>
+                <dt>placeHolderTemplate</dt>
+                <dd>拖动列表的HTML部分。默认值是"&lt;li&gt;&lt;/li&gt;".</dd>
+                <dt>scrollContainer</dt>
+                <dd>CSS选择器的元素，作为滚动容器，例如溢出的div设置为自动。 默认值是“窗口“.</dd>
+                <dt>scrollSpeed</dt>
+                <dd>一个数字，它代表了速度，页面拖动某一项时，将滚动容器外，较高使用价值的是速度和较低的值是较慢的。 如果设置为"0"以禁用滚动。默认值是"5".</dd>
+            </dl>
+
+        </div>
+        <!--演示内容结束-->
+
+    </body>
+</html>

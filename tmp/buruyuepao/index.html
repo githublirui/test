@@ -1,0 +1,95 @@
+<!doctype html>
+<head>
+    <title>不如约跑</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/base.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimumscale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="max-age=0" />
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <style>
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+
+</head>
+<body>
+    <div id="xLoader" class="loader"><div class="the-snake"><span></span><span></span><span></span><span></span><span></span></div></div>
+    <!--index-->
+    <div class="index hidden">
+        <img src="img/cloud.png" class="cloud_1 turn_1"/>
+        <img src="img/cloud.png" class="cloud_2 turn_2"/>
+        <div class="building_i"></div>
+        <div class="ground_i"></div>
+        <div class="vklogo animated fadeInDown"><img src="img/vk_logo.png" width="100%"/></div>
+        <div class="hdlogo animated bounceInRight"><img src="img/hd_logo.png" width="100%"/></div>
+        <div class="people_i"><div class="people_sprit"></div></div>
+        <div class="go_ruler">
+            <img src="img/btn_ruler.png" class="ruler_btn" id="808ce6446e10bda1a62a30aeff389293"/>
+            <img src="img/go.png" class="go_btn"/>
+        </div>
+        <div class="ruler"><img src="img/kong.png" class="ruler_result"/><span class="ruler_dis"></span><img src="img/go.png" class="go_btn"/></div>
+        <div class="foot">&copy;合肥万科&nbsp;&nbsp;&nbsp;powered by 智讯科技·带客通</div>
+    </div>
+    <!--//index-->
+    <!-- 游戏页begin -->
+    <canvas id="J_gameCanvas"></canvas>
+    <div class="timercounter timercounter3 hidden" id="J_timercounter"></div>
+    <div class="gameProp hidden" id="J_gameProp">
+        <span class="score distance_score">距离 <b>0</b>米</span>
+    </div>
+    <!-- 游戏页end -->
+    <!-- 结果页begin -->
+    <div class="result">
+        <div class="reslut_box">
+            <div class="result_1">
+                <img src="img/result_title_1.png" class="reslut_title_1"/>
+                <img src="img/result_title_2.png" class="reslut_title_2"/>
+                <div class="result_1_txt">你跑了<em id="J_dis"></em>米，<span id="J_txt"></span></div>
+                <img src="img/result_1_ren.png" class="result_ren"/>
+            </div>
+            <a href="http://mp.weixin.qq.com/s?__biz=MjM5MTk3NDcxMQ==&mid=201121960&idx=1&sn=69c3f60b98ea11209819b6b50c633606#rd"><img src="img/ad.png" width="280"/></a>
+            <div class="result_2">
+                <img src="img/btn_share.png" class="J_share"/><img src="img/btn_score.png" class="J_score"/><img src="img/btn_replay.png" class="J_replay"/>
+            </div>
+        </div>
+        <div class="info_box">
+            <div>
+                <input id="J_name" class="input" placeholder="姓名"/><br />
+                <input id="J_phone" class="input" placeholder="手机"/>
+            </div>
+            <img src="img/btn_save.png" id="J_infosave"/>
+            <p class="saveing"><img src="img/loading.gif"/><br />提交中</p>
+        </div>
+        <div class="success_box">
+            <img src="img/success.png" width="280"/>
+            <div class="success_2">
+                <img src="img/btn_share.png" class="J_share"/><img src="img/btn_replay.png" class="J_replay"/>
+            </div>
+        </div>
+        <div class="layer"></div>
+        <div class="share_tips"></div>	
+    </div>
+    <!-- 结果页end -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="http://a.wcdn.pw/cocos2d/3.0/CCBoot.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/jquery.timer.js"></script>
+    <script src="js/plug.wxshare.js"></script>
+    <script src="main.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        _WXShare('http://hfvanke.zhixun.in/14paoku//img/share.jpg', '76', '76', '游戏都打不过我！你还好意思跟我跑步？', '约什么不好，装备都给你备好，来约跑！', 'http://hfvanke.zhixun.in/14paoku/');
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin: 0px;padding: 0px;color:#555555;background-color:#F2F2F2;}
+a{text-decoration: none;color:#333;}
+.cl{clear:both;}
+#bodybottom{bottom:0;position:fixed;background-color:#FFFFFF;}
+<center>
+<p><span style="border: 1px solid rgb(2, 0, 0);"><a href="http://lm.zhwsc.com/mob/wxrm.asp?lx=16&refid=">微信热门</a></span> <span style="border: 1px solid rgb(0, 0, 0);"><a href="http://lm.zhwsc.com/mob/wxrm.asp?lx=9&refid=">健康生活</a></span> <span style="border: 1px solid rgb(0, 0, 0);"><a href="http://lm.zhwsc.com/mob/wxrm.asp?lx=2&refid=">爆笑搞怪</a></span> <span style="border: 1px solid rgb(0, 0, 0);"><a href="http://lm.zhwsc.com/mob/wxrm.asp?lx=5&refid=">唯美图片</a></span></p>
+</center>

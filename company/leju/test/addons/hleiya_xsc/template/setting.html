@@ -1,0 +1,169 @@
+{template 'common/header'}
+<div class="main">
+		
+		<!--模板设置-->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion"
+					href="#collapse1">
+					活动设置
+				</a>
+				</h4>
+			</div>
+			<div id="collapse1" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<div class="form-horizontal form">
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">活动标题：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="title" value="{$setting['title']}">
+                                <div class="help-block">活动顶部显示</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">logo：</label>
+							<div class="col-sm-9 col-xs-12">
+								{php echo tpl_form_field_image('logo', $setting['logo'])}
+							</div>
+						</div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">主标题：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="main_title" value="{$setting['main_title']}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">副标题：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="sub_title" value="{$setting['sub_title']}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付按钮文字：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_btn_title" value="{$setting['pay_btn_title']}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付完成标题：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_over_title" value="{$setting['pay_over_title']}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付完成内容：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <textarea style="height:60px;" name="pay_over_content" class="form-control span7" cols="60">{$setting['pay_over_content']}</textarea>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">分享图标：</label>
+							<div class="col-sm-9 col-xs-12">
+								{php echo tpl_form_field_image('share_img', $setting['share_img'])}
+                                <div class="help-block">最佳尺寸：200*200px</div>
+							</div>
+						</div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享标题：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" id="share_title" class="form-control span7" placeholder="" name="share_title" value="{$setting['share_title']}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享描述：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <textarea style="height:60px;" name="share_desc" class="form-control span7" cols="60">{$setting['share_desc']}</textarea>
+                                <div class="help-block">{1}替换金额，{2}替换昵称，{3}总支付人，{4}第几个支付人</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">联系关注图：</label>
+							<div class="col-sm-9 col-xs-12">
+								{php echo tpl_form_field_image('contact_img', $setting['contact_img'])}
+                                <div class="help-block">
+                                    <img src="../addons/teabox_penny/template/img/contact.gif" width="150">
+								    <span class="help-block">最佳尺寸：344*344px</span>
+                                </div>
+							</div>
+						</div>
+
+                        <div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label">引导分享图：</label>
+							<div class="col-sm-9 col-xs-12">
+								{php echo tpl_form_field_image('share_banner', $setting['share_banner'])}
+                                <div class="help-block">
+                                    <img src="../addons/teabox_penny/template/img/share_banner.png" width="150">
+								    <span class="help-block">最佳尺寸：640*320px</span>
+                                </div>
+							</div>
+						</div>
+						
+                        <div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+							<div class="col-sm-9 col-xs-12">
+								<button class="btn btn-primary" name="btn-setting">提交</button>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+</div>
+
+<script>
+    require(['bootstrap','util'],function($,util){
+        $('button[name=btn-setting]').click(function(){
+            setting.save_setting();
+        });
+
+        var setting = {
+            save_setting:function(){
+                $.ajax({
+                    url: "{php echo wurl('site/entry/setting',array('m'=>'hleiya_xsc','op'=>'setting','item'=>'ajax','key'=>'setting'));}",
+                    type: 'POST',
+                    data: {
+                        title: $("input[name='title']").val(),
+                        logo: $("input[name='logo']").val(),
+                        main_title: $("input[name='main_title']").val(),
+                        sub_title: $("input[name='sub_title']").val(),
+                        pay_btn_title: $("input[name='pay_btn_title']").val(),
+                        pay_over_title: $("input[name='pay_over_title']").val(),
+                        pay_over_content: $("textarea[name='pay_over_content']").val(),
+                        contact_img: $("input[name='contact_img']").val(),
+                        share_img: $("input[name='share_img']").val(),
+                        share_title: $("input[name='share_title']").val(),
+                        share_desc: $("textarea[name='share_desc']").val(),
+                        share_banner: $("input[name='share_banner']").val()
+                    },
+                    success:function(res){
+                        if(res > 0){
+                            util.message('消息提示: 设置成功','', 'success');
+
+                        }else{
+                            util.message('消息提示: 设置失败','', 'error');
+                        }
+                    },
+                    error:function(){
+                        alert('ajax error');
+                    }
+                });
+            }
+        }
+    });
+</script>
+{template 'common/footer'}

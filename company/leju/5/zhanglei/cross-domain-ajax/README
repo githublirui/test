@@ -1,0 +1,19 @@
+javascript ajax的跨域处理
+
+先将client这个文件夹做域名解析
+	win->sys32->drivers->etc->hosts
+	apache->conf->httpd-vhost.conf
+	域名: www.cross-domain-client.com.cn
+
+后将server这个文件夹做域名解析
+	同上
+	域名: www.cross-domain-server.com.cn
+
+www.cross-domain-client.com.cn/cross-origin.php
+	中有两个a链接
+		1, 通过script标签的src做javascript ajax的跨域处理
+		2, 通过xmlhttprequest做javascript ajax的跨域处理
+
+
+PS:
+Jquery则不需要这么麻烦, $.getScript或者$.getJson即可, 具体方案等待处理。

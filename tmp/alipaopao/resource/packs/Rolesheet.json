@@ -1,0 +1,17 @@
+{
+	"file":"Rolesheet.png",
+	"frames":
+	{
+		"role_png":
+		{
+			"h":1019,
+			"offX":1,
+			"offY":1,
+			"sourceH":1021,
+			"sourceW":1024,
+			"w":1022,
+			"x":2,
+			"y":2
+		}
+	}
+}

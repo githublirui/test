@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>阿狸跑跑跑 - 阿狸要去梦之城参加盛大的节日晚会啦，沿途叫上居民们一起去吧，不过要小心路上的危险。</title>
+        <meta name="author" content="D.Y<dongyong@oegame.com>">
+        <meta name="keywords" content="阿狸要去梦之城参加盛大的节日晚会啦，沿途叫上居民们一起去吧，不过要小心路上的危险。">
+        <meta name="description" content="阿狸要去梦之城参加盛大的节日晚会啦，沿途叫上居民们一起去吧，不过要小心路上的危险。">
+        <meta name="viewport"
+content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no,target-densitydpi=device-dpi"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="x5-orientation" content="portrait"/>
+        <meta name="full-screen" content="true"/>
+        <meta name="screen-orientation" content="portrait"/>
+        <meta name="x5-fullscreen" content="true"/>
+        <meta name="360-fullscreen" content="true"/>
+        <style>
+            body {
+                text-align: center;
+                background: #000000;
+                padding: 0;
+                border: 0;
+                margin: 0;
+                height: 100%;
+            }
+            html {
+                -ms-touch-action: none; /* Direct all pointer events to JavaScript code. */
+                overflow: hidden;
+            }
+            div, canvas {
+                display:block;
+                position:absolute;
+                margin: 0 auto;
+                padding: 0;
+                border: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="position:relative;" id="gameDiv"></div>
+        <script>var document_class = "Main";</script><!--这部分内容在编译时会被替换，要修改文档类，请到工程目录下的egretProperties.json内编辑。-->
+        <!--This part will be replaced during compiling, and to modify the document class, please go to the project directory and edit in the file of egretProperties. Jsonr-->
+        <script src="launcher/egret_require.js"></script>
+        <script src="launcher/egret_loader.js"></script>
+        <script src="launcher/game-min.js"></script>
+
+
+        <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+        <script src="launcher/jquery.cookie.js"></script>
+
+        <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
+        <script src='launcher/share.js'></script>
+        <script src='http://tajs.qq.com/stats?sId=42779017'></script>
+
+        <script src='http://m.idreamcastle.com/vendor/zhuge/zhuge.js'></script>
+
+        <div id="fansTip" style="display:none; width:100%; height:100%; position:fixed; top:0; left:0; background:rgba(0,0,0,0.9)">
+            <div style="position:absolute; top:0px; right:30px; width:189px; height:401px; backgroudn:#000;">
+                <div><img src="launcher/fans.png"/></div>
+                <div style="height:20px"></div>
+            </div>
+        </div>
+
+        <div id="shareTip" style="display:none; width:100%; height:100%; position:fixed; top:0; left:0; background:rgba(0,0,0,0.9)">
+            <div style="position:absolute; top:0px; right:30px; width:191px; height:410px; backgroudn:#000;">
+                <div><img src="launcher/share.png"/></div>
+                <div style="height:20px"></div>
+            </div>
+        </div>
+
+
+        <script>
+            function request(paras) {
+                var url = location.href;
+                var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+                var paraObj = {};
+                var j;
+                for (var i = 0; j = paraString[i]; i++) {
+                    paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+                }
+
+                var returnValue = paraObj[paras.toLowerCase()];
+                if (typeof (returnValue) == "undefined") {
+                    return "";
+                } else {
+                    return returnValue;
+                }
+            }
+
+            var nickname = request('nickname');
+
+            var imgUrl = 'http://m.idreamcastle.com/games/ali_paopao/resource/logo.jpg';
+            var link = 'http://m.idreamcastle.com/games/ali_paopao/?' + (new Date()).getTime();
+            var title = '阿狸跑跑跑，快点来参加！';
+            var desc = '阿狸要去梦之城参加盛大的节日晚会啦，沿途叫上居民们一起去吧，不过要小心路上的危险';
+
+            wxshare('', imgUrl, link, desc, title);
+
+            zhuge.track('进入阿狸跑跑跑游戏', {
+                'nickname': nickname ? decodeURIComponent(nickname) : "梦之城居民",
+                'bestScore': $.cookie("ali_world_score")
+            });
+
+            var support = [].map && document.createElement("canvas").getContext;
+            if (support) {
+                egret_h5.startGame();
+            }
+            else {
+                alert("Egret 不支持您当前的浏览器")
+            }
+
+            var __score = 1;
+            var __nickname = nickname ? decodeURIComponent(nickname) : "梦之城居民";
+
+            function jsShare(score) {
+                wxshare('', imgUrl, link, desc, '阿狸跑跑跑，' + __nickname + '跑了' + score + '米！');
+
+                $('#shareTip').show('fast');
+                setTimeout(hideShare, 3000);
+            }
+
+            function jsFans() {
+                location.href = 'http://mp.weixin.qq.com/s?__biz=MjM5OTMyNjExNA==&mid=201355408&idx=1&sn=b43f92f8155f630fc892950875cec763&scene=1&key=af154fdc40fed003fd933e9370de777152c1e4d409d449f839711e6efc45c70f534d177b5adb7b8a84e76156a208819e&ascene=1&uin=ODI3MDA2OTYw&devicetype=webwx&version=70000001&pass_ticket=eCN4CxMMcC3ls6BbakGCKUEToTvwiGB41NFIlF%2FRNGa0E54eZNVyBmSkBwUdgTCo';
+                //    $('#fansTip').show('fast')
+                //    setTimeout(hideFans, 3000);
+            }
+
+            function hideShare() {
+                $('#shareTip').hide();
+            }
+
+            function hideFans() {
+                $('#fansTip').hide();
+            }
+
+            function getCookie() {
+                var score = $.cookie("ali_world_score");
+                if (score == undefined) {
+                    score = 0;
+                }
+                return score;
+            }
+
+            function setCookie(score) {
+                $.cookie("ali_world_score", score);
+            }
+        </script>
+    </body>
+</html>

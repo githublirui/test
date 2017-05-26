@@ -1,0 +1,1506 @@
+{loop $slides $s}
+
+<!DOCTYPE html>
+<html>
+	<head>
+	{php echo register_jssdk(false);}
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="applicable-device" content="mobile" />
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+
+		<meta content="yes" name="apple-mobile-web-app-capable"/>
+		<meta content="yes" name="apple-touch-fullscreen"/>
+		<meta content="telephone=no" name="format-detection"/>
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no height=device-height" />
+        <link rel="apple-touch-icon" href="/attachment/{$s['icon']}">
+        <link rel="apple-touch-startup-image" href="/attachment/{$s['icon']}">
+		<title>{$s['name']}</title>
+		<link rel="stylesheet" type="text/css" href="/addons/pingtu/css/index.css">
+        <link href="http://cdn.staticfile.org/twitter-bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="{MODULE_URL}/skcss/sweet-alert.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+body 
+{
+	{if empty($s['bgpic'])}
+	background-color: {$s['bgcolor']};
+	{else}
+	background:url('/attachment/{$s['bgpic']}') top center no-repeat; background-size:cover;
+	{/if}
+}
+img 
+{
+	vertical-align:bottom; display:block
+
+}
+.product_thumb 
+{
+  width: 100%;
+  border-width: 1px;
+  border-color: #004694;
+  border-style: double;
+  border-top-right-radius: 0.4em;
+  border-top-left-radius: 0.4em;
+  border-bottom-right-radius: 0.4em;
+  border-bottom-left-radius: 0.4em;
+}
+.sweet-alert { background-color: #fff3c2!important; background-color: #fff3c2; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; width: 478px; padding: 17px; border-radius: 5px; text-align: center; position: fixed; left: 50%; top: 50%; margin-left: -256px; margin-top: -200px; overflow: hidden; display: none; z-index: 99999 }
+.sweet-alert .icon.success .fix { width: 5px; height: 90px; background-color: #fff3c2; position: absolute; left: 28px; top: 8px; z-index: 1; -webkit-transform: rotate(-45deg); transform: rotate(-45deg) }
+.sweet-alert .icon { width: 80px; height: 80px; border: 4px solid gray; -webkit-border-radius: 40px; border-radius: 50%; margin: 20px auto; padding: 0; position: relative; box-sizing: content-box }
+.sweet-alert .icon.error { border-color: #F27474 }
+.sweet-alert .icon.error .x-mark { position: relative; display: block }
+.sweet-alert .icon.error .line { position: absolute; height: 5px; width: 47px; background-color: #F27474; display: block; top: 37px; border-radius: 2px }
+.sweet-alert .icon.error .line.left { -webkit-transform: rotate(45deg); transform: rotate(45deg); left: 17px }
+.sweet-alert .icon.error .line.right { -webkit-transform: rotate(-45deg); transform: rotate(-45deg); right: 16px }
+.sweet-alert .icon.warning { border-color: #F8BB86 }
+.sweet-alert .icon.warning .body { position: absolute; width: 5px; height: 47px; left: 50%; top: 10px; -webkit-border-radius: 2px; border-radius: 2px; margin-left: -2px; background-color: #F8BB86 }
+.sweet-alert .icon.warning .dot { position: absolute; width: 7px; height: 7px; -webkit-border-radius: 50%; border-radius: 50%; margin-left: -3px; left: 50%; bottom: 10px; background-color: #F8BB86 }
+.sweet-alert .icon.info { border-color: #C9DAE1 }
+.sweet-alert .icon.info::before { content: ""; position: absolute; width: 5px; height: 29px; left: 50%; bottom: 17px; border-radius: 2px; margin-left: -2px; background-color: #C9DAE1 }
+.sweet-alert .icon.info::after { content: ""; position: absolute; width: 7px; height: 7px; border-radius: 50%; margin-left: -3px; top: 19px; background-color: #C9DAE1 }
+.sweet-alert .icon.success { border-color: #A5DC86 }
+.sweet-alert .icon.success::after, .sweet-alert .icon.success::before { content: ''; position: absolute; width: 60px; height: 120px; background:  #fff3c2; -webkit-transform: rotate(45deg); transform: rotate(45deg) }
+.sweet-alert .icon.success::before { -webkit-border-radius: 120px 0 0 120px; border-radius: 120px 0 0 120px; top: -7px; left: -33px; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-transform-origin: 60px 60px; transform-origin: 60px 60px }
+.sweet-alert .icon.success::after { -webkit-border-radius: 0 120px 120px 0; border-radius: 0 120px 120px 0; top: -11px; left: 30px; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-transform-origin: 0 60px; transform-origin: 0 60px }
+.sweet-alert .icon.success .placeholder { width: 80px; height: 80px; border: 4px solid rgba(165,220,134,.2); -webkit-border-radius: 40px; border-radius: 50%; box-sizing: content-box; position: absolute; left: -4px; top: -4px; z-index: 2 }
+</style>
+
+
+    <script type="text/javascript" src="{MODULE_URL}/skcss/jquery-1.7.2.min.js"></script>
+
+    <script type="text/javascript" src="{MODULE_URL}/skcss/sweet-alert.min.js"></script>
+    
+    		<script>
+		   var _czc = _czc || [];
+		</script>
+	<script type="text/javascript">
+		        var AD266 = new adwojs({
+		            eid:'spn', //节点id
+		            aid: '316a0284415b4aada3d0aa0567923456', //android安卓PID
+		            pid: '2b029f1e733c49e1adebdbb2a85074ae', //iOS PID
+		            bt: false,
+		            width: 320, //图片宽
+		            height: 50 //图片高
+		        });
+		        AD266.send();
+		</script>
+ <script type="text/javascript">
+//is_weixin();
+function is_weixin(){
+	var ua = navigator.userAgent.toLowerCase();
+	if(ua.match(/MicroMessenger/i)=="micromessenger") {
+		return true;
+ 	} else {
+		window.location="{$s['link']}";
+		return false;
+	}
+}
+</script>
+<script>
+    if(navigator.platform.indexOf('Win32')!=-1){ 
+    //pc
+        window.location.href="{$s['link']}";
+     }
+</script> 
+
+</head>
+<body >
+<div style="display:none;"><img src="/attachment/{$s['icon']}"></div>
+	<div id="share" ontouchstart="document.getElementById('share').style.display='none';" onclick="document.getElementById('share').style.display='none';" style="background:url(/addons/pingtu/images/share.jpg) no-repeat CENTER top #82492e; display: none; z-index: 110; background-size:cover;  width:100% ">
+	 <!-- <img src="/addons/pingtu/images/share.jpg" alt="" width="100%" height="200%">-->
+    </div>
+<!--页面集合-->
+<div style="margin:0 auto; width:100%; max-width:640px;">
+<a href="{$s['ADlinksP1']}"><img src="/attachment/{$s['ac_pic']}" border=0  width="100%"/></a></div>
+<div id="pageWrapper">
+	<div id="pages">
+		<div id="page_default" class="pagemodel">
+			<div class="initloading" >
+				<span class="normal-loading"></span>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="width: 100%; overflow: hidden; max-width: 640px;margin:0 auto;">
+<img src="/attachment/{$s['ppt1']}" width="100%"style="max-width: 640px;"/>
+<img src="/attachment/{$s['ppt2']}"  width="100%" style="max-width: 640px;"/>
+<img src="/attachment/{$s['ppt3']}" width="100%" style="max-width: 640px;"/>
+<img src="/attachment/{$s['ppt4']}" width="100%" style="max-width: 640px;"/>
+<a href="{$s['ADlinksP6']}"><img src="/attachment/{$s['ppt5']}" width="100%" border=0 style="max-width: 640px;"/></a>
+</div>
+<div class="container">
+
+
+<div style="clear:both;"></div>
+
+<div class="mask"></div>
+<div  id="gameresult" style="padding-top:52%;">
+	<div class="resultcontainer">
+		
+		<div class="btngroup">
+            <a class="btn1 hide" id="againgame" style="color:#FFF">重新再玩</a>
+			<a class="btn1 hide" id="restartgame" style="color:#FFF">再来一次</a>
+			<!--<a class="btn1 " id="continuegame" style="color:#FFF">挑战下一关</a>-->
+			<a class="btn1" id="sharegame" onclick="dp_share();" style="color:#F00; background:#fff3c2">炫耀一下</a>
+		</div>
+		<!--<p style="color:#000; margin:0; padding:0; font-weight:bold">提示语：挑战下一关，红包金额更多喔~</p>-->
+		<div class="resultinfo" style="color:#fff3c2"></div>
+		<div style="margin:0 auto; max-width: 640px;width:80%;">
+ {if (!empty($_W['fans']['follow']))}
+    <script type="text/javascript" src="{MODULE_URL}/skcss/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="{MODULE_URL}/skcss/sweet-alert.min.js"></script>
+        <form id="formmessage" name="formmessage">
+       <label for="score"></label> <input type="hidden" name="score" id="score" value="0" />
+        <input type="hidden" name="fid" id="gamescode" value="{$fid}" />
+<table  id="cjform" border="0" align="center" cellpadding="0" cellspacing="5" width="100%" style="max-width: 640px;" bordercolor="#E43B3E">
+		<tr>
+			<td colspan="2" align="center" nowrap><label for="uname"></label><input type="text" name="uname" id="uname" placeholder="请输入您的昵称" maxlength="10" class="product_thumb" value=""></td>
+		</tr>
+		<tr>
+		  <td colspan="2" align="center" nowrap>&nbsp;</td>
+  </tr>
+		<tr>
+			<td colspan="2" align="center" nowrap><label for="tel"></label><input type="text" name="tel" id="tel" placeholder="手机是您的领奖凭证" maxlength="11" class="product_thumb" value=""></td>
+		</tr>
+		<tr>
+		  <td colspan="2" align="center">&nbsp;</td>
+  </tr>
+		<tr>
+			<td colspan="2" align="center"><input  type="button" name="submit" id="btn_submit"  value="提交成绩"></td>
+		</tr>
+	</table>
+    </form>
+{else}
+<style type="text/css">
+.button {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 16px/100% 'Microsoft yahei',Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+.bigrounded {
+	-webkit-border-radius: 2em;
+	-moz-border-radius: 2em;
+	border-radius: 2em;
+}
+.medium {
+	font-size: 12px;
+	padding: .4em 1.5em .42em;
+}
+.small {
+	font-size: 11px;
+	padding: .2em 1em .275em;
+}
+
+
+/* blue */
+.blue {
+	color: #d9eef7;
+	border: solid 1px #0076a3;
+	background: #0095cd;
+	background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+	background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+}
+.blue:hover {
+	background: #007ead;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+	background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+}
+.blue:active {
+	color: #80bed6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+	background: -moz-linear-gradient(top,  #0078a5,  #00adee);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
+}
+
+/* green */
+.green {
+	color: #e8f0de;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+	background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+}
+.green:hover {
+	background: #538018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c));
+	background: -moz-linear-gradient(top,  #6b9d28,  #436b0c);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+}
+.green:active {
+	color: #a9c08c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#4e7d0e), to(#7db72f));
+	background: -moz-linear-gradient(top,  #4e7d0e,  #7db72f);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#4e7d0e', endColorstr='#7db72f');
+}
+
+/* white */
+.white {
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+.white:hover {
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+	background: -moz-linear-gradient(top,  #fff,  #dcdcdc);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+}
+.white:active {
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+	background: -moz-linear-gradient(top,  #ededed,  #fff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+}
+
+/* orange */
+.orange {
+	color: #fef4e9;
+	border: solid 1px #da7c0c;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+	background: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+</style>
+
+        <form action="{$s['link']}" id="formmessage" name="formmessage" method="post" onSubmit="return CheckForm();">
+        <input type="hidden" name="score" id="score" value="0" />
+        <input type="hidden" name="gamescode" id="gamescode" value="201532323275568xt3cjhsg" />
+<table  id="cjform" border="0" align="center" cellpadding="0" cellspacing="5" width="100%" style="max-width: 640px;" bordercolor="#E43B3E">
+		<tr>
+			<td colspan="2" align="center" nowrap><input type="text" name="uname" id="uname" placeholder="抱歉：由于凭信息领奖" maxlength="15" class="product_thumb" value="抱歉：由于凭信息领奖"></td>
+		</tr>
+		<tr>
+		  <td colspan="2" align="center" nowrap>&nbsp;</td>
+  </tr>
+		<tr>
+			<td colspan="2" align="center" nowrap><input type="text" name="tel" id="tel" placeholder="您需先关注平台才能登记" maxlength="16" class="product_thumb" value="您需先关注平台才能登记"></td>
+		</tr>
+		<tr>
+		  <td colspan="2" align="center">&nbsp;</td>
+  </tr>
+		<tr>
+			<td colspan="2" align="center"><a href="{$s['link']}" class="button blue bigrounded">点击关注</a> </td>
+		</tr>
+	</table>
+    </form>
+ {/if}
+
+    </div>
+	</div>
+</div>
+
+
+</div>
+<script>
+    $(function(){
+        $("#btn_submit").click(function(){
+
+
+          var uname=$("#uname").val();
+
+            var tel=$("#tel").val();
+			var score=$("#score").val();
+
+
+
+            if(uname==""){
+                swal({   title: "错误!",   text: "姓名不能为空！",   type: "error",   confirmButtonText: "确定" });
+
+                return ;
+            }
+			
+			if(score==""){
+                swal({   title: "错误!",   text: "分数不能为空！",   type: "error",   confirmButtonText: "确定" });
+
+                return ;
+            }
+
+
+
+            if(tel==""){
+
+                swal({   title: "错误!",   text: "手机号码不能为空!",   type: "error",   confirmButtonText: "确定" });
+                return ;
+            }
+
+
+
+            var myreg = /^1\d{10}$/;
+            if(!myreg.test(tel)) {
+                swal({   title: "错误!",   text: "请输入有效的手机号码!",   type: "error",   confirmButtonText: "确定" });
+
+                return ;
+            }
+
+
+
+            var submitData={
+                "fid":"{$fid}",
+                "uname":uname,
+                "score":score,
+				"tel":tel
+            }
+
+
+            $.post("{php echo $this->str_murl($this->createMobileUrl('GetIndex',array(),true))}",submitData,function(res){
+
+                if(res.code!=200){
+                    swal({   title: "错误!",   text: res.msg,   type: "error",   confirmButtonText: "确定" });
+                }else{
+
+
+                    swal(
+                            {
+                                title: "温馨提示!",
+                                text: res.msg,
+                                type: "success",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "分享领取红包",
+                                closeOnConfirm: true,
+                                closeOnCancel: false
+                            },
+                            function(isConfirm){
+
+                                if (isConfirm) {
+                                dp_share();
+                                    
+                                }else {  
+								window.location.href='{php echo $this->str_murl($this->createMobileUrl('index',array('id'=>$fid,'share'=>1)))}'
+								}
+                            });
+
+
+                }
+
+
+            },'json');
+
+
+        });
+
+
+    });
+</script>
+
+<script type="text/template" style="display:none;" id="pageTemplate">
+	<div id="<%= id%>" class="pagemodel">
+		<div class="initloading" >
+			<span class="normal-loading"></span>
+		</div>
+	</div>
+</script>
+<script type="text/template" style="display:none;" id="jigsawTemplate">
+	<div class="drag-content">
+		<div class="play-container">
+			<div class="drag-box">
+			</div>
+			<div class="masker">
+				<div class="load">
+					<div class="first-layer"></div>
+					<div class="second-layer"></div>
+					<div class="third-layer"></div>
+					<div class="count-down" >
+						<div class="play-button play-button-ready playbtn" ></div>
+						<ul>
+							<li>3</li>
+							<li>2</li>
+							<li>1</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<span class="done">done</span>
+		</div>
+		<div class="timer">
+			<div class="timer-con">
+				<span class="timer-icon"></span>
+				<span class="t counter">00.000''</span>
+			</div>
+			<div class="kapics">1/1
+			</div>
+		</div>
+
+	</div>
+</script>
+
+<script type="text/template" style="display:none;" id="jigsawLayoutTemplate">
+<% for(var i = 0 ; i < list.length;i++){%>
+	<div class="item" sort="<%=list[i].sort%>" dragitem='1' style="width:<%=list[i].w%>px;height:<%=list[i].h%>px;background:url(<%=img%>) no-repeat;background-position:<%=list[i].x%>px <%=list[i].y%>px;background-size:<%=width%>px <%=height%>px;"></div>
+<%}%>
+</script>
+
+<script type="text/javascript" src="/addons/pingtu/js/common.js"></script>
+<script type="text/javascript">
+! function(e, t) {
+    e("data/jigsawGame", function(e, t, n) {
+        n.exports = [{
+            type: "jigsaw",
+            ka: [{
+                desc: "1",
+                first: "欢迎来玩最强拼图王！",
+                second: "第一关通过！",
+                id: "1",
+                pic: [{
+                    img: "/attachment/{$s['pt1']}",
+                    row: "{$s['h1']}",
+                    column: "{$s['l1']}"
+                }]
+            }, {
+                desc: "2",
+                id: "2",
+                first: "\u5927\u795e\u4f60\u662f\u6211\u7684\u5076\u50cf",
+                second: "\u8fd8\u6709\u4e00\u4e9b\u8981\u6311\u6218\u7684\u54e6!",
+                pic: [{
+                    img: "/attachment/{$s['pt1']}",
+                    row: "{$s['h1']}",  
+                    type: 2,
+                    second: "{$s['time1']}",
+                    column: "{$s['l1']}"   
+                },{
+                    img: "/attachment/{$s['pt2']}",
+                    row: "{$s['h2']}",
+					type: 2,
+                    second: "{$s['time2']}", 
+                    column: "{$s['l2']}"
+                },{
+                    img: "/attachment/{$s['pt3']}",
+                    row: "{$s['h3']}",
+					type: 2,
+                    second: "{$s['time3']}", 
+                    column: "{$s['l3']}"
+                },{
+                    img: "/attachment/{$s['pt4']}",
+                    row: "{$s['h4']}",
+					type: 2,
+                    second: "{$s['time4']}", 
+                    column: "{$s['l4']}"
+                },{
+                    img: "/attachment/{$s['pt5']}",
+                    row: "{$s['h5']}",
+					type: 2,
+                    second: "{$s['time5']}", 
+                    column: "{$s['l5']}"
+                },{
+                    img: "/attachment/{$s['pt6']}",
+                    row: "{$s['h6']}",
+					type: 2,
+                    second: "{$s['time6']}", 
+                    column: "{$s['l6']}"
+                }]
+            }]
+        }]
+    }), e("module/model", function(e, t, n) {
+        function a(e) {
+            var t = e || {}, n = {}, a = Array.prototype.slice;
+            return t.on = function(e, t) {
+                var a = n[e];
+                a || (a = n[e] = []), a.push(t)
+            }, t.once = function(e, n) {
+                t.on(e, function() {
+                    var r = a.call(arguments, 0);
+                    n.apply(t, r), t.off(e, n)
+                })
+            }, t.trigger = function(e) {
+                var r = n[e],
+                    i = a.call(arguments, 1);
+                r && r.forEach(function(e) {
+                    try {
+                        e.apply(t, i)
+                    } catch (n) {}
+                })
+            }, t.off = function(e, t) {
+                var a = n[e];
+                if (a) for (var r = 0; r < a.length; r++) if (a[r] == t) return a.splice(r, 1)
+            }, t.destroy = function() {
+                n = null
+            }, t
+        }
+        n.exports = a
+    }), e("module/utils", function(e, n, a) {
+        function r() {
+            s.length ? (c = 1, o(function() {
+                s.shift()(), r()
+            })) : c = 0
+        }
+        var i = e("underscore"),
+            o = t.requestAnimationFrame || t.webkitRequestAnimationFrame || t.mozRequestAnimationFrame || t.oRequestAnimationFrame || t.msRequestAnimationFrame || function(e) {
+                t.setTimeout(e, 1e3 / 60)
+            }, s = [],
+            c = 0;
+        i.nextFrame = function(e) {
+            s.push(e), c || r()
+        }, i.getChineseNum = function(e) {
+            var t = ["\u5341", "\u4e00", "\u4e8c", "\u4e09", "\u56db", "\u4e94", "\u516d", "\u4e03", "\u516b", "\u4e5d"];
+            return t[e] || e
+        }, i.getShowTime = function(e) {
+        	// console.dir(e);
+            if (6e4 > e) return (e / 1e3).toFixed(2) + "''";
+            var t = parseInt(e / 1e4);
+            return t  + (e % 6e4 / 1e3).toFixed(2) + "''"
+        }, i.noop = function() {}, a.exports = i
+    }), e("page/jigsaw/templates", function(e, t, n) {
+        var a = e("underscore"),
+            r = e("af");
+        n.exports = {
+            pageTemplate: function() {
+                return a.template(r("#pageTemplate").html())
+            }(),
+            getTemplate: function(e) {
+                return a.template(r("#" + e).html())
+            }
+        }
+    }), e("page/jigsaw/phoneReady", function(e, n, a) {
+        function r() {
+            i = !0, o.forEach(function(e) {
+                try {
+                    e()
+                } catch (t) {}
+            })
+        }
+        var i = !1,
+            o = [];
+        document.addEventListener("deviceready", function() {
+            r()
+        }, !0), t.chrome && r(), a.exports = function(e) {
+            return i ? void e() : void o.push(e)
+        }
+    }), e("page/jigsaw/userData", function(e, t, n) {
+        var a = e("af"),
+            r = {}, i = {};
+        r.get = function(e, t) {
+            if (i[e]) return i[e];
+            var n = localStorage.getItem(e);
+            if (n) try {
+                return n = JSON.parse(n)
+            } catch (a) {
+                return n
+            } else t && r.set(e, t);
+            return t
+        }, r.set = function(e, t) {
+            var n = t;
+            return a.isObject(t) && (n = JSON.stringify(t)), localStorage.setItem(e, n), i[e] = t
+        }, r.remove = function(e) {
+            localStorage.removeItem(e)
+        }, n.exports = r
+    }), e("core/event", function(e, t, n) {
+        n.exports = {
+            addEvent: function(e, t, n, a) {
+                e && e.addEventListener(t, n, a)
+            },
+            removeEvent: function(e, t, n, a) {
+                e && e.removeEventListener(t, n, a)
+            },
+            stopEvent: function(e) {
+                e.preventDefault(), e.stopPropagation()
+            },
+            preventDefault: function(e) {
+                e.preventDefault()
+            },
+            getEvent: function() {}
+        }
+    }), e("core/cssText", function(e, t, n) {
+        n.exports = function(e) {
+            var t = {}, n = {}, a = e.split(";");
+            return a.forEach(function(e) {
+                var t = e.split(":");
+                n[t[0]] = t[1]
+            }), t.css = function(e) {
+                for (var a in e) n[a] = e[a];
+                return t
+            }, t.cssText = function() {
+                var e = [];
+                for (var t in n) e.push(t + ":" + n[t]);
+                return e.join(";")
+            }, t
+        }
+    }), e("ui/DragSort", function(e, n, a) {
+        function r(e, t) {
+            var n = this;
+            t = t || {}, n.itemQuery = t.itemQuery || "[dragitem='1']", n.dragOut = t.dragOut || !1, n.layer = e, s.extend(n, o()), n.init()
+        }
+        function i(e, t) {
+            e.style.cssText = t.cssText()
+        }
+        var o = e("module/model"),
+            s = e("af"),
+            c = "ontouchstart" in t,
+            u = navigator.msPointerEnabled,
+            g = e("core/event"),
+            l = e("core/cssText"),
+            m = t.Math,
+            p = t.requestAnimationFrame || t.webkitRequestAnimationFrame || t.mozRequestAnimationFrame || t.oRequestAnimationFrame || t.msRequestAnimationFrame || function(e) {
+                t.setTimeout(e, 1e3 / 60)
+            };
+        r.prototype.init = function() {
+            var e = this;
+            e.disable = !1, e.currentElement = !1, e.currentDestElement = !1, e.initEvent(!0), e.refresh()
+        }, r.prototype.initEvent = function(e) {
+            var n = this,
+                a = e ? g.addEvent : g.removeEvent,
+                r = n.layer;
+            c ? (a(r, "touchstart", n), a(t, "orientationchange", n)) : u ? a(r, "MSPointerDown", n) : (a(r, "mousedown", n), a(t, "resize", n))
+        }, r.prototype.initWinEvent = function(e) {
+            var n = this,
+                a = e ? g.addEvent : g.removeEvent;
+            c ? (a(t, "touchmove", n), a(t, "touchend", n), a(t, "touchcancel", n)) : u ? (a(t, "MsPointerMove", n), a(t, "MsPointerUp", n), a(t, "MsPointerCancel", n)) : (a(t, "mousemove", n), a(t, "mouseup", n))
+        }, r.prototype.handleEvent = function(e) {
+            var t = e.type,
+                n = this;
+            if (!n.disable) switch (t) {
+            case "touchstart":
+            case "MSPointerDown":
+            case "mousedown":
+                n._start(e);
+                break;
+            case "touchmove":
+            case "MsPointerMove":
+            case "mousemove":
+                n._move(e);
+                break;
+            case "touchend":
+            case "touchcancel":
+            case "MsPointerUp":
+            case "MsPointerCancel":
+            case "mouseup":
+                n._end(e);
+                break;
+            case "resize":
+                n._resize(e)
+            }
+        }, r.prototype.getDragElement = function(e) {
+            function t(e) {
+                return e == a.layer || e == document.body ? null : "1" == e.getAttribute("dragitem") ? e : t(e.parentNode)
+            }
+            var n = e.target,
+                a = this;
+            return t(n)
+        }, r.prototype._start = function(e) {
+            if(this.currentElement) return;
+            var t = this,
+                n = e.targetTouches ? e.targetTouches[0] : e,
+                a = t.getDragElement(n);
+            if (a) {
+                t.currentElement = a, t.currentDestElement = a, t._pushToOuter(t.currentElement), t.touchStartX = n.pageX, t.touchStartY = n.pageY;
+                var r = JSON.parse(t.currentElement.getAttribute("position"));
+                r.display = "", t.startX = t.x = parseInt(r.left), t.startY = t.y = parseInt(r.top), t.layerWidth = parseInt(parseInt(r.width)), t.layerHeight = parseInt(parseInt(r.height)), i(t.moveLayer, t.moveCssText.css(r)), t.initWinEvent(!0), t.trigger("drag", t.currentElement), g.stopEvent(e)
+            }
+        }, r.prototype._move = function(e) {
+            var t = this,
+                n = e.targetTouches ? e.targetTouches[0] : e,
+                a = n.pageX - t.touchStartX,
+                r = n.pageY - t.touchStartY;
+            t.touchStartX = n.pageX, t.touchStartY = n.pageY, t.x += a, t.y += r, i(t.moveLayer, t.moveCssText.css({
+                left: t.x + "px",
+                top: t.y + "px"
+            }));
+            for (var o = t.x + t.layerWidth / 2, s = t.y + t.layerHeight / 2, c = !1, u = null, l = t.child.length; l--;) {
+                var p = t.child[l],
+                    d = JSON.parse(p.getAttribute("position")),
+                    f = parseInt(d.width) / 2,
+                    h = parseInt(d.height) / 2,
+                    v = parseInt(d.left) + f,
+                    y = parseInt(d.top) + h,
+                    w = m.sqrt(m.pow(v - o, 2) + m.pow(y - s, 2)),
+                    x = m.sqrt(m.pow(f, 2) + m.pow(h, 2));
+                x > w && (u > w || null === u) && (u = w, c = p)
+            }
+            var E = t.currentDestElement;
+            t.currentDestElement = c, t.trigger("over", t.currentDestElement, E), g.stopEvent(e)
+        }, r.prototype._end = function(e) {
+            var t = this;
+            if (t.currentElement) {
+                var n = t._removeFormOuter();
+                g.stopEvent(e);
+                var a = "exchange";
+                t.currentDestElement && t.currentDestElement != t.currentElement ? (t.currentDestElement.parentNode.replaceChild(n, t.currentDestElement), t.currentElement.parentNode.replaceChild(t.currentDestElement, t.currentElement), t.refresh()) : (t.currentElement.parentNode.replaceChild(n, t.currentElement), a = "nochange"), t.currentElement = !1, t.currentDestElement = !1, t.initWinEvent(!1), t.refresh(), t.trigger(a)
+                delete t.currentElement;
+            }
+        }, r.prototype._resize = function() {
+            this.refresh()
+        }, r.prototype._pushToOuter = function(e) {
+            var t = this;
+            t.moveLayer || (t.moveLayer = document.createElement("div"), t.moveLayer.className = "drag-float", t.moveCssText = l("display:none;position:absolute;top:0px;left:0px;"), i(t.moveLayer, t.moveCssText), document.body.appendChild(t.moveLayer));
+            var n = e.cloneNode(!0);
+            t.moveLayer.appendChild(n)
+        }, r.prototype._removeFormOuter = function() {
+            var e = this,
+                t = e.moveLayer.children[0];
+            return t && e.moveLayer.removeChild(t), i(e.moveLayer, e.moveCssText.css({
+                display: "none"
+            })), t
+        }, r.prototype.suspen = function() {
+            this.disable = !0
+        }, r.prototype.refresh = function() {
+            var e = this;
+            p(function() {
+                e.child = e.layer.querySelectorAll(e.itemQuery);
+                for (var t = e.child.length, n = 0; t > n; n++) {
+                    var a = e.child[n].getBoundingClientRect();
+                    e.child[n].setAttribute("position", JSON.stringify({
+                        width: a.width + "px",
+                        height: a.height + "px",
+                        left: a.left + "px",
+                        top: a.top + "px"
+                    }))
+                }
+            })
+        }, r.prototype.enable = function() {
+            this.disable = !1
+        }, r.prototype.destory = function() {
+            var e = this;
+            e.initEvent(!1), e.initWinEvent(!1)
+        }, a.exports = r
+    }), e("page/jigsaw/game/gameCenter", function(e, t, n) {
+        function a(e, t, n, a) {
+            for (var r = [], i = 0; e > i; i++) for (var o = 0; t > o; o++) r.push({
+                sort: i * t + o + 1,
+                x: -o * n,
+                y: -i * a,
+                w: n,
+                h: a
+            });
+            return r
+        }
+        function r(e) {
+            function t(e, t) {
+                var n = e.length,
+                    a = t,
+                    r = 0;
+                if (1 == n) return e[0];
+                for (; !a || a == t;) r = Number((Math.random() * n % n).toFixed(0)), a = e[r];
+                return e.splice(r, 1), a
+            }
+            for (var n = e.concat(), a = [], r = e.length, i = 0; r > i; i++) a.push(t(n, e[i]));
+            return a
+        }
+        var i = e("af"),
+            o = e("module/model"),
+            s = e("ui/DragSort"),
+            c = e("page/jigsaw/templates");
+        n.exports = function(e) {
+            function t() {
+                m.dragSort = new s(e[0]), m.dragSort.on("exchange", function() {
+                    p() && l.trigger("goal")
+                })
+            }
+            function n() {
+                m.domWidth = e.width(), m.domHeight = e.height(); {
+                    var t = m.cfg,
+                        n = m.domWidth - t.column * m.margin * 2;
+                    m.domHeight - t.row * m.margin * 2
+                }
+                t.width = n / t.column, t.height = n / t.row, m.allItem = a(t.row, t.column, t.width, t.height)
+            }
+            function u(e) {
+                return d(e)
+            }
+            function g() {
+                m.cfg;
+                return {
+                    width: m.domWidth,
+                    height: m.domHeight
+                }
+            }
+            if (!e) throw new Error("dom \u4e0d\u80fd\u4e3a\u7a7a");
+            e = i(e);
+            var l = o(),
+                m = {
+                    domWidth: 0,
+                    domHeight: 0,
+                    margin: 1,
+                    cfg: {
+                        img: "",
+                        width: 100,
+                        height: 100,
+                        column: 3,
+                        row: 3
+                    }
+                }, p = function() {
+                    for (var t = e[0].querySelectorAll("[sort]"), n = !1, a = t.length; a--;) {
+                        var r = t[a],
+                            i = parseInt(r.getAttribute("sort"));
+                        if (n !== !1 && n - parseInt(r.getAttribute("sort")) != 1) return !1;
+                        n = i
+                    }
+                    return !0
+                }, d = c.getTemplate("jigsawLayoutTemplate");
+            return l.toWrite = function() {
+                var t = g(),
+                    n = {
+                        img: m.cfg.img,
+                        list: m.allItem,
+                        width: t.width,
+                        height: t.height
+                    };
+                e.html(u(n)), m.dragSort.refresh()
+            }, l.toRandom = function() {
+                var t = r(m.allItem),
+                    n = g(),
+                    a = {
+                        img: m.cfg.img,
+                        list: t,
+                        width: n.width,
+                        height: n.height
+                    };
+                e.html(u(a)), m.dragSort.refresh()
+            }, l.cfg = function(e) {
+                _.extend(m.cfg, e), n()
+            }, l.lock = function(e) {
+                e ? m.dragSort.suspen() : m.dragSort.enable()
+            }, l.destroy = function() {
+                m.dragSort.destory(), d = null, m = null
+            }, t(), l
+        }
+    }), e("page/jigsaw/game/stopwatch", function(e, t, n) {
+        var a = (e("af"), e("module/model")),
+            r = e("module/utils");
+        n.exports = function() {
+            var e = a(),
+                t = 0,
+                n = 0,
+                i = 0,
+                o = 0,
+                s = function() {
+                    if (!(0 >= o)) {
+                        var a = Date.now();
+                        i = a - n, n - a > 1e3 && (i += 60, t += a - i), e.trigger("count", i), r.nextFrame(s)
+                    }
+                };
+            return e.clear = function() {
+                o = 0, i = 0, e.trigger("count", 0)
+            }, e.pause = function() {
+                o = -1
+            }, e.resume = function() {
+                o = 1, s()
+            }, e.stop = function() {
+                i = Date.now() - t, e.trigger("count", i), o = -2
+            }, e.getState = function() {
+                return o
+            }, e.getCount = function() {
+                return i
+            }, e.start = function() {
+                n = t = Date.now(), o = 1, s()
+            }, e
+        }
+    }), e("page/jigsaw/game/jigsaw", function(e, n, a) {
+        var r = e("af"),
+            i = e("underscore"),
+            o = e("module/model"),
+            s = e("page/jigsaw/templates"),
+            c = e("page/jigsaw/game/gameCenter"),
+            u = (e("page/jigsaw/game/timer"), e("module/utils")),
+            g = e("page/jigsaw/game/stopwatch"),
+            l = function() {
+                var e = this;
+                e.config = {
+                    img: "",
+                    template: "",
+                    width: 100,
+                    height: 100,
+                    row: 3,
+                    column: 3,
+                    type: 1
+                }, e.gameState = 0, e.gameCenter, e.timer
+            };
+        i.extend(l.prototype, o()), l.prototype.init = function(e) {
+            var n = this;
+            n.dom = r(e);
+            var a = s.getTemplate("jigsawTemplate")();
+            n.dom.html(a), n.gameCenter = c(e.find(".drag-box")), n.gameCenter.on("goal", function() {
+                n.over(), n.trigger("picOver", n.timer.getCount())
+            }), n.timer = g();
+            var i = e.find(".counter");
+            n.timer.on("count", function(e) {
+                2 == n.config.type && (e = 1e3 * n.config.second - e, 0 >= e && (n.trigger("timeout"), n.stop(), e = 0)), i.html(u.getShowTime(e))
+            }), n.loading = n.dom.find(".load");
+            var o = n.loading.find(".count-down");
+            n.dom.delegate(".playbtn", "click", function() {
+                o.addClass("down"), o.find("ul").addClass("playanmal"), n.gameState = 2
+            }), o.on("webkitAnimationEnd", function() {
+                n.play(), n.trigger("playStart"), o.removeClass("down"), o.find("ul").removeClass("playanmal"), n.gameState = 3
+            }), n.on("ready", function() {
+                n.gameState = 1, u.nextFrame(function() {
+                    n.loading.removeClass("loading").addClass("loaded")
+                })
+            }), n.on("playStart", function() {
+                n.dom.find(".masker").hide()
+            }), n.on("reset", function() {
+                n.dom.find(".masker").show()
+            }), n.on("ready", function() {
+                n.start()
+            }), r(t).focus(function() {
+                4 == n.gameState && n.resume()
+            }), r(t).blur(function() {
+                3 == n.gameState && n.pause()
+            })
+        }, l.prototype.arrangement = function() {
+            var e = this;
+            e.gameCenter.cfg(e.config), e.timer.clear(), e.trigger("reset")
+        }, l.prototype.setConfig = function(e) {
+            var t = this;
+            t.gameState = 0, e.type = e.type || 1, e.difficulty = e.difficulty || 1;
+            var n = t.config.img;
+            if (i.extend(t.config, e), u.nextFrame(function() {
+                t.loading.addClass("loading")
+            }), t.arrangement(), t.config.img != n) {
+                var a = r("<img src=" + t.config.img + ">");
+                a.ready(function() {
+                    t.trigger("ready")
+                })
+            } else t.trigger("ready")
+        }, l.prototype.start = function() {
+            var e = this;
+            2 == e.config.difficulty ? e.gameCenter.toRandom() : e.gameCenter.toWrite()
+        }, l.prototype.play = function() {
+            var e = this;
+            e.gameCenter.lock(!1), e.timer.start(), 2 != e.config.difficulty && e.gameCenter.toRandom()
+        }, l.prototype.pause = function() {
+            var e = this;
+            e.gameState = 4, e.timer.pause()
+        }, l.prototype.resume = function() {
+            var e = this;
+            e.gameState = 3, e.timer.resume()
+        }, l.prototype.over = function() {
+            var e = this;
+            e.timer.stop(), e.gameCenter.lock(!0), e.gameState = 5
+        }, l.prototype.stop = function() {
+            var e = this;
+            e.gameState = 5, e.gameCenter.lock(!0), e.timer.stop()
+        };
+        var m = new l;
+        a.exports = m
+    }), e("ui/baseLayer", function(e, t, n) {
+        var a = e("module/model"),
+            r = e("af"),
+            i = function() {
+                var e = {}, t = function() {
+                    return e.div || (e.div = document.createElement("div"), e.div.style.cssText = "-ms-touch-action: none;z-index:1;position:absolute;left:0px;top:0px;width:100%;height:100%;background-color:#000;opacity:.6;display:none;", document.body.appendChild(e.div)), e.div
+                };
+                return e.setOpacity = function(e) {
+                    t().style.opacity = e
+                }, e.show = function() {
+                    var e = document.documentElement.clientWidth,
+                        n = document.documentElement.clientHeight;
+                    t().style.width = e + "px", t().style.height = n + "px", t().style.display = ""
+                }, e.hide = function() {
+                    t().style.display = "none"
+                }, e.getMask = function() {
+                    return t()
+                }, e
+            }(),
+            o = function(e) {
+                var t = {}, n = e.style.cssText,
+                    a = n.split(";");
+                a.forEach(function(e) {
+                    if (e) {
+                        var n = e.split(":");
+                        n[0].trim() && (t[n[0].trim()] = n[1])
+                    }
+                });
+                var r = {};
+                return r.css = function(e) {
+                    if (e) for (var n in e) t[n] = e[n]
+                }, r.getText = function() {
+                    var e = [];
+                    for (var n in t) e.push(n + ":" + t[n]);
+                    return e.join(";")
+                }, r
+            };
+        n.exports = function(e) {
+            var t = {
+                mask: !0,
+                opacity: .8,
+                zIndex: 3,
+                left: 0,
+                top: 0,
+                html: "",
+                preventDefault: !1,
+                style: {}
+            }, n = a(),
+                s = {
+                    _layer: !1
+                };
+            e && (t = r.extend(t, e));
+            var c = ["touchmove", "MSPointerMove", "MSPointerUp", "MSPointerDown", "click"],
+                u = function() {
+                    if (s._layer = document.createElement("div"), s._layer.style.cssText = "-ms-touch-action: none;position:absolute;left:0px;top:0px;display:none;z-index:" + t.zIndex, document.body.appendChild(s._layer), t.html && (s._layer.innerHTML = t.html), t.preventDefault && c.forEach(function(e) {
+                        document.body.addEventListener(e, n, !1)
+                    }), t.style) {
+                        var e = o(s._layer);
+                        e.css(t.style), e.css("z-index", t.zIndex), s._layer.style.cssText = e.getText()
+                    }
+                };
+            return n.handleEvent = function(e) {
+                e.preventDefault()
+            }, n.show = function(e) {
+                var a = o(s._layer);
+                a.css(e), a.css({
+                    display: ""
+                }), s._layer.style.cssText = a.getText(), t.mask && i.show(), n.trigger("show")
+            }, n.hide = function() {
+                s._layer.style.display = "none", n.trigger("hide")
+            }, n.setHTML = function(e) {
+                s._layer.innerHTML = e
+            }, n.getOuter = function() {
+                return s._layer
+            }, n.destroy = function() {
+                i.hide(), t.preventDefault && c.forEach(function(e) {
+                    document.body.removeEventListener(e, n, !1)
+                }), s._layer.parentNode.removeChild(s._layer), n.trigger("destroy")
+            }, u(), n
+        }
+    }), e("ui/dom", function(e, n, a) {
+        var r = e("af"),
+            i = function() {};
+        i.getWinCenter = function(e, n) {
+            var a = r(t);
+            return {
+                top: (a.height() - n) / 2,
+                left: (a.width() - e) / 2
+            }
+        }, a.exports = i
+    }), e("ui/showDialog", function(e, t, n) {
+        function a(e) {
+            var t = this,
+                n = {
+                    message: "",
+                    calcelTxt: "\u53d6\u6d88",
+                    sureTxt: "\u786e\u5b9a",
+                    sure: s.noop,
+                    cancel: s.noop
+                };
+            r.extend(n, e), g || (g = r.template(u)), t.layer = i({
+                html: g(n)
+            });
+            var a = o(t.layer.getOuter());
+            a.delegate(".cancel", "click", function() {
+                n.sure && n.cancel(), t.destroy()
+            }), a.delegate(".sure", "click", function() {
+                n.sure && n.sure(), t.destroy()
+            }), t.layer.show();
+            var l = c.getWinCenter(a.width(), a.height());
+            t.layer.show({
+                left: l.left + "px",
+                top: l.top + "px"
+            })
+        }
+        var r = e("underscore"),
+            i = e("ui/baseLayer"),
+            o = e("af"),
+            s = e("module/utils"),
+            c = e("ui/dom"),
+            u = '<div class="dialog"><div class="content"><div class="message"><%=message%></div><h1></h1><div class="dig-btns"><%if(calcelTxt){%><span class="dig-btn cancel"><%=calcelTxt%></span><%}%><%if(sureTxt){%><span class="dig-btn sure"><%=sureTxt%></span><%}%></div></div></div>',
+            g = null;
+        r.extend(a.prototype, {
+            destroy: function() {
+                var e = this;
+                e.layer.destroy()
+            }
+        }), n.exports = a
+    }), e("page/jigsaw/p/picture", function(e, t, n) {
+        function a(e) {
+            for (var t = 0; t < c.length; t++) if (c[0].type == e) return c[0]
+        }
+        function r(e) {
+            p.currentGame = e;
+            var t = a(e.type);
+            if (!t) return u.remove(f), void p.play();
+            var n = t.ka[p.currentGame.ka],
+
+                r = n.pic[p.currentGame.pic];
+                Nm = n.pic.length;
+            p.dom.find(".kapics").html("本关限时 "+r.second+" 秒"), u.set(f, p.currentGame), p.jigsawGame.setConfig(r)
+
+        }
+        var i = e("af"),
+            o = e("page/jigsaw/templates"),
+            s = e("page/jigsaw/game/jigsaw"),
+            c = e("data/jigsawGame"),
+            u = e("page/jigsaw/userData"),
+            g = e("module/utils"),
+            l = e("ui/baseLayer"),
+            m = e("ui/showDialog"),
+            p = {};
+        p.init = function(e) {
+            var t = o.getTemplate("jigsawTemplate")();
+            e.html(t), p.jigsawGame = s, p.jigsawGame.init(e), p.dom = e, p.jigsawGame.on("picOver", function(e) {
+				dp_submitScore(p.currentGame.pic+1);
+				var str="恭喜您挑战成功";
+				if(!p.hasNextPic()){
+					str="恭喜您全部通关!分享到朋友炫耀一下吧!";
+				}
+				showGameResult(str,true,p.hasNextPic());
+            }), p.jigsawGame.on("timeout", function() {
+				showGameResult("挑战失败",false,p.hasNextPic());
+				document.formmessage.uname.value=getCookie("uname");
+				document.formmessage.tel.value=getCookie("tel");
+            })
+			$('#againgame').click(function(){
+				window.location.href=window.location.href;
+			});
+			$('#restartgame').click(function(){
+				p.currentGame.pic--;
+				p.playNextPic();
+				hideGameResult();
+			});
+			$('#continuegame').click(function(){
+				p.playNextPic();
+				hideGameResult();
+			});
+            // console.log(p.dom);
+        }, p.enter = function() {
+            p.play()
+        };
+        var d = "userScore",
+            f = "userNowGame";
+        p.saveUserScore = function(e) {
+            var t = u.get(d, {}),
+                n = p.currentGame.type;
+            t[n] || (t[n] = []);
+            var a = p.currentGame.ka,
+                r = p.currentGame.pic,
+                i = t[n];
+            if (i.length <= a) i.push([e]);
+            else {
+                var o = i[a];
+                o.length > r ? o[r] = e : o.push(e)
+            }
+            u.set(d, t)
+        }, p.play = function() {
+            var picka = "1,0";
+            picka = picka.split(",")
+            var e = {"type":"jigsaw","ka":0|picka[0],"pic":0|picka[1]};
+
+            !e || 0 == e.ka && 0 == e.pic ? (p.dom.find(".play-info").show().find(".first-guide").html("\u4ea4\u6362\u56fe\u7247\uff0c\u5b8c\u6210\u62fc\u56fe").show(), e = {
+                type: c[0].type,
+                ka: 0,
+                pic: 0
+            }) : p.dom.find(".play-info").hide().find(".first-guide").html("\u52a0\u6cb9"), r(e)
+        }, p.hasNextPic = function() {
+            var e = p.currentGame.ka,
+                t = p.currentGame.pic,
+                n = a(p.currentGame.type),
+                r = (n.ka, n.ka[e].pic);
+            return t + 1 >= r.length ? !1 : !0
+        }, p.hasNextKa = function() {
+            {
+                var e = p.currentGame.ka,
+                    t = (p.currentGame.pic, a(p.currentGame.type)),
+                    n = t.ka;
+                t.ka[e].pic
+            }
+            return e + 1 >= n.length ? !1 : !0
+        };
+        var h = null;
+        p.showNextKa = function() {
+            if (!p.nextKaLayer) {
+                p.nextKaLayer = l({
+                    mask: !1,
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%"
+                }), h = o.getTemplate("showNextKaTemplate");
+                var e = i(p.nextKaLayer.getOuter());
+                e.delegate(".next", "click", function() {
+                    p.nextKaLayer.hide(), p.playNextPic()
+                }), e.delegate(".playagain", "click", function() {
+                    p.playAgan()
+                }), e.delegate(".oldshare", "click", function(){
+                    alert('点击右上角按钮，分享给你的好友吧~');
+                })
+            }
+            var t = p.currentGame.ka,
+                n = p.currentGame.pic,
+                r = a(p.currentGame.type),
+                s = r.ka[t],
+                c = s.pic[n],
+                m = c.img,
+                f = u.get(d, {}),
+                v = f[p.currentGame.type],
+                y = v[t],
+                w = 0;
+            y.forEach(function(e) {
+                w += e
+            });
+            var x = h({
+                pic: m,
+                first: s.first || " ",
+                second: s.second || " ",
+                time: g.getShowTime(w),
+                next: g.getChineseNum(t + 2)
+            });
+            p.nextKaLayer.setHTML(x), p.nextKaLayer.show({
+                width: "100%",
+                height: "100%"
+            })
+        }, p.picOver = function(e) {
+
+            p.saveUserScore(e);
+            var t = p.dom.find(".done");
+            t.show(), g.nextFrame(function() {
+                t.addClass("doned"), setTimeout(function() {
+                    t.removeClass("doned"), t.hide()
+                }, 1800)
+            })
+			(p.dom.find(".first-guide").html("\u606d\u559c\u4f60\uff0c\u5b8c\u6210\u62fc\u56fe"), p.dom.find(".play-info").show().find(".playing-over").show())
+			if(p.hasNextPic()){
+				//p.do
+			}else{
+			}
+        }, p.showTongguan = function() {
+
+            new m({
+                message: "恭喜您居然爆机了，神人！！",
+                calcelTxt: "\u5173\u95ed",
+                sureTxt: "\u91cd\u65b0\u73a9",
+                sure: function() {
+                    p.currentGame = {
+                        type: p.currentGame.type,
+                        ka: 0,
+                        pic: 0
+                    }, p.playAgan()
+                }
+            })
+        }, p.playAgan = function() {
+            //r(p.currentGame)
+            location.reload();
+        }, p.playNextPic = function() {
+            var e = p.currentGame.ka,
+                t = p.currentGame.pic,
+                n = a(p.currentGame.type),
+                i = n.ka,
+                o = n.ka[e].pic;
+            return t + 1 >= o.length ? (e++, t = 0) : t++, e >= i.length ? void p.showTongguan() : (p.currentGame.ka = e, p.currentGame.pic = t, r(p.currentGame), void p.dom.find(".play-info").hide().find(".playing-over").hide())
+        }, n.exports = p
+    }), e("page/jigsaw/pageController", function(e, t, n) {
+        function a(e, t, n) {
+            var a = "page-anmi",
+                r = "page-anmi",
+                i = "",
+                s = "";
+            a += " page-anmi-" + n + "-cur", r += " page-anmi-" + n + "-out", i = "cur-page-" + n, s = "out-page-" + n, e.addClass(a), t.addClass(r), t.show(), o.nextFrame(function() {
+                e.addClass(i), t.addClass(s), setTimeout(function() {
+                    e.hide(), e.removeClass(a), e.removeClass(i), t.removeClass(r), t.removeClass(s)
+                }, p)
+            })
+        }
+        function r() {
+            var e = document;
+            d.delegate("*[showPage]", "click", function() {
+                var e = c(this),
+                    t = e.attr("showPage"),
+                    n = e.attr("pageData"),
+                    a = null;
+                n && (a = JSON.parse(n)), l.showPage(t, a)
+            }), d.delegate("*[act='back']", "click", function() {
+                l.back()
+            }), u(function() {
+                e.addEventListener("backbutton", function() {
+                    l.back()
+                }, !1)
+            })
+        }
+        var i = e("module/model"),
+            o = e("module/utils"),
+            s = e("page/jigsaw/templates"),
+            c = e("af"),
+            u = e("page/jigsaw/phoneReady"),
+            g = e("page/jigsaw/userData"),
+            l = i(),
+            m = {
+                pageIndex: ["picture"],
+                pages: {},
+                curPage: "",
+                pageObj: {
+                    picture: e("page/jigsaw/p/picture")
+                }
+            }, p = 280,
+            d = c("#pages");
+        if (!d.length) throw new Error("\u6ca1\u6709page\u5206\u7c7b\u5143\u7d20");
+        l.showPage = function(e, t) {
+            if (!~m.pageIndex.indexOf(e)) throw new Error("\u6ca1\u6709\u5bf9\u5e94page\u5143\u7d20");
+            if (!m.pages[e]) {
+                var n = "page_" + e;
+                if (c("#" + n).length) m.pages[e] = c("#" + n);
+                else {
+                    var r = s.pageTemplate({
+                        id: n
+                    });
+                    m.pages[e] = c(r), d.append(m.pages[e])
+                }
+                m.pageObj[e].init(m.pages[e])
+            }
+            if (m.curPage) {
+                var i = m.pageIndex.indexOf(m.curPage) > m.pageIndex.indexOf(e) ? "right" : "left";
+                a(m.pages[m.curPage], m.pages[e], i)
+            }
+            m.curPage = e, g.set("lastPage", m.curPage), m.pageObj[e].enter(t)
+        }, l.back = function() {
+            if (m.curPage == m.pageIndex[0]) navigator.notification.confirm("\u9000\u51fa\u6e38\u620f?", function(e) {
+                1 == e && navigator.app.exitApp()
+            }, "\u63d0\u793a", "\u9000\u51fa,\u53d6\u6d88");
+            else {
+                var e = m.pageIndex.indexOf(m.curPage);
+                l.showPage(m.pageIndex[e - 1])
+            }
+        }, l.init = function() {
+            r();
+            var e = g.get("lastPage");
+            l.showPage(e || m.pageIndex[0]), c("#page_default").hide()
+        }, n.exports = l
+    }), e("page/jigsaw/index", function(e) {
+        var t = e("data/jigsawGame"),
+            n = e("page/jigsaw/pageController");
+        n.init(t)
+    })
+}(window.NODEB && window.NODEB.define || window.define, window);
+function showGameResult(str,iswin,hasNext){
+	$('#gameresult .resultinfo').html(str);
+	if(!iswin){
+		$('#againgame').show();
+		$('#continuegame').hide();
+		$('#restartgame').hide();
+	}else if(hasNext){
+		$('#againgame').hide();
+		$('#restartgame').hide();
+		$('#continuegame').show();
+	}else{
+		$('#continuegame').hide();
+		$('#restartgame').hide();
+		$('#againgame').show();
+	}
+	$('.mask').show();
+	$('#gameresult').show();
+}
+function hideGameResult(){
+	$('.mask').hide();
+	$('#gameresult').hide();
+}
+
+</script>
+<script>
+	wx.ready(function () {
+		sharedata = {
+			title: "{$slides[0][name]}",
+			desc: "{$slides[0][desc]}",
+			link: "{$slides[0][url]}",
+			imgUrl: "{$slides[0][icon]}",
+			success: function(){
+                             $.ajax({
+                                url: "{php echo $this->str_murl($this->createMobileUrl('gethb',array('id'=>$fid,'hid'=>$id,'share'=>1)))}",
+                                type: "post",
+                                dataType: "html",
+                                data: {},
+                                success: function (res) {
+                                     alert(res);
+                                },
+                                error: function (res) {
+                                }
+                            });
+			},
+			cancel: function(){
+				alert('cancel');
+			}
+		};
+		wx.onMenuShareAppMessage(sharedata);
+		wx.onMenuShareTimeline(sharedata);
+	});
+	</script>
+<script type="text/javascript">
+	function dp_share(){
+		_czc.push(['_trackEvent', '点击', '分享游戏按钮']);
+		document.getElementById("share").style.display = "block";
+	}
+</script>        
+<script type="text/javascript">
+			var myData = { };
+			function dp_submitScore(score,specific){
+				
+				document.getElementById('score').value=score;
+				document.formmessage.uname.value=getCookie("uname");
+				document.formmessage.tel.value=getCookie("tel");
+				
+				myData.score =parseInt(score);
+				myData.scoreName = "闯了"+score+"关";
+				document.title ="拼图王中连闯了"+score+"关，拼起来，送奖品哦！";
+			}
+			function onShareFriends(res) {
+				_czc.push(['_trackEvent', '分享好友']);
+			}
+
+			function onShareCircle(res) {
+				_czc.push(['_trackEvent', '分享朋友圈']);
+			}
+			
+		</script>
+
+<script type="text/javascript">        
+//读取cookies 
+
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} 
+
+//删除cookies 
+function delCookie(name) 
+{ 
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() - 1); 
+    var cval=getCookie(name); 
+    if(cval!=null) 
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+} 
+
+</script>
+</body>
+</html>
+
+
+{/loop}

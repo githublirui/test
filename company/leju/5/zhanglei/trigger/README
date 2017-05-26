@@ -1,0 +1,35 @@
+数据库test, 主机localhost, 用户名root, 密码root
+
+订单表
+	test_order_0 订单0
+	test_order_1 订单1
+
+用户表
+	test_user
+
+统计表
+	test_stat
+
+执行ctable建立程序所需要的数据表
+
+将trigger.php中的触发器加到mysql中
+	show triggers
+
+将procedure.php中的存储过程加到mysql中
+	show procedure status where db = 'test'
+
+执行execute.php
+	点击 ‘触发器充值’ 使用 触发器
+		当订单表增加一条数据时
+			调用了触发器
+				先从用户表中, 检查用户是否存在
+				如果不存在, 放弃
+				如果存在
+					如果test_order_0中uid 存在 test_user
+						如果uid存在test_stat中
+							则修改test_stat中uid的money数
+						否则
+							则增加uid和money到test_stat中
+	点击 ‘存储过程充值’ 使用 存储过程
+		调用存储过程增加数据
+			

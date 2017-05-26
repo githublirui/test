@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$setting['title']}</title>
+<link href="../addons/teabox_penny/template/css/main.css" rel="stylesheet"/>
+<meta name="viewport" id="viewport" content="width=device-width,user-scalable=no">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script type="text/javascript" src="../addons/enjoy_back/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../addons/enjoy_back/public/js/layer/layer.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+
+<body id="bg">
+<section class="index_sec">
+	<div class="tex"><img src="../addons/teabox_penny/template/img/txt1.png" width="95%"></div>
+    <div class="qs">
+    	<ul>
+           <li><a href="index.php?i={$_W['uniacid']}&c=entry&do=two&dopenid={$dopenid}&m=teabox_penny"><img src="../addons/teabox_penny/template/img/a1.png"></a></li>
+            <li><a href="index.php?i={$_W['uniacid']}&c=entry&do=two&dopenid={$dopenid}&m=teabox_penny"><img src="../addons/teabox_penny/template/img/b1.png"></a></li>
+             <li><a href="index.php?i={$_W['uniacid']}&c=entry&do=two&dopenid={$dopenid}&m=teabox_penny"><img src="../addons/teabox_penny/template/img/c1.png"></a></li>
+              <li><a href="index.php?i={$_W['uniacid']}&c=entry&do=two&dopenid={$dopenid}&m=teabox_penny"><img src="../addons/teabox_penny/template/img/d1.png"></a></li>
+         </ul>
+    </div>
+</section>
+
+
+
+{php require_once IA_ROOT."/addons/teabox_penny/jssdk.class.php";$weixin = new jssdk($jie='0',$url='');$wx = $weixin->get_sign();}
+<script>
+var share_desc="现{$num}人出租了";
+var title="{$user['nickname']}:嘉乐平阳首府花{php echo ($user['money']/100)}元现金诚租了我的朋友圈，喊你一起来赚钱！";
+wx.config({
+    debug: false, 
+    appId: "{$wx['appId']}",
+    timestamp: "{$wx['timestamp']}",
+    nonceStr: "{$wx['nonceStr']}",
+    signature: "{$wx['signature']}",
+    jsApiList: ['showOptionMenu','onMenuShareTimeline', 'onMenuShareAppMessage']
+});
+
+wx.ready(function () {
+    wx.showOptionMenu();
+    wx.onMenuShareTimeline({
+        title: title,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny&uidd={$uid}",
+        imgUrl: "{$user['headimgurl']}",
+		success: function () { 
+		   $.ajax({
+             type: "GET",
+             url: "index.php?i={$_W['uniacid']}&c=entry&do=ajax&dopenid=$dopenid&m=teabox_penny",
+             dataType: "json",
+             success: function(data){
+				 if(data.error=='0'){
+					//location.href = "index.php?i={$_W['uniacid']}&c=entry&do=share&dopenid=$dopenid&m=teabox_penny";
+				 }else{
+					return false;
+				 }
+                       //
+             }
+         });
+		}
+    });
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: share_desc,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny&uidd={$uid}",
+        imgUrl: "{$user['headimgurl']}",
+		success: function () { 
+		   $.ajax({
+             type: "GET",
+             url: "index.php?i={$_W['uniacid']}&c=entry&do=ajax&dopenid=$dopenid&m=teabox_penny",
+             dataType: "json",
+             success: function(data){
+				 if(data.error=='0'){
+					//location.href = "index.php?i={$_W['uniacid']}&c=entry&do=share&dopenid=$dopenid&m=teabox_penny";
+				 }else{
+					return false;
+				 }
+                       //
+             }
+         });
+		}
+    });
+
+    
+});
+
+wxshare();
+
+function wxshare(){
+    share_desc=share_desc.replace("{1}",{$setting['pay_fee']});
+    share_desc=share_desc.replace("{2}","{$user['nickname']}");
+    share_desc=share_desc.replace("{3}",{$total});
+    share_desc=share_desc.replace("{4}",{$payinfo['sort']});
+}
+</script>
+<footer class="web_footer">
+	<img src="../addons/teabox_penny/template/img/footer.png" width="100%">
+</footer>
+</body>
+</html>
+
+
+

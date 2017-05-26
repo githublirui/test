@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$setting['title']}</title>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="../addons/teabox_penny/template/img/style.css">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+function jsApiCall()
+{
+    WeixinJSBridge.invoke(
+        'getBrandWCPayRequest',
+        {$jsApiParameters},
+        function(res){
+            WeixinJSBridge.log(res.err_msg);
+            //alert(res.err_code+res.err_desc+res.err_msg);
+            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                location.href = "index.php?i={$_W['uniacid']}&c=entry&do=share&m=teabox_penny";
+            }else if(res.err_msg == "get_brand_wcpay_request:cancel" ) {
+                alert('取消支付');
+                location.href = "index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny";
+            }else if(res.err_msg == "get_brand_wcpay_request:fail" ) {
+                alert('支付失败');
+                location.href = "index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny";
+            }
+        }
+    );
+}
+
+function callpay()
+{
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+        }
+    }else{
+        jsApiCall();
+    }
+}
+
+
+</script>
+
+</head>
+<body>
+<div class="warp">
+    <div class="logo"><img src="{if $setting['logo']}{$_W['attachurl']}{$setting['logo']}{else}../addons/teabox_penny/template/img/logo.gif{/if}"></div>
+    <div class="title">{if $setting['main_title']}{$setting['main_title']}{else}主标题{/if}</div>
+    <div class="sub_title">{if $setting['sub_title']}{$setting['sub_title']}{else}副标题{/if}</div>
+    
+</div>
+
+<div class="footer">
+    <a href="javascript:void(0);" class="btn btn_trans" onclick="callpay()">{if $setting['pay_btn_title']}{$setting['pay_btn_title']}{else}支付按钮{/if}</a>
+</div>
+
+
+<script>
+var share_desc="{$setting['share_desc']}";
+
+wx.config({
+    debug: false, 
+    appId: "{$wxConfig['appId']}",
+    timestamp: "{$wxConfig['timestamp']}",
+    nonceStr: "{$wxConfig['nonceStr']}",
+    signature: "{$wxConfig['signature']}",
+    jsApiList: ['showOptionMenu','onMenuShareTimeline', 'onMenuShareAppMessage']
+});
+
+wx.ready(function () {
+    wx.showOptionMenu();
+    wx.onMenuShareTimeline({
+        title: "{$setting['share_title']}",
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny",
+        imgUrl: "{$_W['attachurl']}{$setting['share_img']}"
+    });
+    wx.onMenuShareAppMessage({
+        title: "{$setting['share_title']}",
+        desc: share_desc,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny",
+        imgUrl: "{$_W['attachurl']}{$setting['share_img']}"
+    });
+
+    
+});
+
+wxshare();
+
+function wxshare(){
+    share_desc=share_desc.replace("{1}",{$setting['pay_fee']});
+    share_desc=share_desc.replace("{2}","{$user['nickname']}");
+    share_desc=share_desc.replace("{3}",{$total});
+    share_desc=share_desc.replace("{4}",{$payinfo['sort']});
+}
+</script>
+
+</body>
+</html>

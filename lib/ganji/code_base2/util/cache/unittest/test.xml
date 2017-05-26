@@ -1,0 +1,64 @@
+<phpunit
+    backupGlobals="true"
+    backupStaticAttributes="false"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    forceCoversAnnotation="false"
+    mapTestClassNameToCoveredClassName="false"
+    processIsolation="false"
+    stopOnError="true"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false"
+    syntaxCheck="true"
+    strict="false"
+    verbose="false">
+
+    <testsuites>
+        <testsuite name="code_base2.cache">
+            <file>CacheFactoryTest.class.php</file>
+            <file>MemcacheTest.class.php</file>
+            <file>CacheMemTest.class.php</file>
+            <file>CacheFileTest.class.php</file>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <blacklist>
+            <directory>../unittest</directory>
+            <directory>/home/yangyu/work/ganji/trunk/framework/test/</directory>
+        </blacklist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="/server/www/ganji_v3_test/apps/housing/premier/apps/test" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="/tmp/coverage.xml"/>
+        <log type="testdox-html" target="/tmp/testdox.html"/>
+        <log type="testdox-text" target="/tmp/testdox.txt"/>
+    </logging>
+    <php>
+        <includePath>.:/usr/local/webserver/php/lib/php:/php/includes:/server/www/ganji_v3_test/:/home/yangyu/work/ganji/trunk/framework/test/</includePath>
+        <!--
+        <ini name="foo" value="bar"/>
+        <const name="foo" value="bar"/>
+        <var name="foo" value="bar"/>
+        <env name="foo" value="bar"/>
+        <post name="foo" value="bar"/>
+        <get name="foo" value="bar"/>
+        <cookie name="foo" value="bar"/>
+        <server name="foo" value="bar"/>
+        <files name="foo" value="bar"/>
+        <request name="foo" value="bar"/>
+        ini_set('foo', 'bar');
+        define('foo', 'bar');
+        $GLOBALS['foo'] = 'bar';
+        $_ENV['foo'] = 'bar';
+        $_POST['foo'] = 'bar';
+        $_GET['foo'] = 'bar';
+        $_COOKIE['foo'] = 'bar';
+        $_SERVER['foo'] = 'bar';
+        $_FILES['foo'] = 'bar';
+        $_REQUEST['foo'] = 'bar';
+        -->
+    </php>
+</phpunit>

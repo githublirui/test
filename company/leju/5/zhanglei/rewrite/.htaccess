@@ -1,0 +1,3 @@
+RewriteEngine On
+
+RewriteRule ^/news\.html$ /news.php

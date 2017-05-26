@@ -1,0 +1,122 @@
+{template 'common/header'}
+<div class="main">
+		
+		<!--模板设置-->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion"
+					href="#collapse1">
+					支付设置
+				</a>
+				</h4>
+			</div>
+			<div id="collapse1" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<div class="form-horizontal form">
+
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">APPID：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_appid" value="{$setting['pay_appid']}">
+                                <div class="help-block">绑定支付的APPID（必须配置，开户邮件中可查看）</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">MCHID：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_mchid" value="{$setting['pay_mchid']}">
+                                <div class="help-block">商户号（必须配置，开户邮件中可查看）</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">KEY：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_key" value="{$setting['pay_key']}">
+                                <div class="help-block">商户支付密钥，参考开户邮件设置（必须配置，登录商户平台自行设置）</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">APPSECRET：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_appsecret" value="{$setting['pay_appsecret']}">
+                                <div class="help-block">公众帐号secert（仅JSAPI支付的时候需要配置， 登录公众平台，进入开发者中心可设置）</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付金额：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_fee" value="{$setting['pay_fee']}">
+                                <div class="help-block">单位元</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12 col-sm-3 col-md-2 control-label">Oauth授权路径：</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <input type="text" class="form-control span7" name="pay_url" value="{$setting['pay_url']}">
+                                <div class="help-block">
+                                    请填写授权路径。上传模块“pay”文件夹中的“wx_jspay.php”到授权域名ftp根目录
+                                    （例：http://授权域名/wx_jspay.php）。
+                                    <img src="../addons/teabox_penny/template/img/pay_url_readme.gif">
+                                    <div class="help-block">进入微信公众平台->开发者中心->找到“网页授权获取用户基本信息”旁边的修改，进行授权路径的设置</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+						
+                        <div class="form-group">
+							<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+							<div class="col-sm-9 col-xs-12">
+								<button class="btn btn-primary" name="btn-setting">提交</button>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+</div>
+
+<script>
+    require(['bootstrap','util'],function($,util){
+        $('button[name=btn-setting]').click(function(){
+            setting.save_setting();
+        });
+
+        var setting = {
+            save_setting:function(){
+                $.ajax({
+                    url: "{php echo wurl('site/entry/paysetting',array('m'=>'teabox_penny','op'=>'paysetting','item'=>'ajax','key'=>'paysetting'));}",
+                    type: 'POST',
+                    data: {
+                        pay_appid: $("input[name=pay_appid]").val(),
+                        pay_mchid: $("input[name=pay_mchid]").val(),
+                        pay_key: $("input[name=pay_key]").val(),
+                        pay_appsecret: $("input[name=pay_appsecret]").val(),
+                        pay_fee: $("input[name=pay_fee]").val(),
+                        pay_url: $("input[name=pay_url]").val()
+                    },
+                    success:function(res){
+                        if(res > 0){
+                            util.message('消息提示: 设置成功','', 'success');
+
+                        }else{
+                            util.message('消息提示: 设置失败','', 'error');
+                        }
+                    },
+                    error:function(){
+                        alert('ajax error');
+                    }
+                });
+            }
+        }
+    });
+</script>
+{template 'common/footer'}

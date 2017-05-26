@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$setting['title']}</title>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="../addons/teabox_penny/template/img/style.css">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+
+<style>
+.list2_banner {
+  background: url(../addons/teabox_penny/template/img/001.jpg) no-repeat center top;
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+</style>
+</head>
+<body  id="bg" class="list2_banner">
+<div class="warp">
+	<div class="title" STYLE="color:#64464e; padding-top:40px" ><font color="#FF0000">{$userd['nickname']}</font>小微已长发及腰，少年是否敢娶？已有{$num}人排队</div>
+    <div class="logo">
+    <img src="{if $setting['logo']}{$_W['attachurl']}{$setting['logo']}{else}../addons/teabox_penny/template/img/logo.gif{/if}"></div>
+    
+    
+</div>
+
+<script>
+document.getElementById("bg").style.height = document.documentElement.clientHeight+"px";
+</script>
+
+{php require_once IA_ROOT."/addons/teabox_penny/jssdk.class.php";$weixin = new jssdk($jie='0',$url='');$wx = $weixin->get_sign();}
+<script>
+var share_desc="{$setting['share_desc']}";
+var title="{$user['nickname']}:{$setting['title']},已有{$num}人排队";
+wx.config({
+    debug: false, 
+    appId: "{$wx['appId']}",
+    timestamp: "{$wx['timestamp']}",
+    nonceStr: "{$wx['nonceStr']}",
+    signature: "{$wx['signature']}",
+    jsApiList: ['showOptionMenu','onMenuShareTimeline', 'onMenuShareAppMessage']
+});
+
+wx.ready(function () {
+    wx.showOptionMenu();
+    wx.onMenuShareTimeline({
+        title: "目前已有{$num}人参加，{$setting['share_title']}",
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny",
+        imgUrl: "{$_W['attachurl']}{$setting['share_img']}"
+    });
+    wx.onMenuShareAppMessage({
+        title: "目前已有{$num}人参加，{$setting['share_title']}",
+        desc: share_desc,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny",
+        imgUrl: "{$_W['attachurl']}{$setting['share_img']}"
+    });
+
+    
+});
+
+wxshare();
+
+function wxshare(){
+    share_desc=share_desc.replace("{1}",{$setting['pay_fee']});
+    share_desc=share_desc.replace("{2}","{$user['nickname']}");
+    share_desc=share_desc.replace("{3}",{$total});
+    share_desc=share_desc.replace("{4}",{$payinfo['sort']});
+}
+</script>
+
+</body>
+</html>

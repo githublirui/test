@@ -1,0 +1,376 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+	<li {if $operation== 'post'}class="active"{/if}><a
+		href="{php echo $this->createWebUrl('activity', array( 'op' => 'post'));}">添加</a></li>
+	<li {if $operation== 'display'}class="active"{/if}><a
+		href="{php echo $this->createWebUrl('activity', array('op' => 'display'));}">管理</a></li>
+
+</ul>
+{if $operation == 'post'}
+
+ <div class="panel panel-default">
+	<form action="" method="post" class="form-horizontal form"
+		enctype="multipart/form-data">
+		<input type="hidden" name="id" value="{$item['id']}" />
+		<div class="panel-heading">活动添加</div>
+
+		<div class="panel-body">
+
+			<div class="form-group">
+				<label class="col-sm-1 control-label">活动名称</label>
+				<div class="col-sm-5">
+					<input type="text" name="name" class="form-control"
+						value="{$item['name']}" > <span class="help-block"></span>
+				</div>
+                
+                <label for="inputEmail3" class="col-sm-1 control-label">背景颜色</label>
+    			<div class="col-sm-5">
+    			<input type="text" name="bgcolor" class="form-control" value="{$item['bgcolor']}" />
+    		
+  			  </div>
+			</div>
+            <div class="form-group">
+					<label class="col-sm-1 control-label">引导关注链接</label>
+					<div class="col-sm-11">
+						<input name="link"
+								  value="{$item['link']}"  class="form-control" /><span class="help-block"></span>
+					</div>
+            </div>
+<div class="form-group">
+				<label class="col-sm-1 control-label">背景图片</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('bgpic', $item['bgpic']);}
+				 <span class="help-block">若背景颜色不能满足时可以上传背景图</span>
+				
+</div>
+
+<div class="form-group">
+				<label class="col-sm-1 control-label">设置分享图标</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('icon', $item['icon']);}
+				 <span class="help-block">建议宽*高=100*100</span>
+				
+</div>
+
+			<div class="form-group">
+				<label class="col-sm-1 control-label">活动封面广告</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('ac_pic', $item['ac_pic']);}
+				 <span class="help-block">建议宽*高=640*100</span>
+				
+			</div>
+           
+           <div class="form-group">
+					<label class="col-sm-1 control-label">活动封面广告连接地址</label>
+					<div class="col-sm-11">
+						<input name="ADlinksP1"
+								  value="{$item['ADlinksP1']}"  class="form-control" /><span class="help-block"></span>
+					</div>
+            </div>
+			
+			<div class="form-group">
+				<label class="col-sm-1 control-label">第一张广告图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('ppt1', $item['ppt1']);}
+					
+				 <span class="help-block">建议宽*高=640*400</span>
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label class="col-sm-1 control-label">第二张广告图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('ppt2', $item['ppt2']);}
+					
+				 <span class="help-block">建议宽*高=640*400</span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-1 control-label control-label">第三张广告图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('ppt3', $item['ppt3']);}
+					
+				 <span class="help-block">建议宽*高=640*400</span>
+				</div>
+			</div>
+            
+            <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第四张广告图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('ppt4', $item['ppt4']);}
+					
+				 <span class="help-block">建议宽=640</span>
+				</div>
+			</div>
+            
+           <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第五张广告图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('ppt5', $item['ppt5']);}
+					
+				 <span class="help-block">建议宽=640</span>
+				</div>
+			</div>
+            
+          <div class="form-group">
+					<label class="col-sm-1 control-label">第五张广告图连接地址</label>
+					<div class="col-sm-11">
+						<input name="ADlinksP6"
+								  value="{$item['ADlinksP6']}"  class="form-control" /><span class="help-block"></span>
+					</div>
+            </div>
+            
+          <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第一张拼图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('pt1', $item['pt1']);}
+				 <span class="help-block">建议宽*高=640*640</span>
+				</div>
+		  </div>
+          
+	<div class="form-group">
+			
+			<label for="inputEmail3" class="col-sm-1 control-label">限制时间</label>
+    			<div class="col-sm-2">
+    			<input type="text" name="time1" class="form-control" value="{$item['time1']}" />
+    		
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分行数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="h1" class="form-control" value="{$item['h1']}" />
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分列数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="l1" class="form-control" value="{$item['l1']}" />
+  			  </div>
+  			  
+	</div>
+          
+          <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第二张拼图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('pt2', $item['pt2']);}
+				 <span class="help-block">建议宽*高=640*640</span>
+				</div>
+		  </div>
+
+	<div class="form-group">
+			
+			<label for="inputEmail3" class="col-sm-1 control-label">限制时间</label>
+    			<div class="col-sm-2">
+    			<input type="text" name="time2" class="form-control" value="{$item['time2']}" />
+    		
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分行数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="h2" class="form-control" value="{$item['h2']}" />
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分列数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="l2" class="form-control" value="{$item['l2']}" />
+  			  </div>
+  			  
+	</div>
+
+          <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第三张拼图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('pt3', $item['pt3']);}
+				 <span class="help-block">建议宽*高=640*640</span>
+				</div>
+		  </div>
+         
+	<div class="form-group">
+			
+			<label for="inputEmail3" class="col-sm-1 control-label">限制时间</label>
+    			<div class="col-sm-2">
+    			<input type="text" name="time3" class="form-control" value="{$item['time3']}" />
+    		
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分行数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="h3" class="form-control" value="{$item['h3']}" />
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分列数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="l3" class="form-control" value="{$item['l3']}" />
+  			  </div>
+  			  
+	</div>
+          
+          <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第四张拼图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('pt4', $item['pt4']);}
+				 <span class="help-block">建议宽*高=640*640</span>
+				</div>
+		  </div>
+
+	<div class="form-group">
+			
+			<label for="inputEmail3" class="col-sm-1 control-label">限制时间</label>
+    			<div class="col-sm-2">
+    			<input type="text" name="time4" class="form-control" value="{$item['time4']}" />
+    		
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分行数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="h4" class="form-control" value="{$item['h4']}" />
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分列数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="l4" class="form-control" value="{$item['l4']}" />
+  			  </div>
+  			  
+	</div>
+
+          <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第五张拼图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('pt5', $item['pt5']);}
+				 <span class="help-block">建议宽*高=640*640</span>
+				</div>
+		  </div>
+          
+	<div class="form-group">
+			
+			<label for="inputEmail3" class="col-sm-1 control-label">限制时间</label>
+    			<div class="col-sm-2">
+    			<input type="text" name="time5" class="form-control" value="{$item['time5']}" />
+    		
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分行数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="h5" class="form-control" value="{$item['h5']}" />
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分列数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="l5" class="form-control" value="{$item['l5']}" />
+  			  </div>
+  			  
+	</div>
+          
+          <div class="form-group">
+				<label class="col-sm-1 control-label control-label">第六张拼图</label>
+				<div class="col-sm-11">
+					{php echo tpl_form_field_image('pt6', $item['pt6']);}
+				 <span class="help-block">建议宽*高=640*640</span>
+				</div>
+		  </div>
+	<div class="form-group">
+			
+			<label for="inputEmail3" class="col-sm-1 control-label">限制时间</label>
+    			<div class="col-sm-2">
+    			<input type="text" name="time6" class="form-control" value="{$item['time6']}" />
+    		
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分行数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="h6" class="form-control" value="{$item['h6']}" />
+  			  </div>
+  			  
+  			  <label for="inputEmail3" class="col-sm-1 control-label">拼图拆分列数</label>
+    			<div class="col-sm-2">
+    			 <input type="text" name="l6" class="form-control" value="{$item['l6']}" />
+  			  </div>
+  			  
+	</div>
+			
+			<div class="form-group">
+				<div class="col-sm-11">
+					<input name="submit" type="submit" value="提交" class="btn btn-primary">
+				<input type="hidden" name="token" value="{$_W['token']}" />
+				</div>
+				
+			</div>
+			
+		
+		
+			
+		
+
+
+		</div>
+
+	</form>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+	
+	require(['jquery','util'], function($, util){
+		$(function(){
+			var editor = util.editor($(".richtext")[0]);
+	 
+			
+		});
+	});
+	
+
+
+</script>
+
+{elseif $operation == 'display'}
+<div class="main">
+
+	<div style="padding: 15px;">
+		<table class="table table-hover table-striped table-condensed">
+			<thead class="navbar-inner">
+				<tr>
+					<th style="text-align: center;width: 200px">名称</th>
+                    <th style="text-align: center;width: 500px">素材连接</th>
+					<th style="text-align: center; min-width: 500px;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $list $item}
+				<tr>
+					<td style="text-align: center;"><a href="{php echo $this->createWebUrl('activity', array('id' => $item['id'], 'op' => 'post'))}" target="_blank">{$item['name']}</td>
+					
+	
+					<td style="text-align: center;">{$item['link']}</td>
+
+					<td style="text-align: center;">
+					<a
+						href="{php echo $this->createWebUrl('applyManger', array('name' => 'pingtu', 'aid' => $item['id']))}"
+						title="报名用户" class="btn btn-small">报名用户</a>
+
+						<a
+						href="{php echo $this->createWebUrl('activity', array('id' => $item['id'], 'op' => 'post'))}"
+						title="编辑" class="btn btn-small"><i class="glyphicon glyphicon-edit"></i></a> 
+                        <a
+						href="{php echo $this->createWebUrl('activity', array('id' => $item['id'], 'op' => 'delete'))}"
+						onclick="return confirm('此操作不可恢复，确认删除？');return false;" title="删除"
+						class="btn btn-small"><i class="glyphicon glyphicon-remove"></i></a>
+						
+						</td>
+				</tr>
+				{/loop}
+			</tbody>
+
+		</table>
+		{$pager}
+	</div>
+</div>
+{/if} {template 'common/footer'}

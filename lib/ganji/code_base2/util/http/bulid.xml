@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="FooBar" default="build">
+     <import file="${user.home}/.phing/build.xml"/>
+</project>

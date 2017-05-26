@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+ @charset "utf-8";
+/*RESET
+-------------------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, input, button, fieldset, textarea, p, blockquote, th, td { margin: 0; padding: 0 }
+table { border-collapse: collapse; border-spacing: 0 }
+n fieldset, img { border: 0 }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal }
+ol, ul { list-style: none }
+del, ins { text-decoration: none }
+caption, th { text-align: left }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+input, button, textarea, select { font-size: 100% }
+q:before, q:after { content: '' }
+addr, acronym { border: 0; font-variant: normal }
+sup, sub { vertical-align: baseline }
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+body, section { width: 100%; height: 100%; font-family: 微软雅黑; }
+html { font-size: 100px; }
+body { font-size: 0.14rem /*实际相当于14px*/ }
+body { background: #edecf2; width: 1005; height: 100% }
+a { text-decoration: none; }
+img{ width:100%; height:100%}
+
+body{ background:url(../img/bg_hxs.jpg) no-repeat  center top; background-size: cover}
+.page1{ width:100%; height:100%}
+ .logo{ width:50%; margin:0 auto; padding-top:10%}
+.page1 .text1{ width:60%; margin:0 auto; text-align:center ; padding-top:20px}
+.page2 .text1{ width:70%; margin:0 auto; text-align:center ; padding-top:30px; padding-bottom:30px}
+.page3 .text1{ width:60%; margin:0 auto; text-align:center ; padding-top:9px}
+.page3 .text2{ width:70%; margin:0 auto; text-align:center ; padding-top:0px}
+.page4 .text1{ width:60%; margin:0 auto; text-align:center ; padding-top:9px}
+.page4 .text2{ width:70%; margin:0 auto; text-align:center ; padding-top:0px}
+.page6 .text1{ width:80%; margin:0 auto; text-align:center ; padding-top:10px}
+.que{ width:100%; }
+.que li{ width:80%; margin:0 auto; padding:5px 5px}
+.btn { width:50%;  margin: 0 auto ; text-align:center; padding-top:20px}
+.page6 .btn { width:40%;  margin: 0 auto ; text-align:center; padding-top:20px}
+.page6  .btn input{ border:none; background:url(../img/page6/btn6.png) no-repeat center center; background-size:contain; height:60px; width:100%}
+.btn input{ border:none; background:url(../img/page1/button1.png) no-repeat center center; background-size:contain; height:60px; width:100%}
+.btn3 { width:50%;  margin: 0 auto ; text-align:center; padding-top:20px}
+.btn3 input{ border:none; background:url(../img/page3/button2.png) no-repeat center center; background-size:contain; height:60px; width:100%}
+.tel{width:100%; margin:0 auto; text-align:center ; bottom:0px;  position: absolute;}
+.page6 .tel1{width:100%; margin:0 auto; text-align:center ; padding-top:20px}
+#mcover { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: none; z-index: 20000; }/*修改背景图透明rgba最后一个值透明度*/
+.pop_box { width: 80%; margin: 0px 10% 0; color: #fff;  overflow-y: auto }
+.pop_box .title { color: #fdde3c; font-size: 0.16rem; padding-bottom: 5px }
+.text_pop { font-size: 0.14rem; line-height: 25px }
+
+
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2){ 
+	.page3 .text1{ width:83%; margin:0 auto; text-align:center ; padding-top:9px}
+.page3 .text2{ width:70%; margin:0 auto; text-align:center ; padding-top:0px}
+
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3){
+	
+	.page3 .text1{ width:83%; margin:0 auto; text-align:center ; padding-top:9px}
+.page3 .text2{ width:70%; margin:0 auto; text-align:center ; padding-top:0px}
+	 }
+
+/*魅族*/
+@media only screen and (min-device-width :1080px) and (-webkit-min-device-pixel-ratio : 2.5){ 
+
+.page3 .text1{ width:83%; margin:0 auto; text-align:center ; padding-top:9px}
+.page3 .text2{ width:70%; margin:0 auto; text-align:center ; padding-top:0px}
+}
+
+/*mate7*/
+@media only screen and (min-device-width :1080px) and (-webkit-min-device-pixel-ratio : 3){ 
+
+.page3 .text1{ width:83%; margin:0 auto; text-align:center ; padding-top:9px}
+.page3 .text2{ width:70%; margin:0 auto; text-align:center ; padding-top:0px}
+}
+
+/* 兼容iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2) {
+	
+	.page3 .text1{ width:83%; margin:0 auto; text-align:center ; padding-top:9px}
+.page3 .text2{ width:70%; margin:0 auto; text-align:center ; padding-top:0px}
+	}

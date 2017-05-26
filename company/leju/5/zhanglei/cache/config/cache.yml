@@ -1,0 +1,8 @@
+_top:
+    enabled: on
+    lifetime: 60
+
+
+_center:
+    enabled: off
+    lifetime: 1440

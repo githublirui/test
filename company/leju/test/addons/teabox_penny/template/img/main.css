@@ -1,0 +1,65 @@
+ @charset "utf-8";
+/*RESET
+-------------------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, input, button, fieldset, textarea, p, blockquote, th, td { margin: 0; padding: 0 }
+table { border-collapse: collapse; border-spacing: 0 }
+n fieldset, img { border: 0 }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal }
+ol, ul { list-style: none }
+del, ins { text-decoration: none }
+caption, th { text-align: left }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+input, button, textarea, select { font-size: 100% }
+q:before, q:after { content: '' }
+addr, acronym { border: 0; font-variant: normal }
+sup, sub { vertical-align: baseline }
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+body, section { width: 100%; height: 100%; font-family: 微软雅黑; }
+html { font-size: 100px; }
+body { font-size: 0.14rem /*实际相当于14px*/ }
+body { background: #edecf2 }
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+a { text-decoration: none; }
+body{height:100%; width:100%}
+.web_banner { background:url(../img/bg1.jpg) no-repeat center top; background-size: 100% 100%; height:100%; width:100%; position:relative}
+.btn1{width:50%; height:32px; position:absolute; bottom:21px; display:box; left:5%;border: 2px dashed #f00;
+    border-radius: 8px;
+    padding: 2px;}
+.btn2{width:50%; height:32px; position:absolute; bottom:21px;display:box; right:5%;border: 2px dashed #f00;
+    border-radius: 8px;
+    padding: 2px;}
+.btn1_sub{ background:url(../img/btn1.png) no-repeat center top; background-size:contain;width:100%; height:32px; display:inline-block }
+.btn2_sub{ background:url(../img/btn2.png) no-repeat center top; background-size:contain;width:100%; height:32px; display:inline-block }
+
+.list_banner{background:url(../img/bg2.jpg) no-repeat center top; background-size: 100% 100%; height:100%; width:100%; position:relative}
+.btn3{width:54%; height:32px; position:absolute; bottom:120px; display:box; right:1%}
+.btn4{width:50%; height:32px; position:absolute; bottom:47px;display:box; right:5%}
+.btn3_sub{ background:url(../img/btn3.png) no-repeat center top; background-size:contain;width:100%; height:52px; display:inline-block }
+.btn4_sub{ background:url(../img/btn2.png) no-repeat center top; background-size:contain;width:100%; height:32px; display:inline-block }
+
+
+
+.list1_banner{background:url(../img/bg3.jpg) no-repeat center top; background-size: 100% 100%; height:100%; width:100%; position:relative}
+.btn7{width:90%; height:32px; position:absolute; bottom:235px; display:box; left:8%}
+
+.btn7_sub{ background:url(../img/btn7.png) no-repeat center top; background-size:contain;width:90%; height:65px; display:inline-block }
+ 
+ .list2_banner{ background:url(../img/004.jpg) no-repeat center top; background-size: 100% 100%; height:100%; width:100%; position:relative}
+ .list2_banner section{  width:80%; text-align:left; margin:0% auto 0; padding-top:62%; height:60%}
+.btn5{width:100%; height:42px; margin:28px 0px 28px}
+.btn6{width:100%; height:42px; margin:28px auto 28px }
+.btn8{width:100%; height:42px;  margin:28px auto 28px}
+.btn5_sub{ background:url(../img/btn4.png) no-repeat left top; background-size:contain;width:100%; height:32px; display:inline-block }
+.btn6_sub{ background:url(../img/btn5.png) no-repeat left top; background-size:contain;width:100%; height:32px; display:inline-block }
+
+.btn8_sub{ background:url(../img/btn6.png) no-repeat; background-size:contain;width:100%; height:32px; display:inline-block }

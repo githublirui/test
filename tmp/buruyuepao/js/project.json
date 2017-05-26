@@ -1,0 +1,16 @@
+{
+    "debugMode": 0,
+    "showFPS": false,
+    "frameRate": 60,
+    "id": "J_gameCanvas",
+    "renderMode": 0,
+    "engineDir": "./js/cocos2d/3.0/",
+    "modules": ["cocos2d"],
+    "jsList": [
+        "./src/base.js",
+        "./src/resource.js",
+        "./src/myApp.js",
+        "./src/bgLayer.js",
+        "./src/gameLayer.js"
+    ]
+}

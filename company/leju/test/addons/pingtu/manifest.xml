@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="">
+	<application setting="true">
+		<name><![CDATA[商家拼图]]></name>
+		<identifie><![CDATA[pingtu]]></identifie>
+		<version><![CDATA[0.1]]></version>
+		<type><![CDATA[activity]]></type>
+		<ability><![CDATA[拼图游戏]]></ability>
+		<description><![CDATA[]]></description>
+		<author><![CDATA[蜂窝科技]]></author>
+		<url><![CDATA[http://bbs.we7.cc/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+			<message type="text" />
+		</subscribes>
+        <handles>
+            <message type="text" />
+        </handles>
+		<rule embed="false" />
+	</platform>
+	<bindings>
+        <cover>
+            <entry title="入口设置" do="index" />
+        </cover>
+		<menu>
+	  <entry title="玩家排行" do="picture" state="" direct="false" />  
+      <entry title="游戏设置" do="activity" state="" direct="false" />  
+	  </menu>
+	</bindings>
+	<install><![CDATA[
+CREATE TABLE IF NOT EXISTS `ims_xhw_pingtu` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `weid` int(10) NOT NULL,
+  `name` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `bgcolor` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `ac_pic` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `pt1` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `ADlinksP1` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `pt2` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `pt3` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `pt4` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `pt5` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `pt6` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `ADlinksP6` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `link` varchar(500) CHARACTER SET utf8 NOT NULL,
+  `time1` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `time2` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `time3` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `time4` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `time5` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `time6` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `h1` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `h2` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `h3` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `h4` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `h5` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `h6` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `l1` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `l2` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `l3` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `l4` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `l5` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `l6` varchar(100) CHARACTER SET utf8 NOT NULL,
+    `ppt1` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `ppt2` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `ppt3` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `ppt4` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `ppt5` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `bgpic` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `icon` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `ims_xhw_pingtu_user` (
+		`id` int(20) NOT NULL AUTO_INCREMENT,
+		`fid` int(20) NOT NULL,
+		`uname` varchar(20)   CHARACTER SET utf8 NOT NULL,
+		`weid` int(10) NOT NULL,
+		`tel` varchar(20)   CHARACTER SET utf8 NOT NULL,
+		`score` varchar(200) CHARACTER SET utf8 NOT NULL,
+		createtime INT(11) UNSIGNED DEFAULT NULL,
+		PRIMARY KEY (`id`)
+		);
+
+	]]></install>
+</manifest>

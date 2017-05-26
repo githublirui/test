@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$setting['title']}</title>
+<link href="../addons/teabox_penny/template/img/main.css" rel="stylesheet"/>
+<meta name="viewport" id="viewport" content="width=device-width,user-scalable=no">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script type="text/javascript" src="../addons/enjoy_back/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../addons/enjoy_back/public/js/layer/layer.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+
+<body id="bg" class="web_banner">
+<section>
+
+<div class="btn1"><a href="{php echo $this->createMobileurl('greey')}" class="btn1_sub"></a></div>
+<div class="btn2"><a href="{php echo $this->createMobileurl('back')}" class="btn2_sub"></a></div>
+	
+</section>
+<script>
+document.getElementById("bg").style.height = document.documentElement.clientHeight+"px";
+</script>
+<script>
+var share_desc="{$setting['share_desc']}";
+var title="{$setting['title']}";
+wx.config({
+    debug: false, 
+    appId: "{$wxConfig['appId']}",
+    timestamp: "{$wxConfig['timestamp']}",
+    nonceStr: "{$wxConfig['nonceStr']}",
+    signature: "{$wxConfig['signature']}",
+    jsApiList: ['showOptionMenu','onMenuShareTimeline', 'onMenuShareAppMessage']
+});
+
+wx.ready(function () {
+    wx.showOptionMenu();
+    wx.onMenuShareTimeline({
+        title: title,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny&uidd={$uid}",
+        imgUrl: "{$user['headimgurl']}"
+    });
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: share_desc,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny&uidd={$uid}",
+        imgUrl: "{$user['headimgurl']}"
+    });
+
+    
+});
+
+wxshare();
+
+function wxshare(){
+    share_desc=share_desc.replace("{1}",{$setting['pay_fee']});
+    share_desc=share_desc.replace("{2}","{$user['nickname']}");
+    share_desc=share_desc.replace("{3}",{$total});
+    share_desc=share_desc.replace("{4}",{$payinfo['sort']});
+}
+</script>
+
+</body>
+</html>
+
+
+

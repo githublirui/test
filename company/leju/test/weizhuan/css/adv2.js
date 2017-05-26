@@ -1,0 +1,1 @@
+﻿document.write("<div style=\"background-color:#fff;width:100%;text-align:center;\"><a href=\"http://www.haoyuanwj.com/wap/sobody/\"><img src=\"http://oss.weijie.so/img01/34.jpg?ddf\" border=\"0\" width=\"100%\"/></a></div>")

@@ -1,0 +1,36 @@
+__get($property_name)
+	public function __get($property_name){
+		if(isset($this->$property_name)) return 'call the __get function, the property value is ' . $this->property_name;
+	}
+	属性设置为private时, 对象直接调用该属性时, 会报错. 在类里面设置__get时, 调用private属性, 对象会在内部自动调用__get函数, 设置__get为public函数
+
+
+__set($property_name, $value)
+	public function __set($property_name, $value){
+		$this->$property_name = "call the __set function, and the property value is " . $value;
+	}
+	属性设置为private时, 对象如果设置该属性的值, 会报错, 因为属性被封装, 在类里面设置__set时, 当对象在外部调用该属性时, 会同时调用__set函数, 设置__set为public函数
+
+
+__isset($property_name)
+	public function __isset($property_name){
+		echo "has call the __isset function";
+		return isset($this->$property_name);
+	}
+	属性设置为private时, 如果对象判断该属性是否被设置时, 会报错, 属性被封装, 在类里面设置__isset时, 当对象判断该private属性是否被设置时, 会调用__isset函数, 设置__isset函数为public函数
+
+__unset($property_name)
+	public function __unset($property_name){
+		echo "the function has called ";
+		return unset($this->property_name);
+	}
+	属性设置为private时, 如果对象要将该属性释放, 会报错, 属性被封装, 在类里面设置__unset时, 当对象将该属性释放时, 会调用__unset函数, 函数设置为public
+
+
+php 设计模式
+http://www.ibm.com/developerworks/cn/opensource/os-php-designptrns/
+	单例模式：__construct是私有的。防止程序在类外面肆意new这个类。
+	观察者模式：观察者类里面传入被观察对象，在观察者内里面执行被观察对象的函数。独立于被观察者。参照observe.class.php
+	策略模式：在策略类里面传入别的类的对象。在策略类里面某个函数中执行别的类的函数。参照strategy.class.php
+
+php垃圾回收机制

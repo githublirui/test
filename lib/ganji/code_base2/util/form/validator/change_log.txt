@@ -1,0 +1,15 @@
+2009-06-12 
+1、修改validator.js， 在文本框按下鼠标时，清空默认字串，鼠标离开时，如果为空则恢复默认字串。
+2、当多form时，使支持表单A中的控件name可以和表单B中的控件name同名。可以在fieldName前加表单id，再用"::"分隔，如：
+        $this->validatorConfig = array(
+            array(
+                'mode'            => ValidatorConfig::MODE_REQUIRED,
+                'fieldName'       => 'form1::username',
+                'errorMessage'    => '用户名不能为空',
+                'defaultMessage'  => '请填写用户名',
+                'focusMessage'    => '请填写用户名,3-20个字符',
+            ),  
+        );
+        
+2009-06-16
+更新Regexp与DefinedRegexp验证，增加exclude参数，当exclude为true时表示不匹配指定的正则表达式时才正确

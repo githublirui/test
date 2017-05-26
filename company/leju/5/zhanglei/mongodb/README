@@ -1,0 +1,85 @@
+网址 http://www.mongodb.org/downloads
+
+下载 http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.5.tgz
+
+启动mongodb的时候, 数据库存储的磁盘大小一定要大于3G, df -h /data1
+./mongod --dbpath=/data1/mongodb-data/db --logpath=/data1/mongodb-data/mongodb.log --auth --logappend&
+
+mongodb默认是不需要用户密码的 加上--auth, mongodb会验证用户名以及密码权限问题
+use admin
+db.addUser('username', 'password');
+db.auth('username', 'password');
+先从admin开始认证, 认证过后才能获得权限, 如果不从admin认证, 那么其他数据库都没有相应权限
+
+exit
+加上--auth这个参数
+
+/usr/local/mongodb/mongodb.conf
+
+port=27017 #端口号 
+fork=true #以守护进程的方式运行，创建服务器进程
+#master=true #单主从配置时设为主服务器
+#salve=true ##单主从配置时设为从服务器
+logpath=/data1/mongodb-data/mongodb.log #日志输出文件路径
+logappend=true #日志输出方式  
+dbpath=/data1/mongodb-data/db #数据库路径 
+#replSet=blort #设置富本集的名字
+#shardsvr=true #设置是否分片
+auth=true
+
+./mongod –-config /usr/local/mongodb/mongodb.conf &
+
+
+mongodb的命令
+	save
+		db.users.save({'name': 'nancy', 'pass': 'nancy', 'sex': 'man', 'address': {'city': 'hefei', 'tel': '13485704592'}, 'interest': [ 'music' ]});
+		db.bottle.save({'name': '普通瓶', 'description': '普通瓶'});
+		db.bottle_action.save({'user_id_from': new DBRef('users', ObjectId('51e3677a43611f5b432e06d4')), 'user_id_to': new DBRef('users', ObjectId('51e39d9d43611f5b432e06d7')), 'bottle_id': new DBRef('bottle', ObjectId('51e7641391668b5d7d98eaf4')), 'content': '测试专用'});
+	update
+		$set
+			db.users.update({'name': 'nancy'}, {'$set': {'sex': 'woman', 'email': '1737100725@qq.com'}}, upsert=false, multi=false);
+			db.users.update({'name': 'nancy'}, {'$set': {'address.city': 'wuhu'}});
+		$unset
+			db.users.update({'name': 'nancy'}, {'$unset': {'sex': 1}});
+		$inc
+			db.users.update({'name': 'nancy'}, {'$set': {'age': 20}}, upsert=false, multi=false);
+			db.users.update({'name': 'nancy'}, {'$inc': {'age': -1}});
+		$push
+			db.users.update({'name': 'nancy'}, {'$push': {'interest': 'dance'}});
+		$pushAll
+			db.users.update({'name': 'nancy'}, {'$pushAll': {'interest': ['travel', 'photography']}});
+		$pull
+			db.users.update({'name': 'nancy'}, {'$pull': {'interest': 'travel'}});
+	remove
+		db.users.remove();
+		db.users.remove({'name': 'null'});
+	find
+		db.users.find();
+		db.users.fineOne();
+		db.users.find({'name': 'zhanglei'});
+		db.users.find({'name': 'zhanglei'}, {'email': 1, 'name': 1, 'sex': 1});
+		db.users.count();
+		db.users.find().skip(1).limit(1);
+		db.users.find().skip(1).limit(1).count(true);
+		db.users.find().sort({'_id': -1});
+		db.users.find({'age': {'$gte': 24}});
+		db.users.find({'age': {'$gte': 18}, 'name': 'zhanglei'}).sort({'_id': -1}).skip(0).limit(1);
+		db.bottle_action.findOne().user_id_from.fetch();
+		db.bottle_action.find().sort({'_id': -1}).limit(1)[0].user_id_from.fetch();
+
+
+php操作mongodb的例子
+http://www.cnblogs.com/see7di/archive/2012/10/01/2709969.html
+
+
+php安装mongo模块
+wget pecl.php.net/get/mongo-1.4.1.tgz
+tar -zxvf mongo-1.4.1.tgz
+
+mv mongo-1.4.1 mongo
+mv mongo /usr/local/php/ext
+cd /usr/local/php/ext/mongo
+/usr/local/php/bin/phpize
+./congifure --with-php-config=/usr/local/php/bin/php-config
+make && make install
+

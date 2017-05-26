@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>合肥万达城</title>
+        <meta charset="UTF-8"/>
+        <script type="text/javascript" src="./jquery-1.11.1.min.js"></script>
+    </head>
+    <style>
+        body {
+            position:absolute;
+            background-color:#000;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+        #example_video_1 {
+            width:100%;
+            height:100%;
+            position:absolute;
+        }
+    </style>
+    <body>
+        <video style="display:none;" autoplay="autoplay" id="example_video_1" class="video-js vjs-default-skin" controls preload="none" data-setup="{}">
+            <source src="" type='video/mp4' />
+        </video>
+        <script>
+            function isWeiXin() {
+                var ua = window.navigator.userAgent.toLowerCase();
+                if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            function fullscreen() {
+                videojs("example_video_1").ready(function () {
+                    videojs('example_video_1').requestFullScreen();
+                });
+            }
+            function myHandler(e) {
+                document.write('<script>document.location.href = "http://scene3.house365.com/index.php?c=view&id=U609Y7HD72&from=timeline&isappinstalled=0";<\/script>');
+                //                document.location.href = "http://www.wanda.cn/";
+                // What you want to do after the event
+            }
+            //禁止鼠标右键菜单
+            document.oncontextmenu = function (e) {
+                return false;
+            }
+            if (!isWeiXin()) {
+                alert('只能在微信端打开');
+                location.href = "http://scene3.house365.com/index.php?c=view&id=U609Y7HD72&from=timeline&isappinstalled=0";
+            } else {
+                $('#example_video_1 source').attr("src", "demo1.mp4");
+                $('#example_video_1').show();
+                document.getElementById('example_video_1').addEventListener('ended', myHandler, false);
+            }
+        </script>
+    </body>
+</html>

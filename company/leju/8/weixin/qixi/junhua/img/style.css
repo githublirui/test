@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body { height: 100%; width: 100% }
+body, ul, ol, li, dl, dt, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div { border: 0 none; margin: 0; padding: 0; font-weight: normal; }
+header, footer, section, details, aside, menu, nav, article, hgroup, figure, figcaption, time { display: block; margin: 0px; padding: 0px; }
+ul, ol, li { list-style-type: none; }
+select, input, img { vertical-align: top; }
+a img { border: 0; }
+em, i { font-style: normal; }
+#slider { POSITION: relative; VISIBILITY: hidden; OVERFLOW: hidden }
+.swipe-wrap { POSITION: relative; OVERFLOW: hidden }
+.swipe-wrap > DIV { POSITION: relative; WIDTH: 100%; FLOAT: left }
+.swipe-wrap > DIV IMG { WIDTH: 100%; HEIGHT: 15em }
+.swipe-wrap > DIV P { POSITION: absolute; WIDTH: 100%; BOTTOM: 0px; DISPLAY: block; PADDING-TOP: 2px; LEFT: 0px }
+.swipe-wrap > DIV P SPAN { LINE-HEIGHT: 25px; PADDING-LEFT: 15px; COLOR: #fff }
+#ppoool { Z-INDEX: 10; POSITION: relative; TEXT-ALIGN: right; MARGIN-TOP: 0px; PADDING-RIGHT: 15px; HEIGHT: 20px }
+#ppoool > LI { MARGIN: 7px 0px; WIDTH: 10px; DISPLAY: inline-block; HEIGHT: 10px; border-radius: 10px; background: #ffffff }
+#ppoool > LI.on { BACKGROUND-COLOR: #ff9900 }
+body{  background-image: url(bg.png);; width:100%}
+.warp{ padding:0 5% 5%; }
+.warp article{background:#fff; padding-bottom:20px}
+.warp footer{background:#fff  no-repeat center;height:88px; padding-bottom:20px;  text-align: center;  line-height: 53px;  color: #FFF;}
+.warp .cont{ width:92%; margin:0 4% ; text-align:center}
+.warp .cont h2{color:#ff9900; font-size:30px; font-weight:bold; padding-top:20px; padding-bottom:5px}
+.warp .cont input{ width:97%; height:40px; line-height:40px; border:1px solid #b1bdd6; margin-bottom:5px; padding-left:3px;}
+.warp .cont select{ width:100%;padding:5px 0; border:1px solid #b1bdd6; margin-bottom:5px;color:#797a76; height: 30px;line-height: 30px}
+.warp .cont option{padding:5px 0;}
+.box{ width:100%}
+.btn{ width:200px; margin:0 auto; height:35px; line-height:35px; background:#ff9900; text-align:center; color:#fff; font-size:20px; border-radius:5px; border:none; margin-top:10px} 
+.mt10 {margin-top: 10px;}

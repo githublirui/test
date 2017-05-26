@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html class="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="img/style.css">
+<SCRIPT type=text/javascript src="img/jquery-1.7.2.min.js"></SCRIPT>
+<script src="img/swipe.js"></script> 
+<SCRIPT>
+ $(window).load(
+                function() {
+                    window.mySwipe = new Swipe(document
+                    .getElementById('slider'), {
+                        startSlide : 0,
+                        speed : 400,
+                        auto : 6000,
+                        continuous : true,
+                        disableScroll : false,
+                        stopPropagation : false,
+                        callback : function(pos) {
+                            var i = bullets.length;
+
+                            while (i--) {
+                                bullets[i].className = ' ';
+                            }
+                            bullets[pos].className = 'on';
+                        },
+                        transitionEnd : function(index, elem) {
+                        }
+                    });
+                    if (document.getElementById('ppoool')) {
+                        var bullets = document.getElementById('ppoool')
+                        .getElementsByTagName('li');
+                    }
+                });
+</SCRIPT>
+</head>
+<body >
+<section class="warp">
+
+  <header>
+  
+    <div style="visibility: visible;" class="picshowtop" id="slider">
+      <div class="swipe-wrap">
+        <div data-index="1"> <img src="img/banner.jpg"> </a> </div>
+        <div data-index="2" > <a href=""> <img src="img/banner.jpg"> </a> </div>
+      </div>
+      <div style="position: absolute; width: 100%; height: 25px; line-height: 25px; bottom: 0px; background:rgba(0,0,0,.5)"id="ppooind">
+        <ol id="ppoool">
+          <li class="on"></li>
+          <li></li>
+        </ol>
+      </div>
+    </div>
+  </header>
+  <article>
+    <div class="cont">
+      <h2>测试额度</h2>
+      <form>
+        <input type="text" name="name"placeholder="姓名" >
+        <select>
+          <option value="sex">性别</option>
+          <option value="sex">女</option>
+          <option value="sex">男</option>
+        </select>
+        <div class="box">
+         <select style="width:33%">
+          <option value="sex">出生年份</option>
+          <option value="sex">2015</option>
+          <option value="sex">2014</option>
+        </select>
+         <select style="width:33%">
+          <option value="sex">出生月份</option>
+          <option value="sex">12月</option>
+          <option value="sex">11月</option>
+        </select>
+        <select style="width:27%">
+          <option value="sex">出生日</option>
+          <option value="sex">30</option>
+          <option value="sex">29</option>
+        </select>
+        </div>
+        <input type="number" name="tel"placeholder="手机号码" >
+        <input type="text" name="text"placeholder="阳光标保" >
+        <button type="button" class="btn" >开始计算</button>
+      </form>
+    </div>
+  </article>
+  <footer><img src="img/ad_bg.jpg"></footer>
+</section>
+</body>

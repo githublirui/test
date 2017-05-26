@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>jquery图片左右连续滚动_前端开发-武方博</title>
+        <style type="text/css"> 
+            *{ margin:0; padding:0;}
+            body { font:12px/1.8 Arial; color:#666;}
+            h1.tit-h1 { font-size:38px; text-align:center; margin:30px 0 15px; color:#f60;}
+            .go-back{ text-align:center; border-top:1px dashed #ccc; padding:10px; margin-top:20px; font-size:40px;}
+            .wrap{border:1px dashed #ccc; background:#f8f8f8; padding:20px;}
+
+
+            #slide{overflow:hidden;width:900px;margin:100px auto;}
+            ul{list-style:none;}
+            #slide li{float:left;}
+            .slideul1{width:3999px;}
+        </style> 
+        <script type="text/javascript" src="http://www.wufangbo.com/demo/jquery-1.4.4.min.js"></script>
+
+    </head>
+    <body>
+
+        <h1 class="tit-h1">jquery图片左右连续滚动_前端开发-武方博</h1> 
+        <div class="wrap">
+
+
+            <div id="slide"> 
+                <ul class="slideul1"> 
+                    <li class="slideli1"> 
+                        <ul class="slideul2"> 
+                            <li><img src="images/1.jpg"/></li> 
+                            <li><img src="images/2.jpg"/></li> 
+                            <li><img src="images/3.jpg"/></li> 
+                            <li><img src="images/4.jpg"/></li> 
+                            <li><img src="images/5.jpg"/></li> 
+                        </ul> 
+                    <li class="slideli2"></li> 
+                </ul> 
+            </div> 
+            <script type="text/javascript">
+                var _speed = 10;
+                var _slide = $("#slide");
+                var _slideli1 = $(".slideli1");
+                var _slideli2 = $(".slideli2");
+                _slideli2.html(_slideli1.html());
+                function Marquee() {
+                    if (_slide.scrollLeft() <= 0)
+                        _slide.scrollLeft(_slide.scrollLeft() + _slideli2.width());
+                    else {
+                        _slide.scrollLeft(_slide.scrollLeft() - 1);
+                    }
+                }
+                $(function () {
+                    //两秒后调用
+                    var sliding = setInterval(Marquee, _speed)
+                    _slide.hover(function () {
+                        //鼠标移动DIV上停止
+                        clearInterval(sliding);
+                    }, function () {
+                        //离开继续调用
+                        sliding = setInterval(Marquee, _speed);
+                    });
+                });
+            </script>
+
+
+        </div>
+
+
+
+        <div class="go-back"><a href="http://www.wufangbo.com/?page_id=738">返回jQuery实例列表</a></div>
+        <h4 style="text-align:center;"><a href="http://www.wufangbo.com">郑州前端开发</a> <a href="http://www.wufangbo.com">郑州网页设计</a> <a href="http://www.wufangbo.com">郑州美工</a> <a href="http://www.wufangbo.com">郑州UED</a> <a href="http://www.wufangbo.com">郑州div+css </a> <a href="http://www.wufangbo.com">郑州页面重构 </a><a href="http://www.wufangbo.com">武方博前端开发 </a> <a href="http://www.wufangbo.com">前端开发武方博</a> <a href="http://www.wufangbo.com/sitemap.xml">站点地图</a></h4>
+
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-20541395-2']);
+            _gaq.push(['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+    </body> 
+</html>

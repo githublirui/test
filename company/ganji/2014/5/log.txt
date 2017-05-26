@@ -1,0 +1,11 @@
+﻿<HTML>
+<HEAD>
+<TITLE>login</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<SCRIPT language=JavaScript>
+window.location.href="http://netlogin.corp.ganji.com/net/route.php?i=2&action=f7907f6483b39c048f9b1df35fcd45d5";
+</SCRIPT>
+</HEAD>
+<BODY>
+</BODY>
+</HTML>

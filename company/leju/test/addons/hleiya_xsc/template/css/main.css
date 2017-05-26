@@ -1,0 +1,100 @@
+ @charset "utf-8";
+/*RESET
+-------------------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, input, button, fieldset, textarea, p, blockquote, th, td { margin: 0; padding: 0 }
+table { border-collapse: collapse; border-spacing: 0 }
+n fieldset, img { border: 0 }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal }
+ol, ul { list-style: none }
+del, ins { text-decoration: none }
+caption, th { text-align: left }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+input, button, textarea, select { font-size: 100% }
+q:before, q:after { content: '' }
+addr, acronym { border: 0; font-variant: normal }
+sup, sub { vertical-align: baseline }
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+body, section { width: 100%; height: 100%; font-family: 微软雅黑; }
+html { font-size: 100px; }
+body { font-size: 0.14rem /*实际相当于14px*/ }
+body { background: #edecf2 }
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+a { text-decoration: none; }
+body { background: #163258; background-size: 100% 100%; width: 100%; height: 100%; position: relative }
+/*page1*/
+.index_sec { margin: 5% 5% 0 5%; width: 90%; position: relative }
+.page1_text { background: url(../img/page1/text.png) no-repeat left top; background-size: contain; height: 117.5px }
+.Dico { position: absolute; top: -10.5px; left: 158px; z-index: 99 }
+.orbit { position: relative; margin-top: 10px; height: 54px }
+.ico01 { width: 26PX; height: 25PX; background: url(../img/page1/ico01.png) no-repeat left top; background-size: 100%; position: absolute; left: 16px; top: 28px;-webkit-animation-duration: .3s; -webkit-animation-delay: .3s; -webkit-animation-fill-mode: both;  }
+.ico02 { width: 26PX; height: 25PX; background: url(../img/page1/ico02.png) no-repeat left top; background-size: 100%; position: absolute; left: 95px; top: -7px ;-webkit-animation-duration: .3s; -webkit-animation-delay: .6s; -webkit-animation-fill-mode: both; }
+.ico03 { width: 26PX; height: 25PX; background: url(../img/page1/ico03.png) no-repeat left top; background-size: 100%; position: absolute; left: 164px; top: 23px; z-index: 9;-webkit-animation-duration: .3s; -webkit-animation-delay: .9s; -webkit-animation-fill-mode: both;  }
+.ico04 { width: 26PX; height: 25PX; background: url(../img/page1/ico04.png) no-repeat left top; background-size: 100%; position: absolute; left: 242px; top: 9px;-webkit-animation-duration: .3s; -webkit-animation-delay: 1.2s; -webkit-animation-fill-mode: both;  }
+.line1 { width: 76px; height: 37px; background: url(../img/page1/line1.png) no-repeat left top; background-size: 100%; position: absolute; left: 30px; top: 0px;-webkit-animation-duration: .3s; -webkit-animation-delay: .5s; -webkit-animation-fill-mode: both;  }
+.line2 { width: 76px; height: 37px; background: url(../img/page1/line2.png) no-repeat left top; background-size: 100%; position: absolute; left: 106px; top: 0px;-webkit-animation-duration: .3s; -webkit-animation-delay: .8s; -webkit-animation-fill-mode: both;  }
+.line3 { width: 76px; height: 37px; background: url(../img/page1/line3.png) no-repeat left top; background-size: 100%; position: absolute; left: 182px; top: 8px ;-webkit-animation-duration: .3s; -webkit-animation-delay: 1.1s; -webkit-animation-fill-mode: both; }
+.page1_btn { margin-top: 10%; margin-left: 10px }
+.qs { margin-top: 4%; position: relative }
+.Scenes { background: url(../img/page1/banner.png) no-repeat left top; background-size: contain; height: 140px }
+.car { position: absolute; left: 0px; top: 58%;opacity:0; }/*兼容性要6做下*/
+.page1_btn a { background-image: url(../img/page1/btn.png); height: 40px; width: 47%; display: inline-block; background-size: cover }
+.page1_btn a.page1_btnf { background-position: 0% }
+.page1_btn a.page1_btnr { background-position: 100% }
+/*page2*/
+.page2_round { width: 90%; margin: 0 auto; text-align: center; margin-top: -30px; }
+.page2_text1 { background: url(../img/page2/page2_text1.png) no-repeat left top; background-size: contain; height: 83px }
+.page2_text2 { background: url(../img/page2/page2_text2.png) no-repeat left top; background-size: contain; height: 23px; margin-top: 5%; -webkit-animation-duration: 1s; -webkit-animation-delay: 1s; -webkit-animation-fill-mode: both; }
+.page2_bg { background: url(../img/page2/page2_ico1.png) no-repeat center top; height: 85.5px; background-size: contain; position: relative;-webkit-animation-duration: 1s; -webkit-animation-delay: 1.5s; -webkit-animation-fill-mode: both;  }
+.page2_bg p { color: #fff; font-size: 0.12rem; position: absolute; top: 44px; left: 26%; }
+.page2_btn { margin-top: 5%;-webkit-animation-duration: 1s; -webkit-animation-delay: 2.5s; -webkit-animation-fill-mode: both; }
+.page2_btnf { background: url(../img/page2/btn2.png) no-repeat center top; background-size: contain; height: 64px; display: block; }
+.footer_bg { background: url(../img/page2/shou.png) no-repeat right bottom; height: 87px; background-size: contain; width: 85%; margin-top: -29px; }
+.page3_item { position: relative; margin-top: 10%; height: 290px; width: 100% }
+.page3_ico1 { width: 100px; height: 94px; background: url(../img/page3/page3_ico1.png); background-size: 100%; position: absolute; left: 16px; top: 28px;;-webkit-animation-duration: .3s; -webkit-animation-delay: 0s; -webkit-animation-fill-mode: both; opacity:0;}
+.page3_ico2 { width: 88px; height: 99px; background: url(../img/page3/page3_ico2.png) no-repeat left top; background-size: 100%; position: absolute; left: 132px; top: 14px; -webkit-animation-duration: .3s; -webkit-animation-delay: .3s; -webkit-animation-fill-mode: both; opacity:0;}
+.page3_ico3 { width: 100px; height: 94px; background: url(../img/page3/page3_ico3.png) no-repeat left top; background-size: 100%; position: absolute; left: 207px; top: 100px; z-index: 9;-webkit-animation-duration: .3s; -webkit-animation-delay: .6s; -webkit-animation-fill-mode: both; opacity:0; }
+.page3_ico4 { width: 100px; height: 90px; background: url(../img/page3/page3_ico4.png) no-repeat left top; background-size: 100%; position: absolute; left: 95px; top: 141px ;-webkit-animation-duration: .3s; -webkit-animation-delay: .9s; -webkit-animation-fill-mode: both; opacity:0;}
+.page3_text { text-align: center;-webkit-animation-duration: 1s; -webkit-animation-delay: 1.3s; -webkit-animation-fill-mode: both; opacity:0; }
+.page3_btn { height: 64px; width: 90%; text-align: center; margin: 10% auto 0 }
+.page3_btnf { background: url(../img/page3/btn3.png) no-repeat center top; background-size: contain; height: 70px; display: block; width: 100% }
+.page4_text1 { background: url(../img/page4/page4-1.jpg) no-repeat center top; height: 400px; background-size: contain ;-webkit-animation-duration: 1s; -webkit-animation-delay: 0s; -webkit-animation-fill-mode: both;}
+.page4_btn { height: 64px; width: 100%; margin-top: 10% ;-webkit-animation-duration: 1s; -webkit-animation-delay: 1s; -webkit-animation-fill-mode: both;}
+.page4_btnf { background: url(../img/page4/btn4.png) no-repeat center top; background-size: contain; height: 70px; display: block; width: 100% }
+
+
+/*6*/
+@media (min-device-width : 375px) and (max-device-width : 667px) and (-webkit-min-device-pixel-ratio : 2) {
+.car { position: absolute; left: 0px; top: 73% }
+.page1_btn a { width: 40%; }
+.page1_text { height: 146.5px; }
+.page2_bg { background: url(../img/page2/page2_ico1.png) no-repeat center top; height: 106.5px; background-size: contain; position: relative; }
+.page2_bg p { color: #fff; font-size: 0.14rem; position: absolute; top: 54px; left: 26%; }
+.footer_bg { background: url(../img/page2/shou.png) no-repeat right bottom; height: 100px; background-size: contain; width: 80%; margin-top: -29px; }
+.page3_ico1 { width: 100px; height: 94px; background: url(../img/page3/page3_ico1.png); background-size: 100%; position: absolute; left: 16px; top: 28px }
+.page3_ico2 { width: 100px; height: 116px; background: url(../img/page3/page3_ico2.png) no-repeat left top; background-size: 100%; position: absolute; left: 132px; top: 14px; }
+.page3_ico3 { width: 124px; height: 94px; background: url(../img/page3/page3_ico3.png) no-repeat left top; background-size: 100%; position: absolute; left: 232px; top: 100px; z-index: 9; }
+.page3_ico4 { width: 115px; height: 109px; background: url(../img/page3/page3_ico4.png) no-repeat left top; background-size: 100%; position: absolute; left: 114px; top: 161px; }
+}
+
+/*6+*/
+@media (min-device-width : 414px) and (max-device-width : 736px) and (-webkit-min-device-pixel-ratio : 3) {
+.car { position: absolute; left: 0px; top: 73% }
+.page1_btn a { width: 40%; }
+.page1_text { height: 146.5px; }
+.page2_bg { background: url(../img/page2/page2_ico1.png) no-repeat center top; height: 106.5px; background-size: contain; position: relative; }
+.page2_bg p { color: #fff; font-size: 0.14rem; position: absolute; top: 54px; left: 26%; }
+.page3_ico1 { width: 100px; height: 94px; background: url(../img/page3/page3_ico1.png); background-size: 100%; position: absolute; left: 16px; top: 28px }
+.page3_ico2 { width: 100px; height: 116px; background: url(../img/page3/page3_ico2.png) no-repeat left top; background-size: 100%; position: absolute; left: 132px; top: 14px; }
+.page3_ico3 { width: 124px; height: 94px; background: url(../img/page3/page3_ico3.png) no-repeat left top; background-size: 100%; position: absolute; left: 232px; top: 100px; z-index: 9; }
+.page3_ico4 { width: 115px; height: 109px; background: url(../img/page3/page3_ico4.png) no-repeat left top; background-size: 100%; position: absolute; left: 114px; top: 161px; }
+}

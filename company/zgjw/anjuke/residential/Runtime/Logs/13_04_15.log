@@ -1,0 +1,85 @@
+[ 2013-04-15T10:40:36+08:00 ] 127.0.0.1 /anjuke/admin/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001187s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001259s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.001633s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016344s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.017993s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.018827s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.019641s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.020370s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003241s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.021268s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000981s ]
+
+[ 2013-04-15T10:40:41+08:00 ] 127.0.0.1 /anjuke/admin/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000272s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000322s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.000945s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011568s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.012535s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.012799s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.013035s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.013241s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000964s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.013535s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000198s ]
+
+[ 2013-04-15T10:42:17+08:00 ] 127.0.0.1 /anjuke/admin/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000482s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000577s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.001056s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005111s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.006193s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.006763s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.007278s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.007736s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002115s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.008373s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000530s ]
+
+[ 2013-04-15T10:42:20+08:00 ] 127.0.0.1 /anjuke/admin/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000232s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000276s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.000591s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.002838s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.003387s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.003678s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.003926s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.004146s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001024s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.004444s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000249s ]
+
+[ 2013-04-15T10:42:25+08:00 ] 127.0.0.1 /anjuke/admin/index.php
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000587s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:-0.001144s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004882s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:-0.006057s ]
+INFO: Run TokenBuild Behavior [ RunTime:-0.006594s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:-0.007168s ]
+INFO: Run ShowRuntime Behavior [ RunTime:-0.007639s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002126s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:-0.008250s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000520s ]
+

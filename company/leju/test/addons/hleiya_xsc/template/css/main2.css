@@ -1,0 +1,63 @@
+ @charset "utf-8";
+/*RESET
+-------------------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, hr, pre, code, form, input, button, fieldset, textarea, p, blockquote, th, td { margin: 0; padding: 0 }
+table { border-collapse: collapse; border-spacing: 0 }
+n fieldset, img { border: 0 }
+address, caption, cite, code, dfn, em, strong, th, var { font-style: normal; font-weight: normal }
+ol, ul { list-style: none }
+del, ins { text-decoration: none }
+caption, th { text-align: left }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal }
+input, button, textarea, select { font-size: 100% }
+q:before, q:after { content: '' }
+addr, acronym { border: 0; font-variant: normal }
+sup, sub { vertical-align: baseline }
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+body, section { width: 100%; height: 100%; font-family: 微软雅黑; }
+html { font-size: 100px; }
+body { font-size: 0.14rem /*实际相当于14px*/ }
+body { background: #edecf2 }
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+a { text-decoration: none; }
+body { background: url(../img/bg.jpg) no-repeat center top #593018; background-size: 100% 100%; width: 100%; height: 100%; position:relative }
+.index_sec{ margin-top:58%}
+.qs{ margin:20px 8%; width:84%; text-align:center}
+.qs img{ width:90%;}
+.qs li{ height:40px; line-height:40px; background:rgba(59,35,22,.5); margin-top:12px; width:100%; text-align:centers}
+.tex{ width:100%; margin:0 auto; text-align:center}
+.web_footer{ margin-top:20px}
+.de{ text-align:center; margin-top:20px; color:#fcbd01; font-size:0.18rem ; font-weight:bold}
+.bt{ width:100%; margin:0 auto; text-align:center; margin-top:30px}
+.bt input{ border:none; width:40%; height:60px; background:url(../img/btn.png) no-repeat left top; background-size:cover; margin-bottom:20px}
+.de span{ padding-left:5px}
+
+#bg1{background: url(../img/bg2.jpg) no-repeat center top #593018; background-size: 100% 100%; width: 100%; height: 100%; position:relative}
+.text{ text-align:center}
+#bg1 .index_sec{ margin-top:40%}
+.erwei{ width:90%; margin:0 auto; text-align:center; margin-top:20px}
+.erwei img{ width:100%; margin-bottom:20px}
+.tex p{ color:#fff; font-size:0.14rem ; font-weight:bold; line-height:30px; text-align:center;  }
+
+
+
+#mcover { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: none; z-index: 20000; }/*修改背景图透明rgba最后一个值透明度*/
+
+.pop_box { width: 80%; margin: 0px 10% 0; color: #fff; height: 100%; overflow-y: auto }
+.pop_box .title { color: #fdde3c; font-size: 0.16rem; padding-bottom: 5px }
+.text_pop { font-size: 0.14rem; line-height: 25px }
+
+
+
+
+

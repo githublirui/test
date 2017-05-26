@@ -1,0 +1,1 @@
+﻿document.write("<div style=\"bottom:0;height:48px;position:fixed;z-index:9999;background-color:#333;width:100%;border-top:1px solid #333;text-align:center;\"><a href=\"http://www.condiade.com/\"><img src=\"http://oss.weijie.so/img01/14.jpg?asdf\" border=\"0\" height=\"48px\"/></a></div>")

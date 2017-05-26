@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<TITLE>国内城市列表</TITLE>
+<META http-equiv=Content-Type  content="text/html; charset=utf-8">
+ <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=2.0"/>
+<STYLE type=text/css>
+
+body {
+    background-color: #FFFFFF;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+#warp{
+width:100%;
+margin:0 auto;
+border:0;
+
+}
+a:link {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
+}
+.a {
+    font-family: "新宋体";
+    font-size: 18px;
+    font-style: normal;
+    line-height: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+.b {
+    font-family: "新宋体";
+    font-size: 16px;
+    font-style: normal;
+    line-height: 30px;
+    font-weight: normal;
+    color: #000000;
+    text-decoration: none;
+}
+.c {
+    font-family: "新宋体";
+    font-size: 18px;
+    font-style: normal;
+    line-height: 35px;
+    font-weight: normal;
+    color: #3366BF;
+    text-decoration: none;
+}
+.d {
+    font-family: "新宋体";
+    font-size: 16px;
+    font-style: normal;
+    line-height: 27px;
+    font-weight: bold;
+    color: #3366BF;
+    text-decoration: none;
+}
+.e {
+    font-family: "新宋体";
+    font-size: 18px;
+    font-style: normal;
+    line-height: 40px;
+    font-weight: bold;
+    color: #FF0000;
+    text-decoration: none;
+}
+#content{
+ min-height:100%;
+ background:#FAFAF2;
+
+}
+ul,li{
+list-style:none;
+display:block;
+margin:0;
+ padding:0 5px;
+border:0;
+outline:0;
+font-size:100%;
+vertical-align:baseline;
+background:transparent;
+
+}
+#box{
+     margin:10px left;
+     height:230px;
+}
+#left{
+     width:200px;
+     height:100%;
+     float: left;
+}
+#right{
+     
+     height:100%;
+     float:left;
+}
+#more {
+
+font-weight: normal;
+font-size: 16px;
+font-style: normal;
+}
+
+
+</STYLE>
+
+<meta content="MSHTML 6.00.6000.17023" name=GENERATOR>
+</head>
+<body>
+<div id="warp">
+
+
+<div id="header">
+<!--
+ 	<div style=background-image:url('image/baidu_bg.png'); align="center">
+   	<a href="http://mp.weixin.qq.com/s?__biz=MjM5NDMyODQ2MQ==&mid=202277687&idx=1&sn=93133db30540f8e3c52e502036bdc4df#rd">
+       		<img src="ad_image/sjb.jpg" width=255 height=45 border=0>
+    	</a>
+	</div>
+	-->
+    <div style=background-image:url('image/logobj.jpg');>
+        <a href=""><img src="image/pindaologo.png" width=183 height=54 border=0></a>
+    </div>
+</div>
+    
+    <div id="content">
+<div>  </div>
+
+<div style="background-color:#E5F1FF;">
+      <div align="center"><a href="#" class="c">请选择城市所在省份</a></div>
+</div>
+
+<div style="background-color:#ffffff;">
+    <div  style="text-align:left;background-image:url('image/bj2.gif');background-repeated:no-repeat;">
+  <ul id="more">
+    <li><a href="dis.do?pid=010101" class="c">北京</a>|<a href="dis.do?pid=010126" class="c">上海</a>|<a href="dis.do?pid=010129" class="c">天津</a></li>
+    <li><a href="dis.do?pid=010104" class="c">重庆</a>|<a href="dis.do?pid=010116" class="c">吉林</a>|<a href="dis.do?pid=010113" class="c">黑龙江</a></li>
+    <li><a href="dis.do?pid=010119" class="c">辽宁</a>|<a href="dis.do?pid=010120" class="c">内蒙古</a>|<a href="dis.do?pid=010132" class="c">新疆</a></li>
+    <li><a href="dis.do?pid=010121" class="c">宁夏</a>|<a href="dis.do?pid=010122" class="c">青海</a>|<a href="dis.do?pid=010106" class="c">甘肃</a></li>
+    <li><a href="dis.do?pid=010125" class="c">陕西</a>|<a href="dis.do?pid=010130" class="c">西藏</a>|<a href="dis.do?pid=010127" class="c">四川</a></li>
+    <li><a href="dis.do?pid=010109" class="c">贵州</a>|<a href="dis.do?pid=010133" class="c">云南</a>|<a href="dis.do?pid=010124" class="c">山西</a></li>
+    <li><a href="dis.do?pid=010111" class="c">河北</a>|<a href="dis.do?pid=010123" class="c">山东</a>|<a href="dis.do?pid=010112" class="c">河南</a></li>
+    <li><a href="dis.do?pid=010102" class="c">安徽</a>|<a href="dis.do?pid=010117" class="c">江苏</a>|<a href="dis.do?pid=010114" class="c">湖北</a></li>
+    <li><a href="dis.do?pid=010115" class="c">湖南</a>|<a href="dis.do?pid=010118" class="c">江西</a>|<a href="dis.do?pid=010134" class="c">浙江</a></li>
+    <li><a href="dis.do?pid=010105" class="c">福建</a>|<a href="dis.do?pid=010128" class="c">台湾</a>|<a href="dis.do?pid=010108" class="c">广西</a></li>
+    <li><a href="dis.do?pid=010110" class="c">海南</a>|<a href="dis.do?pid=010107" class="c">广东</a>|<a href="dis.do?pid=010131" class="c">香港</a></li>
+    <li><a href="dis.do?pid=010103" class="c">澳门</a></li>
+  </ul>
+<div class="b" style="background-color:#E5F1FF; height:100%;">
+ <form action="search.do" method="post">
+  <input name="searchstr" type="text" maxlength="40">
+  <input type="submit" name="Submit" value="搜索"><br>
+  </form>
+ <span style="color: #486470;font-size: 14px;">
+输入中文地名(如：北京)拼音（如：beijing）等方式查询其他城市天气。
+</span>
+</div>
+  </div>
+</div>
+<div>
+</div>
+<div style="background-color:#ffffff; height:100%;">
+  <div align="center" ><a href="index.do" class="b">返回天气首页</a></div>
+</div>
+<div id="footer">
+
+
+<style type="text/css">
+body{
+    background-color: #FFFFFF;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+   
+}
+.a1 {
+    font-family: "新宋体";
+    font-size: 17px;
+    font-style: normal;
+    line-height: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.c1 {
+    font-family: "新宋体";
+    font-size: 18px;
+    font-style: normal;
+    line-height: 35px;
+    font-weight: normal;
+    color: #3366BF;
+    text-decoration: none;
+    
+}
+
+</style>
+
+
+<div style="background-color:#3366BF;">
+        <div align="center">
+        <a href="/guanyuwomen.jsp" class="a1" target="_top">[关于我们]</a> 
+        <a href="/shangwuhezuo.jsp" class="a1" target="_top">[商务合作]</a> 
+        <a href="/fankuiwenti.jsp" class="a1" target="_top">[反馈问题]</a> 
+        </div>
+</div>
+<div style="background-color:#E5F1FF; ">
+  <div align="center">
+  <<a href="/common/index.do" class="c1" target="_top">普版</a>>
+  |<<a href="/color/index.do" class="c1" target="_top">彩版</a>>
+  </div>
+</div>
+
+<div style="background-color:#3366BF;">
+  <div align="center">
+      <span class="z">京ICP备09031924号</span>
+  </div>
+</div>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2d57aee54c008ec65b8127778337c82a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

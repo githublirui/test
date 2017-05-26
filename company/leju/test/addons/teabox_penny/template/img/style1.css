@@ -1,0 +1,106 @@
+body {
+	font: 14px "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei", sans-serif;
+	color:#404040;
+	background-color:#fff;
+	text-align:center;
+}
+body,p,pre,blockquote,
+h1,h2,h3,h4,h5,h6,			
+dl,dt,dd,ul,ol,li,			
+form,fieldset,legend,select,
+input,textarea,button,		
+table,caption,tr,th,td {
+	margin:0;
+	padding:0;
+}
+ol,ul {
+	list-style:none;
+}
+fieldset,img {
+	border:0 none;
+}
+
+a {
+	color: #333;
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:none;
+	color:#ff9900
+}
+input,button,textarea,select,option {
+	font-family:inherit;
+	font-size:100%;	
+	outline: 0;
+}
+textarea {
+	overflow: auto;
+	resize: none;
+}
+.g_clear{clear:both;font-size:0;line-height:0;padding:0;margin:0;height:0}
+
+
+.title{padding:10px 0;font-weight:600;font-size:20px;color:#000}
+.sub_title{text-align:left;padding:0 10px;font-weight:600;font-size:16px;color:#999;}
+
+.g_price{color:#cc0000}
+.g_price_no{color:#888;text-decoration:line-through; }
+
+.ipt{margin:0px;border:1px solid #ccc;background:#fff;padding:4px;font-size:16px}
+.ipt_big{padding:8px 4px;font-size:18px}
+
+.btn{
+    display: inline-block;
+    width: 98%;
+    font-weight: normal;
+    cursor: pointer;
+    background-image: none;
+    white-space: nowrap;
+    padding: 7px 0;
+    font-size: 16px;
+    line-height: 240%;
+    color: #fff;
+    background-color: #54D09F;
+    text-decoration: none;
+    outline: 0;
+    -webkit-transition: background-color 0.15s;
+}
+.btn:hover{
+    color:#eee
+}
+@-webkit-keyframes btn_flash{from{background-color:#90e0c1}to{background-color:#34bd87}}
+.btn_trans {
+  background-color: transparent;
+  -webkit-animation: btn_flash .75s ease-in-out 0s infinite alternate;
+}
+
+.warp{width:640px;margin: 0 auto}
+
+.share{padding:20px;background:#f5f5f5;color:#777}
+.share p{padding-top:15px;line-height:180%;}
+.share .i_total span{color:#ff6666;font-weight:500;font-size:18px;padding:0 5px;}
+
+.pay_ok{background:url(ok.png) no-repeat;background-size:32px;display:inline-block;height:32px;padding-left:42px;line-height:32px;font-size:18px;font-weight:400;color:#666}
+
+.logo img{width:310px}
+
+.menu{padding-bottom:20px;}
+.menu a{margin:20px 0 0 0}
+
+
+.winpop{width:100%;height:100%;position: fixed; z-index: 8100; top: 0; left:0;}
+.mask{top: 0; left: 0;width: 100%;height: 100%;z-index: 1001;overflow: hidden;position: fixed;background: #999;opacity: 0.5;filter: alpha(opacity=50);}
+.share_banner{z-index: 1002;position: absolute;}
+.share_banner img{width:100%}
+
+.contact{background:#fff;left:50%;top:50%;margin-top:-160px;margin-left:-110px;text-align:center;width:220px;height:320px;z-index: 1003;position: absolute;}
+.contact img{width:200px;}
+.contact p{height:20px;line-height:20px;font-size:16px;}
+
+.footer {width: 100%;padding: 10px 0 30px 0;text-align: center;z-index: 10;background-color: #fff;}
+
+
+
+@media screen and (max-width: 620px) {
+  .warp {width:100%;}
+}

@@ -1,0 +1,17 @@
+{
+	"file":"Enemysheet.png",
+	"frames":
+	{
+		"enemy_png":
+		{
+			"h":1053,
+			"offX":1,
+			"offY":1,
+			"sourceH":1055,
+			"sourceW":1915,
+			"w":1913,
+			"x":2,
+			"y":2
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"file":"Loadingsheet.png",
+	"frames":
+	{
+		"loading_png":
+		{
+			"h":82,
+			"offX":1,
+			"offY":1,
+			"sourceH":84,
+			"sourceW":225,
+			"w":223,
+			"x":2,
+			"y":2
+		}
+	}
+}

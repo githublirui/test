@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <link href="style.css" rel="stylesheet">
+
+    <script src="../lib/jquery-1.11.1.js"></script>
+    <script src="../lib/jquery.easing-1.3.js"></script>
+    <script src="../lib/jquery.easing.compatibility.js"></script>
+    <script src="../lib/jquery.mousewheel-3.1.12.js"></script>
+    <script src="../src/jquery.jcarousellite.js"></script>
+    <!--<script src="../src/jquery.jcarousellite.min.js"></script>-->
+</head>
+<body>
+
+<div id="jcl-demo">
+    <p>
+        Test: Modern easing names
+    </p>
+
+    <div class="custom-container">
+        <button class="prev">&laquo;</button>
+        <div class="carousel">
+            <ul>
+                <li><img src="image/0.jpg"></li>
+
+                <li><img src="image/1.jpg"></li>
+                <li><img src="image/2.jpg"></li>
+                <li><img src="image/3.jpg"></li>
+                <li><img src="image/4.jpg"></li>
+
+                <li><img src="image/5.jpg"></li>
+                <li><img src="image/6.jpg"></li>
+                <li><img src="image/7.jpg"></li>
+            </ul>
+        </div>
+        <button class="next">&raquo;</button>
+        <div class="clear"></div>
+    </div>
+
+    <pre>
+        $(".carousel").jCarouselLite({
+            btnNext: ".next",
+            btnPrev: ".prev",
+            scroll: 1,
+            speed: 800,
+            easing: "easeOutBounce"
+        });
+    </pre>
+
+    <script type="text/javascript">
+        $(".carousel").jCarouselLite({
+            btnNext: ".next",
+            btnPrev: ".prev",
+            scroll: 1,
+            speed: 800,
+            easing: "easeOutBounce"
+        });
+    </script>
+
+    </div>
+</body>
+
+</html>

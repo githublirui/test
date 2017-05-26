@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>滨湖向上城</title>
+<link href="../addons/hleiya_xsc/template/css/main.css" rel="stylesheet"/>
+<link href="../addons/hleiya_xsc/template/css/animate.css" rel="stylesheet"/>
+<meta name="viewport" id="viewport" content="width=device-width,user-scalable=no">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<script type="text/javascript" src="../addons/enjoy_back/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="../addons/enjoy_back/public/js/layer/layer.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+
+<body>
+<header><img src="../addons/hleiya_xsc/template/img/header_bg.png" height="10" width="100%"></header>
+<section class="index_sec">
+	<div class="page4_text1 fadeInUpBig"> </div>
+   
+  恭喜你获得： {$total_fee}元
+    <div class="page4_btn bounceIn ">
+    	<a href="" class="page4_btnf"></a>
+        
+    </div>
+    
+</section>
+
+{php require_once IA_ROOT."/addons/hleiya_xsc/jssdk.class.php";$weixin = new jssdk($jie='0',$url='');$wx = $weixin->get_sign();}
+<script>
+var share_desc="现{$num}人参加了活动";
+var title="{$user['nickname']}:投资了滨湖向上城，分分钟赚了{php echo ($user['money']/100)}元现金。还不来抢";
+wx.config({
+    debug: false, 
+    appId: "{$wx['appId']}",
+    timestamp: "{$wx['timestamp']}",
+    nonceStr: "{$wx['nonceStr']}",
+    signature: "{$wx['signature']}",
+    jsApiList: ['showOptionMenu','onMenuShareTimeline', 'onMenuShareAppMessage']
+});
+
+wx.ready(function () {
+    wx.showOptionMenu();
+    wx.onMenuShareTimeline({
+        title: title,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=index&m=hleiya_xsc&uidd={$uid}",
+        imgUrl: "{$user['headimgurl']}",
+		success: function () { 
+		   $.ajax({
+             type: "GET",
+             url: "index.php?i={$_W['uniacid']}&c=entry&do=ajax&dopenid=$dopenid&m=hleiya_xsc",
+             dataType: "json",
+             success: function(data){
+				 if(data.error=='0'){
+					//location.href = "index.php?i={$_W['uniacid']}&c=entry&do=share&dopenid=$dopenid&m=hleiya_xsc";
+				 }else{
+					return false;
+				 }
+                       //
+             }
+         });
+		}
+    });
+    wx.onMenuShareAppMessage({
+        title: title,
+        desc: share_desc,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=index&m=hleiya_xsc&uidd={$uid}",
+        imgUrl: "{$user['headimgurl']}",
+		success: function () { 
+		   $.ajax({
+             type: "GET",
+             url: "index.php?i={$_W['uniacid']}&c=entry&do=ajax&dopenid=$dopenid&m=hleiya_xsc",
+             dataType: "json",
+             success: function(data){
+				 if(data.error=='0'){
+					//location.href = "index.php?i={$_W['uniacid']}&c=entry&do=share&dopenid=$dopenid&m=hleiya_xsc";
+				 }else{
+					return false;
+				 }
+                       //
+             }
+         });
+		}
+    });
+
+    
+});
+
+
+</script>
+
+</body>
+</html>
+
+
+

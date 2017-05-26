@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>店铺介绍天津第一装修服务公司</title>
+        <base href="http://www.zsezt.com/u/site2/" />
+        <link rel="stylesheet" type="text/css" href="css/clear.css" />
+        <link rel="stylesheet" type="text/css" href="css/default.css" />
+        <link rel="stylesheet" type="text/css" href="/index/linjs/menu.css" />
+        <link rel="stylesheet" type="text/css" href="css/other.css" />
+        <script type="text/javascript" src="/general/js/jquery-1.3.2.js"></script>
+        <script type="text/javascript" src="/general/js/jquery.tooltip.js"></script>
+        <script type="text/javascript" src="/index/linjs/jquery.menu.pack.js"></script>
+        <script type="text/javascript" src="js/function.js"></script>
+        <script src="http://www.zsezt.com/general/js/ready3.js" type="text/javascript"></script>
+        <!--[if lte IE 6]>
+        <script type="text/javascript" src="png/DD_belatedPNG.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+
+            $(function() {
+                $(".mli").hover(function() {
+                    $(this).find("ul").stop(true, true).fadeIn("slow");
+                    $(this).find("li").hover(function() {
+                        $(this).addClass("s");
+                    }, function() {
+                        $(this).removeClass("s");
+                    });
+                }, function() {
+                    $(this).find("ul").stop(true, true).fadeOut("slow");
+                });
+
+                var options2 = {minWidth: 77, arrowSrc: 'arrow_right.gif', copyClassAttr: true, onClick: function(e, menuItem) {
+                        $.Menu.closeAll();
+                    }};
+                var items2 = [
+                    {src: '上传图片', url: '/u/member/index.php?do=album_add', target: '_blank'},
+                    {src: '发表日记', url: '/u/member/index.php?do=diary_add', target: '_blank'},
+                    {src: '发起活动', url: '/u/member/index.php?do=activities_add', target: '_blank'},
+                    {src: '发布招标', url: '/u/member/other.php?do=cossion_add', target: '_blank'},
+                    {src: '开通店铺', url: '/u/member/index.php?do=upgrade', target: '_blank'},
+                    {src: '上传作品', url: '/u/member/index.php?do=design_add', target: '_blank'},
+                    {src: '上传案例', url: '/u/member/index.php?do=case_add', target: '_blank'},
+                    {src: '发布信息', url: '/u/member/index.php?do=new_add', target: '_blank'}
+                ];
+
+                $('#menuthree').menu(options2, items2);
+
+                $.ajax({
+                    url: "/general/api.php?action=getmsgnum",
+                    cache: false,
+                    success: function(num) {
+                        if (num != "0") {
+                            $("#msgnum").css({"color": "#fff", "font-weight": "800"}).text(num);
+                        }
+                    }
+                });
+                $("#loading").ajaxStart(function() {
+                    $(this).center(140, 30).show();
+                });
+                $("#loading").ajaxStop(function() {
+                    $(this).hide();
+                });
+                $("#morecity").hover(function() {
+                    if ($(this).find("#append").size() > 0) {
+                        $(this).find("#append").stop(true, true).fadeIn();
+                    } else {
+                        var code = $("#append").clone();
+                        var dom = $(this);
+                        var offset = dom.offset();
+                        var width = dom.width() - 2;
+                        var height = dom.height();
+                        var left = offset.left;
+                        var top = offset.top + height;
+                        $(this).append(code);
+                        code.css({left: left, top: top, position: "absolute", "z-index": "9999", opacity: 1}).fadeIn();
+                    }
+                }, function() {
+                    $(this).find("#append").stop(true, true).fadeOut("slow");
+                });
+                var group = "<option value='0'>其他</option><option value='1'>通过本站认识</option><option value='2'>通过活动认识</option><option value='3'>通过朋友认识</option><option value='4'>设计师</option><option value='5'>材料商</option><option value='6'>装修公司</option><option value='7'>朋友</option><option value='8'>自定义8</option><option value='9'>自定义9</option><option value='10'>自定义10</option>";
+                $(".addfriend").click(function() {
+                    var uid = '';
+                    if (uid == "") {
+                        alert("请先登录!");
+                        return false;
+                    }
+                    var url = window.location.href;
+                    var dom = $(this);
+                    var offset = dom.offset();
+                    var left = offset.left;
+                    var top = offset.top + 20;
+                    var id = dom.attr("rel");
+                    var str = "";
+                    str += "<form action='http://www.zsezt.com/u/home/friend_add.php' method='post'>";
+                    str += '<table width="220" border="0" cellspacing="0" cellpadding="5">';
+                    str += '<tr>';
+                    str += '	<td width="40%" align="right"><a class="show_aa" id="close" style="color:#F00;" href="javascript:void(0);">[关闭]</a</td>';
+                    str += '	<td width="60%">&nbsp;</td>';
+                    str += '</tr>';
+                    str += '<tr>';
+                    str += '	<td align="right">你想说：</td>';
+                    str += '	<td><input type="text" value="" name="saytext" id="saytext" class="input_text" /><input type="hidden" value="' + url + '" name="backurl" id="backurl" class="input_text" /></td>';
+                    str += '</tr>';
+                    str += '<tr>';
+                    str += '	<td align="right">分组：</td>';
+                    str += '	<td>';
+                    str += "<select name='fri_gid'>";
+                    str += group;
+                    str += "</select>";
+                    str += '	</td>';
+                    str += '</tr>';
+                    str += '<tr>';
+                    str += '	<td>&nbsp;</td>';
+                    str += '	<td><input type="submit" name="sub_post" id="sub_post" class="input_submit" value="添加好友" /></td>';
+                    str += '</tr>';
+                    str += '</table>';
+                    str += '<input type="hidden" id="add_uid" name="add_uid" value="5923">';
+                    str += "</form>";
+                    $("#add_friend").empty().append(str).css({left: left, top: top}).show().find("#close").click(function() {
+                        $("#add_friend").hide();
+                    });
+                });
+            });
+
+        </script>
+        <style type="text/css">
+            .asdasdasd {
+                position:absolute;
+                z-index:100
+            }
+            .a a, .a {
+                color:#FFF;
+            }
+            .anyClass ul li {
+                float:left;
+                margin-right:4px;
+                background:url(images/bg/bg2.jpg) no-repeat;
+                width:74px;
+                height:60px;
+                padding:5px 5px 9px;
+                cursor:pointer;
+            }
+            .anyClass ul li.select {
+                background:url(images/bg/bg1.jpg) no-repeat;
+            }
+            .topmenu {
+                height:23px;
+                line-height:24px;
+                text-align:right;
+                width:503px;
+            }
+            .divt1 {
+                height:21px;
+                width:*;
+                float:right;
+                line-height:21px;
+                padding-left:0px;
+                text-align:center;
+                color:#fff;
+            }
+            .divt1 a {
+                color:#fff;
+            }
+            .span1 {
+                display:-moz-inline-box;
+                display:inline-block;
+                width:14px;
+                text-align:center;
+                color:#BDBDBD;
+            }
+            .divt2 {
+                height:21px;
+                color:#fff;
+                width:65px;
+                float:right;
+                line-height:21px;
+                padding-left:0px;
+                padding-right:0px;
+                text-align:left;
+                cursor:pointer;
+                background:url(/index/linimages/background/sjx.gif) no-repeat right center;
+                border:0px #ccc solid;
+            }
+        </style>
+    </head>
+    <body onunload="GUnload()">
+        <!--top star-->
+        <div id="append" style="display:none; background:#fff url(http://www.zsezt.com/index/linimages/background/city.jpg) no-repeat left 2px; width:272px; height:117px;">
+            <div style=" padding:12px 8px;">
+                <a class='clicktag' href='http://www.zsezt.com'>全国</a> | <a class='clicktag' href='http://hangzhou.zsezt.com'>杭州</a> | <a class='clicktag' href='http://shanghai.zsezt.com'>上海</a> | <a class='clicktag' href='http://beijing.zsezt.com'>北京</a> | <a class='clicktag' href='http://tianjin.zsezt.com'>天津</a> | <a class='clicktag' href='http://chongqing.zsezt.com'>重庆</a> | <a class='clicktag' href='http://huzhou.zsezt.com'>湖州</a> | <a class='clicktag' href='http://jiaxing.zsezt.com'>嘉兴</a> | <a class='clicktag' href='http://jinhua.zsezt.com'>金华</a> | <a class='clicktag' href='http://ningbo.zsezt.com'>宁波</a> | <a class='clicktag' href='http://lishui.zsezt.com'>丽水</a> | <a class='clicktag' href='http://shaoxing.zsezt.com'>绍兴</a> | <a class='clicktag' href='http://taizhou.zsezt.com'>台州</a> | <a class='clicktag' href='http://wenzhou.zsezt.com'>温州</a> | <a class='clicktag' href='http://quzhou.zsezt.com'>衢州</a> | <a class='clicktag' href='http://zhoushan.zsezt.com'>舟山</a> | <a class='clicktag' href='http://yiwu.zsezt.com'>义乌</a> | <a class='clicktag' href='http://nanjing.zsezt.com'>南京</a> | <a class='clicktag' href='http://suzhou.zsezt.com'>苏州</a> | <a class='clicktag' href='http://kunshan.zsezt.com'>昆山</a> | <a class='clicktag' href='http://wuxi.zsezt.com'>无锡</a> | <a class='clicktag' href='http://yancheng.zsezt.com'>盐城</a> | <a class='clicktag' href='http://lianyungang.zsezt.com'>连云港</a> | <a class='clicktag' href='http://nantong.zsezt.com'>南通</a> | <a class='clicktag' href='http://zhenjiang.zsezt.com'>镇江</a> | <a class='clicktag' href='http://xuzhou.zsezt.com'>徐州</a> | <a class='clicktag' href='http://changzhou.zsezt.com'>常州</a> | <a class='clicktag' href='http://yangzhou.zsezt.com'>扬州</a> | <a class='clicktag' href='http://tz.zsezt.com'>泰州</a> | <a class='clicktag' href='http://hefei.zsezt.com'>合肥</a> | <a class='clicktag' href='http://luan.zsezt.com'>六安</a> | <a class='clicktag' href='http://chuzhou.zsezt.com'>滁州</a> | <a class='clicktag' href='http://wuhu.zsezt.com'>芜湖</a> | <a class='clicktag' href='http://nanchang.zsezt.com'>南昌</a> | <a class='clicktag' href='http://yichun.zsezt.com'>宜春</a> | <a class='clicktag' href='http://guangzhou.zsezt.com'>广州</a> | <a class='clicktag' href='http://shenzhen.zsezt.com'>深圳</a> | <a class='clicktag' href='http://dongguan.zsezt.com'>东莞</a> | <a class='clicktag' href='http://huizhou.zsezt.com'>惠州</a> | <a class='clicktag' href='http://foshan.zsezt.com'>佛山</a> | <a class='clicktag' href='http://zhuhai.zsezt.com'>珠海</a> | <a class='clicktag' href='http://chaozhou.zsezt.com'>潮州</a> | <a class='clicktag' href='http://shantou.zsezt.com'>汕头</a> | <a class='clicktag' href='http://zhongshan.zsezt.com'>中山</a> | <a class='clicktag' href='http://wuhan.zsezt.com'>武汉</a> | <a class='clicktag' href='http://yichang.zsezt.com'>宜昌</a> | <a class='clicktag' href='http://changsha.zsezt.com'>长沙</a> | <a class='clicktag' href='http://hengyang.zsezt.com'>衡阳</a> | <a class='clicktag' href='http://haikou.zsezt.com'>海口</a> | <a class='clicktag' href='http://sanya.zsezt.com'>三亚</a> | <a class='clicktag' href='http://nanning.zsezt.com'>南宁</a> | <a class='clicktag' href='http://guilin.zsezt.com'>桂林</a> | <a class='clicktag' href='http://liuzhou.zsezt.com'>柳州</a> | <a class='clicktag' href='http://baise.zsezt.com'>百色</a> | <a class='clicktag' href='http://fuzhou.zsezt.com'>福州</a> | <a class='clicktag' href='http://xiamen.zsezt.com'>厦门</a> | <a class='clicktag' href='http://quanzhou.zsezt.com'>泉州</a> | <a class='clicktag' href='http://jinan.zsezt.com'>济南</a> | <a class='clicktag' href='http://qingdao.zsezt.com'>青岛</a> | <a class='clicktag' href='http://weifang.zsezt.com'>潍坊</a> | <a class='clicktag' href='http://yantai.zsezt.com'>烟台</a> | <a class='clicktag' href='http://zhengzhou.zsezt.com'>郑州</a> | <a class='clicktag' href='http://xinxiang.zsezt.com'>新乡</a> | <a class='clicktag' href='http://nanyang.zsezt.com'>南阳</a> | <a class='clicktag' href='http://taiyuan.zsezt.com'>太原</a> | <a class='clicktag' href='http://datong.zsezt.com'>大同</a> | <a class='clicktag' href='http://shenyang.zsezt.com'>沈阳</a> | <a class='clicktag' href='http://dalian.zsezt.com'>大连</a> | <a class='clicktag' href='http://fushun.zsezt.com'>抚顺</a> | <a class='clicktag' href='http://anshan.zsezt.com'>鞍山</a> | <a class='clicktag' href='http://shijiazhuang.zsezt.com'>石家庄</a> | <a class='clicktag' href='http://baoding.zsezt.com'>保定</a> | <a class='clicktag' href='http://zhangjiakou.zsezt.com'>张家口</a> | <a class='clicktag' href='http://langfang.zsezt.com'>廊坊</a> | <a class='clicktag' href='http://tangshan.zsezt.com'>唐山</a> | <a class='clicktag' href='http://changchun.zsezt.com'>长春</a> | <a class='clicktag' href='http://jilin.zsezt.com'>吉林</a> | <a class='clicktag' href='http://haerbin.zsezt.com'>哈尔滨</a> | <a class='clicktag' href='http://qiqihaer.zsezt.com'>齐齐哈尔</a> | <a class='clicktag' href='http://daqing.zsezt.com'>大庆</a> | <a class='clicktag' href='http://chengdu.zsezt.com'>成都</a> | <a class='clicktag' href='http://xian.zsezt.com'>西安</a> | <a class='clicktag' href='http://mianyang.zsezt.com'>绵阳</a> | <a class='clicktag' href='http://xianyang.zsezt.com'>咸阳</a> | <a class='clicktag' href='http://guiyang.zsezt.com'>贵阳</a> | <a class='clicktag' href='http://kunming.zsezt.com'>昆明</a> | <a class='clicktag' href='http://yinchuan.zsezt.com'>银川</a> | <a class='clicktag' href='http://huhehaote.zsezt.com'>呼和浩特</a> | <a class='clicktag' href='http://baotou.zsezt.com'>包头</a> | <a class='clicktag' href='http://luoyang.zsezt.com'>洛阳</a> | <a class='clicktag' href='http://xining.zsezt.com'>西宁</a> | <a class='clicktag' href='http://lanzhou.zsezt.com'>兰州</a> | <a class='clicktag' href='http://wulumuqi.zsezt.com'>乌鲁木齐</a> | <a class='clicktag' href='http://lasa.zsezt.com'>拉萨</a> | 	</div>
+        </div>
+        <div id="add_friend" class="asdasdasd" style=" display:none;background:rgb(255, 253, 196); width: 230px; border: 4px solid rgb(238, 218, 106); padding: 10px; height: 200px; opacity: 1;"></div>
+        <div id="loading" style="display:none;background:#fff url(http://www.zsezt.com/u/member/image/loading.gif) no-repeat left center; padding:5px; height:30px; line-height:30px; padding-left:20px; color:red; position:absolute; width:140px;">数据加载中, 请稍等!</div>
+        <div id="msg_append"><img src="images/msg_box.png" /></div>
+        <table width="980" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+            <tr>
+                <td width="147" height="42" align="right"><a href="http://www.zsezt.com"><img src="images/index_02.jpg" width="120" height="42" alt="装饰E站通" /></a></td>
+                <td width="314" height="42" align="center">
+                    <table width="286" border="0" cellpadding="0" cellspacing="0" style="margin-top:5px;">
+                        <tr>
+                            <td width="286" height="20" align="center" class="wzljbj"><a href="http://www.zsezt.com/know/" class="wzlj">了解装修</a> | <a href="http://www.zsezt.com/xuanren/" class="wzlj">选人/公司</a> | <a href="http://www.zsezt.com/xuancai/" class="wzlj">选材/商家 </a>| <a href="http://www.yijiaqin.com/" class="wzlj">家居生活 </a></td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="519" align="right" class="a">
+                    <div class="topmenu">
+                        <div class="divt1"><a href="http://www.zsezt.com/">返回首页</a><span class="span1"></span></div>
+                        <div class="divt1"><span class="span1">|</span><a href="http://www.zsezt.com/about/map.html">网站地图</a><span class="span1">|</span></div>
+                        <div class="divt2" id="menuthree">我要发布</div>
+                        <div class="divt1"><a href="http://www.zsezt.com/user/">我的E站通</a><span class="span1">|</span></div>
+                        <div class="divt1"><a href="http://www.zsezt.com/u/member/register.php">注册</a><span class="span1">|</span></div>
+                        <div class="divt1"><a href="http://www.zsezt.com/u/member/login.php">登录</a><span class="span1">|</span></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="984" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+            <tr>
+                <td height="93" colspan="3" valign="top" background="images/index_07.jpg">
+                    <div style="position:relative; overflow:hidden; width:100%;">
+                        <table width="960" border="0" align="center" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="661" height="78" valign="middle">
+                                    <div class="lx" style="margin-top:0px;"></div>
+                                    <div class="" style=" margin-left:14px;margin-top:0px;"><span class="gsm">
+                                            <h1 style="display:inline;"><a href="http://www.zsezt.com/team/index-96.html" style="color:#fff;font-size:20px;">
+                                                    天津第一装修服务公司							</a></h1>
+                                            (装修/装饰公司)</span>						<p><span class="hui">
+                                                <a style='color:#ccc;' href='http://vip96.zsezt.com'>vip96.zsezt.com</a>&nbsp;&nbsp;<a href='/u/member/index.php?do=about' style='color:#ccc'><img src='../member/image/jt.gif' width='4' height='7' />&nbsp;申请个性域名</a>							&nbsp;<a href="javascript:void(0);"  class="addfriend">好友(<span style="color:#ff6100;">0</span>)</a> <a href="javascript:void(0);" class="siterec">推荐(<span style="color:#ff6100;">0</span>)</a> <a class="siteshare" href="javascript:void(0);">分享(<span style="color:#ff6100;">0</span>)</a></span></p>
+                                    </div>
+                                    <!-- 			<span class="gsm">天津第一装修服务公司(装修/装饰公司)<img src="images/tjh.gif" width="35" height="17" /> </span><br />
+                                   http://zsezt.yguomeiqijian.com&nbsp;&nbsp;&nbsp;<a href="#" class="hui"> 委托设计</a> <a href="#" class="hui">分享</a> <a href="#" class="hui">收藏</a> --> 
+                                </td>
+                                <td width="300">&nbsp;</td>
+                            </tr>
+                        </table>
+                        <div style="position:absolute; right:40px; top:10px; width:300px; height:50px; background:#2d2d2c; opacity:0.6; padding:10px 20px;"> </div>
+                        <div style="position:absolute; right:40px; top:10px; width:300px; height:50px; padding:10px 20px; text-align:center;">
+                            <p style="line-height:25px; color:#FFF;">诚信值：<span style="color:#fff; font-size:14px;" title="该会员未开通e信通, 暂无信誉档案">未开通</span>&nbsp;&nbsp;保证金：<span style="color:#fff; font-size:14px;" title="该会员未开通保障服务">未开通</span></p>
+                            <p><a href="javascript:void(0);" class="addyuyue"><img src="images/yuyue2.gif" alt="马上预约" width="79" height="23" align="absmiddle" /></a>
+                                &nbsp;<a class="openqq" style="color:#fff" href="javascript:;" rel="http://wpa.qq.com/msgrd?v=3&uin=保密&site=qq&menu=yes" title="QQ联系"><img src="images/qq.gif" alt="" width="21" height="21" align="absmiddle" /> 和我联系</a>
+                            </p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="8"><img src="images/index_09.jpg" width="9" height="31" alt="" /></td>
+                <td width="967" align="center" background="images/index_10.jpg" class="dh">
+                    <ul class="menu2 clearfix">
+                        <li class="mli"><a href="/team/index-96.html">首页</a></li>
+                        <li class="mli"><a href="/team/works-96.html">设计作品</a></li>
+                        <li class="mli"><a href="/team/case-96.html">项目案例</a></li>
+                        <li class="mli"><a href="/team/product-96.html">产品信息</a></li>
+                        <li class="mli"><a href="/team/news-96.html">新闻活动</a>
+                            <ul class="smenu clearfix" style="width:210px;">
+                                <li><a href="/team/cuxiao-96.html">活动促销</a></li>
+                                <li><a href="/team/news-96.html">新闻动态</a></li>
+                            </ul>
+                        </li>
+                        <li class="mli"><a href="/team/about-96.html">店铺介绍</a>
+                            <ul class="smenu clearfix" style="width:490px;">
+                                <li><a href="/team/about-96.html">店铺介绍</a></li>
+                                <li><a href="/team/brand-96.html">经营品牌</a></li>
+                                <li><a href="/team/team-96.html">精英团队</a></li>
+                                <li><a href="/team/wangdian-96.html">营销网点</a></li>
+                                <li><a href="/team/rongyu-96.html">资质荣誉</a></li>
+                                <li><a href="/team/job-96.html">招聘信息</a></li>
+                            </ul>
+                        </li>
+                        <li class="mli"><a href="/team/friend-96.html">合作伙伴</a></li>
+                        <li class="mli"><a href="/team/guestbook-96.html">留言板</a></li>
+                        <li class="mli"><a href="/team/creditevaluate-96.html">用户点评</a></li>
+                        <li class="mli"><a href="/team/creditindex-96.html">信誉档案</a></li>
+                        <li class="mli" style="background:none;"><a href="/team/about-96.html">联系方式</a></li>
+                    </ul>
+                </td>
+                <td width="9"><img src="images/index_12.jpg" width="9" height="31" alt="" /></td>
+            </tr>
+        </table>
+        <!--top end--> 
+        <!--广告1 star--> 
+        <!-- <table width="984" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+        <tr>
+         <td><img src="images/index_15.jpg" width="984" height="80" alt="" /></td>
+        </tr>
+        </table> --> 
+        <!--广告1 end-->
+        <table width="984" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="258" align="center" valign="top">
+                    <script type="text/javascript">
+                      var group = "<option value='0'>其他</option><option value='1'>通过本站认识</option><option value='2'>通过活动认识</option><option value='3'>通过朋友认识</option><option value='4'>设计师</option><option value='5'>材料商</option><option value='6'>装修公司</option><option value='7'>朋友</option><option value='8'>自定义8</option><option value='9'>自定义9</option><option value='10'>自定义10</option>";
+                      $(function() {
+                          $("#gb_post").submit(function() {
+                              if ($("#zs_userid").val() == "") {
+                                  alert("你还没有登录,不能使用留言功能!");
+                                  return false;
+                              }
+                              if ($("#message").val() == "") {
+                                  alert("请填写留言信息!");
+                                  $("#message").focus();
+                                  return false;
+                              }
+                          });
+
+                          var nuserid = "";
+                          var nid = "96";
+                          var isext = "2";
+
+                          $(".siterec").click(function() {
+                              if (nuserid == "") {
+                                  $.alert("你还没有登录!");
+                                  return false;
+                              }
+                              $.ajax({
+                                  url: "http://www.zsezt.com/general/ajax.php?action=addrec&ntable=site&nid=" + nid + "&nuserid=" + nuserid,
+                                  cache: false,
+                                  success: function(html) {
+                                      $.alert(html);
+                                  }
+                              });
+                          });
+
+                          $(".siteshare").click(function() {
+                              if (nuserid == "") {
+                                  $.alert("你还没有登录!");
+                                  return false;
+                              }
+                              $.ajax({
+                                  url: "http://www.zsezt.com/general/ajax.php?action=addshare&ntable=site&nid=" + nid + "&nuserid=" + nuserid,
+                                  cache: false,
+                                  success: function(html) {
+                                      $.alert(html);
+                                  }
+                              });
+                          });
+
+                          $(".sitefav").click(function() {
+                              if (nuserid == "") {
+                                  $.alert("你还没有登录!");
+                                  return false;
+                              }
+                              $.ajax({
+                                  url: "http://www.zsezt.com/general/ajax.php?action=addfav&ntable=" + ntable + "&nid=" + nid + "&nuserid=" + nuserid,
+                                  cache: false,
+                                  success: function(html) {
+                                      $.alert(html);
+                                  }
+                              });
+                          });
+                          $(".openqq").click(function() {
+                              if (isext == 3) {
+                                  var url = $(this).attr("rel");
+                                  window.open(url);
+                                  return false;
+                              } else {
+                                  $(".noe").center(368, 231).show();
+                                  $(".noe").find("#Map").find("area:last").attr("href", "http://www.zsezt.com/e/e_exintong.html");
+                                  $(".noe_close").click(function() {
+                                      $(".noe").hide();
+                                  });
+                                  return false;
+                              }
+                          });
+                          $(".addyuyue").click(function() {
+                              if (nuserid == "") {
+                                  alert("你还没有登录,不能使用预约功能!");
+                                  return false;
+                              } else if (isext == 3) {
+                                  $.win();
+                                  return false;
+                              } else {
+                                  $.noe();
+                                  return false;
+                              }
+                          });
+                      });
+                    </script>
+                    <table width="258" border="0" align="center" cellpadding="5" cellspacing="0" class="kuang" style="margin-bottom:5px;">
+                        <tr>
+                            <td colspan="2" align="center" valign="middle">
+                                <div style="padding:10px;"><img src="/u/member/uploadimg/memberinfor/uid5923/201202/2012-02-27_kWkIblhqOaBKqiqd_small.jpg" width="220" height="110" alt="" /></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" valign="middle">天津第一装修服务公司</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" valign="middle"><a href="javascript:void(0);" class="addyuyue"><img src="images/yuyue.jpg" width="108" height="30" alt="" /></a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" valign="middle"><span style="color:#FFFFFF">联系人：<a href="http://www.zsezt.com/uid96" class="xhx">张立工</a>&nbsp;&nbsp;
+                                    <span style='background:url(../member/image/offline.gif) no-repeat 0px center;'><a href='#' title='离线'>&nbsp;&nbsp;　</a></span>		| </span> <span style="background:url(images/xiex.gif) no-repeat 0px center;"><a href="/u/member/index.php?do=msg&amp;uid=&amp;pmsend=yes&amp;toid=96" title="站内信">&nbsp;&nbsp;　</a></span> | <span style="background:url(../member/image/wall.gif) no-repeat 0px center;"><a href="guestbook.php?uid=96" title="留言">&nbsp;&nbsp;　</a></span>
+                                | <span style="background: url(images/qq.gif) no-repeat 0px center;"><a class="openqq" style="color:red" href="javascript:;" rel="http://wpa.qq.com/msgrd?v=3&amp;uin=保密&amp;site=qq&amp;menu=yes" title="QQ联系" target="_blank">&nbsp;&nbsp;　</a></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" style="background:url(images/line.gif) repeat-x center;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="86" align="right">诚信值：</td>
+                            <td width="152" align="left" style="font-size:14px; font-family:'微软雅黑'; color:#fff; font-weight:bold;" title="该会员未开通e信通, 暂无信誉档案">无信誉档案</td>
+                        </tr>
+                        <tr>
+                            <td align="right">会员认证：</td>
+                            <td align="left">
+                                <img src="images/extsm.gif" width="51" height="17" alt="" title="通过实名认证" /> <a href="/e/e_jieshao.html" title="该会员未开通e信通, 推荐与e信通会员交易, 确保安全"><img src="../../general/newimage/e/noext.gif" width="42" height="21" alt=""  /></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">会员保障：</td>
+                            <td align="left" valign="top">
+                                <a href="/e/e_baozhang.html" target="_blank">未开通保障服务</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">保证金：</td>
+                            <td align="left" valign="top">
+                                <p style="font-size:14px; font-family:'微软雅黑'; color:#ff6100; font-weight:bold;">￥888.04</p>
+                                <p>支持<a style="color:#0174aa;" href="http://www.zsezt.com/e/e_peifu.html">先行赔付</a>，保障装修安全</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">荣誉证书：</td>
+                            <td align="left"  style="font-size:14px; font-family:'微软雅黑'; color:#ff6100; font-weight:bold;">
+                                <a href="/team/rongyu-96.html">0项</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" style="background:url(images/line.gif) repeat-x center;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td align="right">会员类型：</td>
+                            <td align="left">装修/装饰公司</td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top" nowrap="nowrap">主要专长：</td>
+                            <td align="left" valign="top">住宅公寓,酒店宾馆,机场车船站,图书馆,学校</td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">联系地址：</td>
+                            <td align="left" valign="top">天津市-市辖区-和平区 天津市和平区人民路323号 </td>
+                        </tr>
+                        <tr>
+                            <td align="right">联系电话：</td>
+                            <td align="left" style="font-size:14px; font-family:'微软雅黑'; color:#ff6100; font-weight:bold;">保密</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center" style="background:url(images/line.gif) repeat-x center;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table width="210" border="0" cellspacing="0" cellpadding="5" style="width:210px; margin:0 auto;">
+                                    <tr>
+                                        <td><img src="images/tb1.gif" alt="" width="18" height="12" align="absmiddle" /> 作品(<span style="color:#ff6100;">1</span>)</td>
+                                        <td><img src="images/tb2.gif" alt="" width="21" height="14" align="absmiddle" /> 项目(<span style="color:#ff6100;">9</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="images/tb3.gif" alt="" width="15" height="17" align="absmiddle" /> <a href="javascript:void(0);"  class="addfriend">好友(<span style="color:#ff6100;">0</span>)</a></td>
+                                        <td><img src="images/tb4.gif" alt="" width="15" height="15" align="absmiddle" /> <a class="siteshare" href="javascript:void(0);">分享(<span style="color:#ff6100;">0</span>)</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="images/tb5.gif" alt="" width="15" height="15" align="absmiddle" /> <a href="javascript:void(0);" class="siterec">推荐(<span style="color:#ff6100;">0</span>)</a></td>
+                                        <td><a href="#">投诉该会员</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>访问人数:41469人</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--基本信息 end--> 
+                    <!--广告2 star
+                    <table width="258" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                    <tr>
+                     <td><img src="images/index_74.jpg" width="258" height="75" alt="" /></td>
+                    </tr>
+                    </table>
+                    广告2 end-->
+                    <table width="258" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="9" align="center" valign="top"></td>
+                <td width="719" align="center" valign="top">
+                    <!--作品展示 star-->
+                    <table width="719" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                        <tr>
+                            <td width="10" align="left" background="images/index_78.jpg"><img src="images/index_77.jpg" width="2" height="26" alt="" /></td>
+                            <td width="698" align="left" background="images/index_78.jpg"><strong><font color="#FFFFFF">店铺介绍</font></strong></td>
+                            <td width="11" align="right" background="images/index_78.jpg"><img src="images/index_80.jpg" width="2" height="26" alt="" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center" class="kuang">
+                                <table width="695" border="0" cellpadding="0" cellspacing="0" style=" margin-top:10px; margin-bottom:15px;">
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <style type="text/css">
+                                                dl, dt, dd { margin:0; padding:0}
+                                                dl { width:690px;}
+                                                dt { width:10%; float:left; font-weight:800;}
+                                                dd { width:90%; float:left;}
+                                            </style>
+                                            <p><strong>店铺全称：</strong> <strong>天津第一装修服务公司</strong></p>
+                                            <!--<p><strong>店铺简称：</strong>< ? echo $zs_fendianname; ?></p>-->
+                                            <p><strong>成立日期：</strong>2010-05-12</p>
+                                            <p><strong>所属地区：</strong>天津市-市辖区-和平区</p>
+                                            <p><strong>店铺类型：</strong>装修/装饰公司</p>
+                                            <p><strong>店铺简介：</strong></p>
+                                            <p style="padding-left:63px;">天津第一装修服务公司专业住宅公寓,酒店宾馆,机场车船站,图书馆,学校服务</p>
+                                            <p><strong>专长：</strong>住宅公寓,酒店宾馆,机场车船站,图书馆,学校</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="719" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                        <tr>
+                            <td width="10" align="left" background="images/index_78.jpg"><img src="images/index_77.jpg" width="2" height="26" alt="" /></td>
+                            <td width="698" align="left" background="images/index_78.jpg"><strong><font color="#FFFFFF">联系方式</font></strong></td>
+                            <td width="11" align="right" background="images/index_78.jpg"><img src="images/index_80.jpg" width="2" height="26" alt="" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center" class="kuang">
+                                <table width="695" border="0" cellpadding="0" cellspacing="0" style=" margin-top:10px; margin-bottom:15px;">
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <style type="text/css">
+                                                dl, dt, dd { margin:0; padding:0}
+                                                dl { width:690px;}
+                                                dt { width:10%; float:left; font-weight:800;}
+                                                dd { width:90%; float:left;}
+                                            </style>
+
+                                            <p><span style="letter-spacing:6px;">联系</span>人：张立工<br />联系电话：保密<br />传    真：保密<br />联系手机：<br />邮政编码：保密<br />电子邮件：保密<br />QQ：保密<br />MSN：保密<br />联系地址：天津市-市辖区-和平区天津市和平区人民路323号<br />公司网址：www.zsezt.com/team/index-96.html <br /> </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <a name="map"></a>
+                    <table width="719" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                        <tr>
+                            <td width="10" align="left" background="images/index_78.jpg"><img src="images/index_77.jpg" width="2" height="26" alt="" /></td>
+                            <td width="698" align="left" background="images/index_78.jpg"><strong><font color="#FFFFFF">地图</font></strong></td>
+                            <td width="11" align="right" background="images/index_78.jpg"><img src="images/index_80.jpg" width="2" height="26" alt="" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="kuang">
+                                <div id="map_canvas" style="width: 700px; height: 500px"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        ﻿<div class="noe">
+            <div class="noe_title clearfix"><span class="noe_close"><img src="http://www.zsezt.com/u/member/general/images/msg/x.jpg" width="43" height="18" alt="关闭窗口" /></span>
+                <h5>装饰E站通 - 提示</h5>
+            </div>
+            <div class="noe_content"><img src="images/other/e.jpg" alt="" width="397" height="175" border="0" usemap="#Map" />
+                <map name="Map" id="Map">
+                    <area shape="rect" coords="63,96,156,118" href="http://www.zsezt.com/xuanren/sort-group-7.html" target="_blank" />
+                    <area shape="rect" coords="179,97,327,117" href="http://www.zsezt.com/u/member/other.php?do=cossion_add" target="_blank" />
+                    <area shape="rect" coords="252,147,312,159" href="/about/e.html" target="_blank" />
+                </map>
+            </div>
+        </div>
+        <div class="yuyue">
+            <div class="yuyue_title clearfix"><span class="yuyue_close"><img src="http://www.zsezt.com/u/member/general/images/msg/x.jpg" width="43" height="18" alt="关闭窗口" /></span>
+                <h5>装饰E站通 - 预约申请提交</h5>
+            </div>
+            <div class="yuyue_content">
+                <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td align="right"><strong>预约店铺：</strong></td>
+                        <td>张立工</td>
+                    </tr>
+                    <tr>
+                        <td align="right"><strong>负责人：</strong></td>
+                        <td>张立工</td>
+                    </tr>
+                    <tr>
+                        <td align="right"><strong>姓名：</strong></td>
+                        <td>
+                            <input name="zs_name" type="text" class="input_text" id="zs_name" style="width:100px;" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"><strong>电话：</strong></td>
+                        <td>
+                            <input name="zs_tel" type="text" class="input_text" id="zs_tel" style="width:100px;" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"><strong>Q Q：</strong></td>
+                        <td>
+                            <input name="zs_qq" type="text" class="input_text" id="zs_qq" style="width:100px;" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"><strong>邮箱：</strong></td>
+                        <td>
+                            <input name="zs_email" type="text" class="input_text" id="zs_email" style="width:100px;" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"><strong>预约内容：</strong></td>
+                        <td>
+                            <textarea name="zs_note" cols="40" rows="5" class="input_text" id="zs_note" style="width:200px;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input name="zs_userid" id="zs_userid" type="hidden" value="" />
+                            <input name="zs_touser" id="zs_touser" type="hidden" value="96" />
+                            <input name="usersubmit" type="submit" class="input_submit" id="usersubmit" value="提交" />
+                            &nbsp;&nbsp; <span id="msgs"></span> </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td bgcolor="#000000" height="5"></td>
+            </tr>
+            <tr>
+                <td height="50" bgcolor="#8A8A8A" align="center"><a href="http://www.zsezt.com/about/about.html" target="_blank">关于E站通</a> ┊ <a href="http://www.zsezt.com/about/map.html" target="_blank">网站地图</a> ┊ <a href="http://www.zsezt.com/about/banner.html" target="_blank">广告合作</a> ┊ <a href="http://www.zsezt.com/about/copyright.html" target="_blank">版权声明</a> ┊ <a href="http://www.zsezt.com/about/links.html" target="_blank">友情链接</a><br>
+                        <font color="red">装饰E站通网站电话：0571-87175045 </font> 欢迎光临装饰E站通中国最大的<a href="http://www.zsezt.com/">装修设计</a>网站<br>推荐栏目：<a href="http://www.zsezt.com/u/" target="_blank">互动空间</a><a href="http://www.zsezt.com/xiaoguotu/" target="_blank">装修效果图</a><a href="http://www.zsezt.com/design/" target="_blank">室内设计师</a><a href="http://www.zsezt.com/diary/" target="_blank">装修日记</a><a href="http://www.zsezt.com/tuku/" target="_blank">装修图库</a><a href="http://www.zsezt.com/know/steps-8.html" target="_blank">装修步骤</a><a href="http://www.zsezt.com/xuancai/sort.php" target="_blank">建材市场</a><br>
+                                <a href="http://www.zsezt.com/" target="_blank">装饰E站通</a> <a href="http://hangzhou.zsezt.com/" target="_blank">杭州装修网</a> <a href="http://www.zsezt.com/xuanren/" target="_blank">装修公司</a> <a href="http://hangzhou.zsezt.com/xuanren/" target="_blank">杭州装修公司</a> <a href="http://www.zsezt.com/design/" target="_blank">室内设计师</a> <a href="http://hangzhou.zsezt.com/design/" target="_blank">杭州室内设计师</a> <a href="http://hangzhou.zsezt.com/shigong/" target="_blank">杭州施工队</a>
+                                <div style="display:none"><script src="http://s140.cnzz.com/stat.php?id=1080581&web_id=1080581&show=pic" language="JavaScript" charset="gb2312"></script></div><script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa54fe975eb3edba0213bcf8dccb8cdde' type='text/javascript'%3E%3C/script%3E"));
+                                </script> </td>
+                                </tr>
+                                </table>
+                                </body>
+                                </html>

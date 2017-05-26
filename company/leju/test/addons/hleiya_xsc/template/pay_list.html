@@ -1,0 +1,93 @@
+{template 'common/header'}
+
+<div class="main">
+	
+<style>
+.label{cursor:pointer;}
+</style>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">筛选</div>
+        <div class="panel-body">
+            <form action="./index.php" method="get" class="form-horizontal" role="form">
+                <input type="hidden" name="c" value="site">
+                <input type="hidden" name="a" value="entry">
+                <input type="hidden" name="eid" value="{$eid}">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">序号</label>
+                    <div class="col-sm-6 col-md-8 col-lg-8 col-xs-12">
+                        <input type="text" class="form-control" name="sort" class="" value="{$_GPC['sort']}" />
+                    </div>
+                </div>
+               
+                <div class="form-group">
+
+                    <div class="pull-right col-xs-12 col-sm-3 col-md-2 col-lg-2">
+                        <button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body table-responsive">
+            
+            <div class="col-sm-12">
+                <button class="btn btn-primary" onclick="clearPay()">清空记录</button>
+            </div>
+
+            <table class="table table-hover">
+                <thead class="navbar-inner">
+                    <tr>
+                        <th>序号</th>
+                        <th>昵称</th>
+                        <th>消费</th>
+                        <th>时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {loop $list $key $v}
+                    <tr>
+                        <td><span class="text-info">{$v['sort']}</span></td>
+                        <td><span class="text-info"><img src="{if !empty($v['headimgurl'])}{$v['headimgurl']}{else}resource/images/noavatar_middle.gif{/if}" width="48">&nbsp;&nbsp;&nbsp;{$v['nickname']}</span></td>
+                        <td><span class="text-info">{$v['total_fee']}元</span></td>
+                        <td><span class="text-info">{php echo date('Y-m-d H:i:s', $v['dateline']);}</span></td>
+                    </tr>
+                    {/loop}
+                </tbody>
+                
+            </table>
+            
+            
+            
+        </div>
+
+        
+
+	</div>
+
+    {$pager}
+
+</div>
+<script>
+function clearPay(){
+    if (!confirm('确定要清空吗?')){
+        return false;
+    }else{
+        $.ajax({
+            url: "{php echo wurl('site/entry/clearpay',array('m'=>'teabox_penny','op'=>'clearpay','item'=>'ajax'));}",
+            type: 'GET',
+            success:function(res){
+                location.reload();
+            },
+            error:function(){
+                alert('ajax error');
+            }
+        });
+    }
+}
+</script>
+
+
+{template 'common/footer'}

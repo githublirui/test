@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$setting['title']}</title>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="../addons/teabox_penny/template/img/style.css">
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+
+<script type="text/javascript">
+function jsApiCall()
+{
+    WeixinJSBridge.invoke(
+        'getBrandWCPayRequest',
+        {$jsApiParameters},
+        function(res){
+            WeixinJSBridge.log(res.err_msg);
+            //alert(res.err_code+res.err_desc+res.err_msg);
+            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                location.href = "index.php?i={$_W['uniacid']}&c=entry&do=share&m=teabox_penny";
+            }else if(res.err_msg == "get_brand_wcpay_request:cancel" ) {
+                alert('取消支付');
+                location.href = "index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny";
+            }else if(res.err_msg == "get_brand_wcpay_request:fail" ) {
+                alert('支付失败');
+                location.href = "index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny";
+            }
+        }
+    );
+}
+
+function callpay()
+{
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+        }
+    }else{
+        jsApiCall();
+    }
+}
+
+
+</script>
+
+</head>
+<body>
+<div class="warp">
+    <div class="share">
+        <div class="pay_ok">支付成功！</div>
+        <p class="i_total">你是第<span>{$payinfo['sort']}</span>个为“{$setting['pay_over_title']}”支付的人</p>
+        <p>{php echo  str_replace("\n","<br />",$setting['pay_over_content']);}</p>
+    </div>
+</div>
+
+<div class="menu">
+    <a href="javascript:void(0);" class="btn" onclick="callpay();">再次支付</a>
+    <a href="javascript:void(0);" class="btn" onclick="show_share();">分享给朋友</a>
+    <a href="javascript:void(0);" class="btn" onclick="show_contact();">联系我们</a>
+</div>
+
+<div id="winpop" class="winpop" onclick="this.style.display='none';" style="display:none">
+    <div class="mask" style=""></div>
+    <div class="share_banner" id="shareBanner" style="display:none"><img src="{if $setting['share_banner']}{$_W['attachurl']}{$setting['share_banner']}{else}../addons/teabox_penny/template/img/share_banner.png{/if}" /></div>
+
+    <div class="contact" id="contact" style="display:none">
+        <br/>
+        <p>{$_W['account']['name']}</p>
+        <img src="{if $setting['contact_img']}{$_W['attachurl']}{$setting['contact_img']}{else}../addons/teabox_penny/template/img/contact.gif{/if}" />
+        <p>长按识别二维码添加</p>
+    </div>
+</div>
+
+<script>
+var share_desc="{$setting['share_desc']}";
+
+wx.config({
+    debug: false, 
+    appId: "{$wxConfig['appId']}",
+    timestamp: "{$wxConfig['timestamp']}",
+    nonceStr: "{$wxConfig['nonceStr']}",
+    signature: "{$wxConfig['signature']}",
+    jsApiList: ['showOptionMenu','onMenuShareTimeline', 'onMenuShareAppMessage']
+});
+
+wx.ready(function () {
+    wx.showOptionMenu();
+    wx.onMenuShareTimeline({
+        title: "目前已有{$num}人参加，{$setting['share_title']}",
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny",
+        imgUrl: "{$user['headimgurl']}"
+    });
+    wx.onMenuShareAppMessage({
+        title: "目前已有{$num}人参加，{$setting['share_title']}",
+        desc: share_desc,
+        link:"{$_W['siteroot']}app/index.php?i={$_W['uniacid']}&c=entry&do=pay&m=teabox_penny",
+        imgUrl: "{$user['headimgurl']}"
+    });
+
+    
+});
+
+wxshare();
+
+function wxshare(){
+    share_desc=share_desc.replace("{1}",{$setting['pay_fee']});
+    share_desc=share_desc.replace("{2}","{$user['nickname']}");
+    share_desc=share_desc.replace("{3}",{$total});
+    share_desc=share_desc.replace("{4}",{$payinfo['sort']});
+}
+
+function show_share(){
+    document.getElementById("winpop").style.display="";
+    document.getElementById("shareBanner").style.display="";
+    document.getElementById("contact").style.display="none";
+}
+function show_contact(){
+    document.getElementById("winpop").style.display="";
+    document.getElementById("shareBanner").style.display="none";
+    document.getElementById("contact").style.display="";
+}
+
+</script>
+
+</body>
+</html>

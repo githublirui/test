@@ -1,0 +1,98 @@
+/* Default classes for clearing float, also clearing the end without presentational markup*/
+.clear { clear: both; }
+.cLeft { clear: left; }
+.cRight { clear: right; }
+.cEnd {
+    /* clear fix without presentational markup. Mostly use .cEnd class for the float container. But when lotta containers
+    in one selector, add it directly here like #propertyEntry div */
+    display: inline-table;
+    /* Hides from IE-mac \*/
+    height: 1%;
+    display: block;
+    /* End hide from IE-mac */
+}
+html>body .cEnd {
+    height: auto;
+}
+.cEnd:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#jcl-demo .custom-container  {
+    padding: 10px 0 0 0;
+    margin: 0 0 20px 10px;
+    position: relative;
+}
+
+#jcl-demo .custom-container button {
+    float: left;
+}
+
+#jcl-demo a.prev, #jcl-demo a.next {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 143px;
+    text-decoration: none;
+    background: url("/image/imageNavLeft.gif") left 60px no-repeat;
+}
+#jcl-demo a.next {
+    background: url("/image/imageNavRight.gif") right 60px no-repeat;
+}
+    #jcl-demo a.next:hover {
+        background-image: url("/image/imageNavRightHover.gif");
+    }
+    #jcl-demo a.prev:hover {
+        background-image: url("/image/imageNavLeftHover.gif");
+    }
+    #jcl-demo a:hover, #jcl-demo a:active {
+        border: none;
+        outline: none;
+    }
+
+#jcl-demo .carousel {
+    border: 1px solid black;
+    float: left;
+    background-color: #dfdfdf;
+
+    /* Needed for rendering without flicker */
+    position: relative;
+    visibility: hidden;
+    left: -5000px;
+}
+    #jcl-demo .carousel ul {
+        margin: 0;
+    }
+        #jcl-demo .carousel li img,
+        #jcl-demo .carousel li p {
+            background-color: #fff;
+            width: 150px;
+            height: 118px;
+            margin: 10px;
+        }
+
+#jcl-demo .widget img {
+    cursor: pointer;
+}
+#jcl-demo .mid {
+    margin-left: 80px;
+    width: 400px;
+    height: 300px;
+}
+#jcl-demo .vertical {
+    margin-left: 170px;
+}
+#jcl-demo .vertical .carousel {   /* so that in IE 6, the carousel div doesnt expand to fill the space */
+    width: 170px;
+}
+#jcl-demo .imageSlider li img,
+#jcl-demo .imageSlider li p,
+#jcl-demo .imageSliderExt li img ,
+#jcl-demo .imageSliderExt li p {
+    width: 400px;
+    height: 300px;
+}
