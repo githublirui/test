@@ -1,0 +1,11 @@
+string content = UrlEncode("<center>勤蓝网外卖</center>");
+content += UrlEncode("<center>--已在线支付--</center>");
+string procontent = "<table><tr><td>" + UrlEncode("商品") + "</td><td>"+UrlEncode("数量")+"</td><td>"+UrlEncode("价格")+"</td></tr>";
+content = content +"\n"+ procontent;//content + procontent;//这里组合打印字符
+content += UrlEncode("配送费："+wlsum)+"\n";
+content += UrlEncode("优惠：" + yuoheizhanrmb) + "\n";
+content += "<FS>" + UrlEncode("总计："+"</FS>         <FS>￥" + shifurmb + "</FS>") + "\n";
+content += UrlEncode("地址：" + address) + "\n";
+content += UrlEncode("收货人：" + link) + "\n";
+content += UrlEncode("电话：" + mtel) + "\n";
+procontent += "<tr><td>" + UrlEncode(proname) + "</td><td>" + UrlEncode(shuliang) + "</td><td>" + UrlEncode(rmbjia) + "</td></tr>";//产品字符串

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>TIS SDK</title>
+        <!--Tis默认UI样式-->
+        <link href="http://cdn.aodianyun.com/tis/ui/default/css/jquery.splitter.css" rel="stylesheet" />
+        <link href="http://cdn.aodianyun.com/tis/shared/css/idangerous.swiper.css" rel="stylesheet" />
+        <link href="http://cdn.aodianyun.com/tis/ui/default/css/tis-ui-1.1.css" rel="stylesheet" />
+        <link href="/company/51talk/2017/10/indexstyle.css" rel="stylesheet" />
+        <!--Tis基础库-->
+        <script type="text/javascript" src="http://cdn.aodianyun.com/static/jquery/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="http://cdn.aodianyun.com/tis/core/tis-api-1.1.js"></script>
+        <script type="text/javascript" src="http://cdn.aodianyun.com/tis/core/tis-1.1.js"></script>
+        <!--Tis默认UI脚本-->
+        <script type="text/javascript" src="http://cdn.aodianyun.com/tis/ui/default/js/jquery.splitter-0.14.0.js"></script>
+        <script type="text/javascript" src="http://cdn.aodianyun.com/tis/shared/js/idangerous.swiper-2.0.min.js"></script>
+        <script type="text/javascript" src="http://cdn.aodianyun.com/tis/ui/default/js/tis-ui-1.1.js"></script>
+        <script type="text/javascript" src="/company/51talk/2017/10/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="/company/51talk/2017/10/demo_base.js"></script>
+        <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <!--其他样式-->
+        <style>
+            body {
+                margin: 0px;
+                padding: 0px;
+                background-color: lightgray;
+            }
+            .chat-box {
+                height: 400px;
+                width: 300px;
+                margin: auto;
+                margin-top: 50px;
+                border-radius: 5px;
+                filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=3);/*ie*/
+                -moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+                -webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+                box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+            }
+        </style>
+        <script>
+            (function ($) {
+                $.fn.extend({
+                    "minTipsBox": function (options) {
+                        options = $.extend({
+                            tipsContent: "", //提示内容
+                            tipsTime: 1 //停留时间 , 1 等于 1秒
+                        }, options);
+                        var $minTipsBox = ".min_tips_box";
+                        var $tipsContent = ".min_tips_box .tips_content";
+                        var $tipsTime = parseFloat(options.tipsTime) * 1000;
+                        //弹出框html代码
+                        var $minTipsBoxHtml = '<div class="min_tips_box">' +
+                                '<b class="bg"></b>' +
+                                '<span class="tips_content"></span>' +
+                                '</div>';
+                        //判断是否有提示框
+                        if ($($minTipsBox).length > 0) {
+                            $($minTipsBox).show();
+                            resetBox();
+                            setTimeout(function () {
+                                $($minTipsBox).hide();
+                            }, $tipsTime);
+                        } else {
+                            $($minTipsBoxHtml).appendTo("body");
+                            resetBox();
+                            setTimeout(function () {
+                                $($minTipsBox).hide();
+                            }, $tipsTime);
+                        }
+                        //重置提示框属性
+                        function resetBox() {
+
+                            $($tipsContent).html(options.tipsContent);
+                            var tipsBoxLeft = $($tipsContent).width() / 2 + 10;
+                            $($tipsContent).css("margin-left", "-" + tipsBoxLeft + "px");
+                        }
+                    }
+                });
+            })(jQuery);
+            function getQueryStr(str) {
+                var LocString = String(window.document.location.href);
+                var rs = new RegExp("(^|)" + str + "=([^&]*)(&|$)", "gi").exec(LocString), tmp;
+                if (tmp = rs) {
+                    return decodeURIComponent(tmp[2]);
+                }
+                return "";
+            }
+            $(document).minTipsBox({
+                tipsContent: '不能发送超链接',
+                tipsTime: 1
+            });
+            $(function () {
+                var api = TISAPI.New("/company/51talk/2017/10/interface.php", {tisId: getQueryStr("tisId")}, false);
+                console.log(api);
+                window.tis = TIS(".tis-container", {
+                    api: api, //必须
+                    //clientid:"clientId1"                  //可选，默认随机生成
+                    name: '{$user["nickname"]}', //可选，默认为Anonymous
+                    image: '{$user["headimgurl"]}', //可选，默认未定义
+                    generateUserEvent: true, //可选，默认为true
+                    template: {onReceiveMessage: onReceiveMessage}, //界面模版
+                    //以下均可选
+                    failure: function (error, when) {       //某个操作失败时调用
+                        if (typeof error != "string") {
+                            if (when == "sendMsg" && error.code == 400 && error.error == "instance closed") {
+                                alert("TIS实例已关闭");
+                                return;
+                            }
+                            alert(when + "操作失败");
+                        } else {
+                            alert("操作失败：" + error);
+                        }
+                    },
+                    onSendSuccess: function (data) {
+                        //当发送消息成功时调用
+                        console.log("消息发送成功");
+                    },
+                    onReconnect: function () {
+                        //当需要与服务器重新连接时调用
+                        console.log("正在与服务器重连");
+                    },
+                    onConnect: function () {
+                        //当与服务器连接成功时调用
+
+//                        enter('fff', 2000);
+                        console.log("与服务器重连接成功");
+                    },
+                    onLoadComponent: function () {
+                        //当组件加载完成时调用
+                        console.log("组件加载完成");
+                    },
+                    updateUser: function (total, clientId) {
+                        //当generateUserEvent=true,并且在线人数发生变化时调用
+                        console.log("在线人数:", total);
+                    }
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

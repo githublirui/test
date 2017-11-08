@@ -21,7 +21,7 @@ foo();
 
 // stop profiler
 $xhprof_data = xhprof_disable();
-
+//xhprof_enable(XHPROF_FLAGS_NO_BUILTINS);//解决crash问题
 // display raw xhprof data for the profiler run
 print_r($xhprof_data);
 

@@ -1,0 +1,1 @@
+<video id="video" playsinline="true" preload="none" src="http://baobab.kaiyanapp.com/api/v1/playUrl?vid=35300&amp;editionType=normal&amp;source=qcloud" controls=""></video>

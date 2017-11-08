@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+        <title>发布商品</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/release_goods.js"></script>
+    </head>
+    <body class="release-goods">
+        <div id="release-goods-container">
+            <div class="release-goods-top">
+                <div class="image"><img src="images/orderlist_img.png" /></div>
+                <div class="image_r">
+                    <p>卖家：微小智马乐 卖家联系微信：Male5623 卖家联系电话：1365555555 <a href="#" class="revise">修改</a></p>
+                </div>
+            </div>
+            <div class="release-goods-main">
+                <div class="session">
+                    <p style="line-height:0.88rem;">上传商品（图片） <a href="#" class="revise right">使用帮助..</a></p>
+                    <ul class="upLoadList" id="upLoadList">
+                        <li>
+                            <a href="javascript:;" class="upLoadImg">+</a>
+                            <input type="file" accept="image/*" class="file" name="file">
+                        </li>
+                    </ul>
+                    <ul class="message-list">
+                        <li style="height:auto;">
+                            <textarea placeholder="商品名称" class="goodsName"></textarea>
+                        </li>
+                        <li>
+                            <div class="label-cell">价格</div>
+                            <input type="number" class="input-cell" placeholder="单位（元）" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                            <a href="#" class="set_btn" id="J_setPriceBtn">设置多种价格</a>
+                        </li>
+                        <li>
+                            <div class="label-cell">库存数</div>
+                            <input type="number" class="input-cell" value="10" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        </li>
+                    </ul>
+                </div>
+                <div class="release-goods-more">
+                    <div class="session" style="margin:0.3rem 0;">
+                        <ul class="message-list">
+                            <li>
+                                <div class="label-cell">邮费</div>
+                                <input type="number" class="input-cell" placeholder="默认免邮费，单位（元）" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                                <a href="#" class="set_btn" id="J_setPostageBtn">不同地区邮费</a>
+                            </li>
+                            <li>
+                                <div class="label-cell">包邮件数</div>
+                                <input type="text" class="input-cell"  placeholder="例如：几件包邮" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                            </li>
+                            <li>
+                                <div class="label-cell">可否自提</div>
+                                <span></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="session">
+                        <ul class="message-list">
+                            <li>
+                                <div class="label-cell">促销</div>
+                                <span></span>
+                                <div class="right">每人最多购买一件</div>
+                            </li>
+                            <li style="height:auto;">
+                                <textarea placeholder="货源备注" class="goodsName"></textarea>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="center">
+                <a href="#" class="more-open">更多选项+</a>
+                <a href="#" class="btn">生成支付码图</a>
+                <p class="agreement"><span class="ico"></span> 同意「简单支付平台使用协议」</p>
+                <p class="footer"><span class="greenClr">关于微小智马乐</span> 商务合作，意见反馈：136555555</p>
+            </div>
+        </div>
+
+        <!-- 支付协议弹窗-->
+        <div id="payProtocol" style="display:none;">
+            <div class="payProtocol-inner">
+                <h1>支付用户使用协议</h1>
+                <div class="payProtocol-mid">
+                    支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议支付用户使用协议。
+                </div>
+                <a href="javascript:;" class="closeBtn">关闭</a>
+            </div>
+        </div>
+
+        <!-- 设置价格弹窗-->
+        <div id="setPriceContainer" style="display:none;">
+            <form id="setPriceList">
+                <div class="setPrice-item">
+                    <h4>第1套价格与规则</h4>
+                    <ul class="message-list">
+                        <li>
+                            <div class="label-cell">说明</div>
+                            <input type="text" class="input-cell" placeholder="例如iphone6港行，国行">
+                        </li>
+                        <li>
+                            <div class="label-cell">价格</div>
+                            <input type="number" class="input-cell" placeholder="单位（元）" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        </li>
+                        <li>
+                            <div class="label-cell">库存数</div>
+                            <input type="number" class="input-cell" value="10" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        </li>
+                    </ul>
+                </div>
+                <div class="setPrice-item">
+                    <h4>第2套价格与规则</h4>
+                    <ul class="message-list">
+                        <li>
+                            <div class="label-cell">说明</div>
+                            <input type="text" class="input-cell" placeholder="例如iphone6港行，国行">
+                            <a href="#" class="set_btn">设置多种价格</a>
+                        </li>
+                        <li>
+                            <div class="label-cell">价格</div>
+                            <input type="number" class="input-cell" placeholder="单位（元）" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                            <a href="#" class="set_btn">设置多种价格</a>
+                        </li>
+                        <li>
+                            <div class="label-cell">库存数</div>
+                            <input type="number" class="input-cell" value="10" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <div class="btnLists">
+                <a href="javascript:;" class="btn default-btn add-btn">再增加一套价格</a>
+                <a href="javascript:;" class="btn submit">确定所有价格</a>
+                <a href="javascript:;" class="btn default-btn cancel">取消</a>
+            </div>
+        </div>
+
+        <!-- 设置邮费弹窗-->
+        <form id="setpostageContainer" style="display:none;">
+            <div class="setPrice-item">
+                <h4>默认邮费设置</h4>
+                <ul class="message-list">
+                    <li>
+                        <div class="label-cell">邮费</div>
+                        <input type="number" class="input-cell" placeholder="单位（元）" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                    </li>
+                    <li>
+                        <div class="label-cell">包邮件数</div>
+                        <input type="number" class="input-cell" placeholder="单位（元）" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                    </li>
+                </ul>
+            </div>
+            <div id="setpostageList">
+                <div class="setPrice-item">
+                    <h4>第1套地区与邮费</h4>
+                    <ul class="message-list">
+                        <li>
+                            <div class="label-cell">地区</div>
+                            <input type="text" class="input-cell setArea" readonly="true" />
+                            <span class="dir-right"></span>
+                        </li>
+                        <li>
+                            <div class="label-cell">邮费</div>
+                            <input type="number" class="input-cell" placeholder="单位（元）" onkeyup="this.value = this.value.replace(/\D/g, '')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p id="goHistoryPostage" style="padding-top:0.3rem;color:#1ac219;text-align:center;">以前使用过邮费模板</p>
+            <div class="btnLists">
+                <a href="javascript:;" class="btn default-btn add-btn">再增加一个地区的邮费</a>
+                <a href="javascript:;" class="btn submit">确定所有邮费设置</a>
+                <a href="javascript:;" class="btn default-btn cancel">取消</a>
+            </div>
+        </form>
+
+        <!-- 设置最近邮费模板-->
+        <div id="newlyPostage" style="display:none;">
+            <h4>最近设置1个邮费模块</h4>
+            <ul>
+                <li>默认邮费0，</li>
+                <li>默认邮费0，</li>
+            </ul>
+        </div>
+        <!-- 设置地区弹窗-->
+        <div id="setAreaPop" style="display:none;">
+            <div class="setAreaPop-inner">
+                <ul>
+                    <li><input type="radio" name="areaPostage" /><span>无</li>
+                    <li><input type="radio" name="areaPostage" /><span>江浙沪</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>偏远地区，新疆，西装</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>北京市</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>天津市</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>河北省</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>北京市</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>天津市</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>河北省</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>北京市</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>天津市</span></li>
+                    <li><input type="radio" name="areaPostage" /><span>河北省</span></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

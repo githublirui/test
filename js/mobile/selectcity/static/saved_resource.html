@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.jq22.com/demo/jquerySengshild201703072228/ -->
+<html class="pixel-ratio-1"><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="jquery-weui.min.css">
+        <style>
+            #city-picker{
+                margin-left: 40%;
+                margin-right: 20%;
+                margin-top: 20%;
+                width: 200px;
+                height: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="city-picker" placeholder="请选择省市区县" readonly="" data-code="220104" data-codes="220000,220100,220104">
+        <script src="jquery-1.10.2.js"></script><script src="jquery.min(1).js"></script>
+        <script type="text/javascript" src="jquery-weui.min.js"></script>
+        <script type="text/javascript" src="city-picker.min.js"></script>
+        <script>
+            $("#city-picker").cityPicker({
+                title: "选择省市区/县",
+                onChange: function (picker, values, displayValues) {
+                    console.log(values, displayValues);
+                }
+            });
+        </script>
+    </body>
+</html>
